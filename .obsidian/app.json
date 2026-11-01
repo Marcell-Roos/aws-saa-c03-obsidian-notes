@@ -1,0 +1,9 @@
+{
+ "newLinkFormat": "shortest",
+ "useMarkdownLinks": false,
+ "showFrontmatter": false,
+ "readableLineLength": true,
+ "userIgnoreFilters": [
+  "README.md"
+ ]
+}
