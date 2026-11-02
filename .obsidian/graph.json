@@ -1,156 +1,142 @@
 {
- "collapse-filter": false,
- "search": "",
- "showTags": false,
- "showAttachments": false,
- "hideUnresolved": false,
- "showOrphans": true,
- "collapse-color-groups": false,
- "colorGroups": [
-  {
-   "query": "path:\"01 Exam\"",
-   "color": {
-    "a": 1,
-    "rgb": 16750848
-   }
-  },
-  {
-   "query": "path:\"02 Maps\"",
-   "color": {
-    "a": 1,
-    "rgb": 16777215
-   }
-  },
-  {
-   "query": "path:\"03 Services/Compute\"",
-   "color": {
-    "a": 1,
-    "rgb": 15560960
-   }
-  },
-  {
-   "query": "path:\"03 Services/Containers\"",
-   "color": {
-    "a": 1,
-    "rgb": 15902017
-   }
-  },
-  {
-   "query": "path:\"03 Services/Serverless\"",
-   "color": {
-    "a": 1,
-    "rgb": 15144315
-   }
-  },
-  {
-   "query": "path:\"03 Services/Storage\"",
-   "color": {
-    "a": 1,
-    "rgb": 4163108
-   }
-  },
-  {
-   "query": "path:\"03 Services/Database\"",
-   "color": {
-    "a": 1,
-    "rgb": 3885260
-   }
-  },
-  {
-   "query": "path:\"03 Services/Networking\"",
-   "color": {
-    "a": 1,
-    "rgb": 9195519
-   }
-  },
-  {
-   "query": "path:\"03 Services/Security\"",
-   "color": {
-    "a": 1,
-    "rgb": 14496844
-   }
-  },
-  {
-   "query": "path:\"03 Services/Application\"",
-   "color": {
-    "a": 1,
-    "rgb": 16732043
-   }
-  },
-  {
-   "query": "path:\"03 Services/Analytics\"",
-   "color": {
-    "a": 1,
-    "rgb": 108685
-   }
-  },
-  {
-   "query": "path:\"03 Services/Machine\"",
-   "color": {
-    "a": 1,
-    "rgb": 45241
-   }
-  },
-  {
-   "query": "path:\"03 Services/Management\"",
-   "color": {
-    "a": 1,
-    "rgb": 7707710
-   }
-  },
-  {
-   "query": "path:\"03 Services/Migration\"",
-   "color": {
-    "a": 1,
-    "rgb": 5935006
-   }
-  },
-  {
-   "query": "path:\"03 Services/Cost\"",
-   "color": {
-    "a": 1,
-    "rgb": 13083904
-   }
-  },
-  {
-   "query": "path:\"04 Concepts\"",
-   "color": {
-    "a": 1,
-    "rgb": 10133670
-   }
-  },
-  {
-   "query": "path:\"05 Comparisons\"",
-   "color": {
-    "a": 1,
-    "rgb": 11771355
-   }
-  },
-  {
-   "query": "path:\"06 Architectures\"",
-   "color": {
-    "a": 1,
-    "rgb": 8440772
-   }
-  },
-  {
-   "query": "path:\"07 Reference\"",
-   "color": {
-    "a": 1,
-    "rgb": 7901340
-   }
-  }
- ],
- "collapse-display": false,
- "showArrow": false,
- "textFadeMultiplier": -0.6,
- "nodeSizeMultiplier": 1.1,
- "lineSizeMultiplier": 0.7,
- "collapse-forces": false,
- "centerStrength": 0.45,
- "repelStrength": 14,
- "linkStrength": 0.9,
- "linkDistance": 120,
- "scale": 0.5,
- "close": false
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:\"00 Study Guide\"",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    },
+    {
+      "query": "path:\"01 Exam\"",
+      "color": {
+        "a": 1,
+        "rgb": 16750848
+      }
+    },
+    {
+      "query": "path:\"03 Practice\"",
+      "color": {
+        "a": 1,
+        "rgb": 11771355
+      }
+    },
+    {
+      "query": "path:\"04 Reference\"",
+      "color": {
+        "a": 1,
+        "rgb": 7901340
+      }
+    },
+    {
+      "query": "tag:#cat/security",
+      "color": {
+        "a": 1,
+        "rgb": 14496844
+      }
+    },
+    {
+      "query": "tag:#cat/networking",
+      "color": {
+        "a": 1,
+        "rgb": 9195519
+      }
+    },
+    {
+      "query": "tag:#cat/storage",
+      "color": {
+        "a": 1,
+        "rgb": 4163108
+      }
+    },
+    {
+      "query": "tag:#cat/database",
+      "color": {
+        "a": 1,
+        "rgb": 3885260
+      }
+    },
+    {
+      "query": "tag:#cat/compute",
+      "color": {
+        "a": 1,
+        "rgb": 15560960
+      }
+    },
+    {
+      "query": "tag:#cat/frontend",
+      "color": {
+        "a": 1,
+        "rgb": 15902017
+      }
+    },
+    {
+      "query": "tag:#cat/integration",
+      "color": {
+        "a": 1,
+        "rgb": 16732043
+      }
+    },
+    {
+      "query": "tag:#cat/analytics",
+      "color": {
+        "a": 1,
+        "rgb": 108685
+      }
+    },
+    {
+      "query": "tag:#cat/ml",
+      "color": {
+        "a": 1,
+        "rgb": 45241
+      }
+    },
+    {
+      "query": "tag:#cat/management",
+      "color": {
+        "a": 1,
+        "rgb": 7707710
+      }
+    },
+    {
+      "query": "tag:#cat/migration",
+      "color": {
+        "a": 1,
+        "rgb": 5935006
+      }
+    },
+    {
+      "query": "tag:#cat/resilience",
+      "color": {
+        "a": 1,
+        "rgb": 10133670
+      }
+    },
+    {
+      "query": "tag:#cat/cost",
+      "color": {
+        "a": 1,
+        "rgb": 13083904
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.6,
+  "nodeSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 0.7,
+  "collapse-forces": false,
+  "centerStrength": 0.45,
+  "repelStrength": 14,
+  "linkStrength": 0.9,
+  "linkDistance": 120,
+  "scale": 0.14814814814814814,
+  "close": false
 }
