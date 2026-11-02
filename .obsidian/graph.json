@@ -125,11 +125,25 @@
         "a": 1,
         "rgb": 13083904
       }
+    },
+    {
+      "query": "tag:#topic",
+      "color": {
+        "a": 1,
+        "rgb": 8440772
+      }
+    },
+    {
+      "query": "tag:#map",
+      "color": {
+        "a": 1,
+        "rgb": 16766720
+      }
     }
   ],
   "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": -0.6,
+  "textFadeMultiplier": 0,
   "nodeSizeMultiplier": 1.1,
   "lineSizeMultiplier": 0.7,
   "collapse-forces": false,
@@ -137,6 +151,6 @@
   "repelStrength": 14,
   "linkStrength": 0.9,
   "linkDistance": 120,
-  "scale": 0.14814814814814814,
+  "scale": 0.39999999999999974,
   "close": false
 }
