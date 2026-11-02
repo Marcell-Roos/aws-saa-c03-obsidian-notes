@@ -27,7 +27,7 @@ The memory aid is to think about what goes in and what comes out.
 
 ### More detail
 
-**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content.
+**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content. AWS listed its Streaming Events and batch image content moderation features as in maintenance on 31 March 2026.
 
 **Amazon Textract** extracts text, handwriting and data from scanned documents. It goes beyond plain text recognition, because it understands forms and tables. Use it for invoices and forms. Rekognition is not the right choice for those.
 
@@ -37,7 +37,7 @@ The memory aid is to think about what goes in and what comes out.
 
 **Amazon Translate** gives natural language translation, for localising content such as websites and applications.
 
-**Amazon Comprehend** performs natural language processing. It extracts key phrases, places and people, works out sentiment, and organises a collection of text files by topic. **Comprehend Medical** extracts medical information from clinical text.
+**Amazon Comprehend** performs natural language processing. It extracts key phrases, places and people, works out sentiment, and organises a collection of text files by topic. AWS listed topic modeling, event detection and prompt safety classification as in maintenance on 31 March 2026, so sentiment, entities and key phrases are the safest uses to learn. **Comprehend Medical** extracts medical information from clinical text.
 
 **Amazon Lex** builds chatbots and voice bots, using the same technology as Alexa, with speech recognition and natural language understanding.
 

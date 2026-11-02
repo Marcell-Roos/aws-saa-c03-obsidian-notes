@@ -79,6 +79,7 @@ If a task **cannot start** or pull an image, check the execution role. If the ap
 - **awsvpc mode** gives each task its own network interface, so that each task can have its own security group. It is required for Fargate.
 - An **ALB** suits most services, and dynamic port mapping lets many tasks run on one instance.
 - An **NLB** suits very high throughput, or PrivateLink.
+- **ECS Service Connect** lets services reach each other by short names, with service discovery and a service mesh built in. AWS points App Mesh users to it.
 
 | Network mode | Behaviour |
 | --- | --- |
@@ -90,6 +91,7 @@ If a task **cannot start** or pull an image, check the execution role. If the ap
 
 - **EFS** gives shared persistent storage across tasks in any AZ, and it works with Fargate and EC2. Fargate plus EFS is fully serverless.
 - Fargate tasks get 20 GiB of ephemeral storage by default, and up to 200 GiB.
+- ECS can attach one **EBS volume** to a task, including Linux tasks on Fargate, for storage-heavy work. It is not shared between tasks.
 
 ### Passing secrets to tasks
 

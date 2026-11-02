@@ -38,7 +38,7 @@ An instance type name such as `m7g.large` breaks down like this: `m` is the fami
 
 **Graviton** usually gives the best price-performance and is more energy efficient. It suits software that runs on Arm.
 
-**The Nitro System** is the hardware and hypervisor behind modern instances. Several features need it, such as the highest EBS performance, Multi-Attach and enhanced networking. **Nitro Enclaves** provide isolated compute inside an instance for handling very sensitive data.
+**The Nitro System** is the hardware and hypervisor behind modern instances. Several features need it, such as the highest EBS performance and Multi-Attach. **Nitro Enclaves** provide isolated compute inside an instance for handling very sensitive data.
 
 ## Launching and configuring
 
@@ -153,14 +153,14 @@ Payment options are All Upfront (largest discount), Partial Upfront and No Upfro
 
 ### Savings Plans
 
-You commit to a dollar amount per hour for 1 or 3 years. Anything above the commitment is charged at On-Demand rates.
+You commit to a dollar amount per hour for 1 or 3 years, or for 1 year only on a Database Savings Plan. Anything above the commitment is charged at On-Demand rates.
 
 | Plan | Discount | Applies to |
 | --- | --- | --- |
 | **Compute Savings Plan** | Up to 66% | Any EC2 family, size, AZ, Region, OS or tenancy, plus **Fargate and Lambda** |
 | **EC2 Instance Savings Plan** | Up to 72% | One instance family in one Region. Size, OS and tenancy can vary |
 | **SageMaker AI Savings Plan** | Up to 64% | SageMaker AI usage |
-| **Database Savings Plan** | Up to 35% | Aurora, RDS, DynamoDB, ElastiCache, DocumentDB, Neptune, Keyspaces, Timestream, DMS and OpenSearch Service, across engines and Regions |
+| **Database Savings Plan** | Up to 35% | Aurora, RDS, DynamoDB, ElastiCache, DocumentDB, Neptune, Keyspaces, Timestream, DMS and OpenSearch Service, across engines and Regions. 1-year term only |
 
 Savings Plans do not reserve capacity, and a commitment cannot be changed after purchase.
 
@@ -176,7 +176,7 @@ To reduce interruptions, use several instance types and AZs. An Auto Scaling gro
 
 | Allocation strategy | Meaning |
 | --- | --- |
-| `price-capacity-optimized` | Lowest price among pools with the most capacity. AWS's recommended default |
+| `price-capacity-optimized` | Lowest price among pools with the most capacity. AWS's recommended strategy |
 | `capacity-optimized` | Pools least likely to be interrupted |
 | `lowest-price` | Cheapest pools, with the highest interruption risk |
 | `diversified` | Spread across pools |

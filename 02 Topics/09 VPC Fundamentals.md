@@ -244,8 +244,8 @@ Both must be on for [[11 Route 53#Hosted zones|private hosted zones]] and for pr
 
 ## IPv6
 
-- IPv6 addresses in AWS are public and internet-routable. There is no private range.
-- IPv4 cannot be turned off for a VPC. IPv6 is enabled in **dual-stack** mode.
+- Most IPv6 addresses in a VPC are public and internet-routable, and exam questions usually assume this. AWS also offers private IPv6 addresses, which are not advertised on the internet.
+- A VPC must have an IPv4 CIDR, so IPv4 cannot be turned off for it. IPv6 is usually enabled in **dual-stack** mode, although an individual subnet can be IPv6-only.
 - An **egress-only internet gateway** is the IPv6 equivalent of a NAT gateway: outbound only. Route `::/0` to it from private subnets. For public subnets, route `::/0` to the internet gateway.
 - NAT gateways can also help IPv6-only workloads reach IPv4 services through NAT64 and DNS64.
 - If you cannot launch an instance into a dual-stack subnet, the reason is usually that the subnet has run out of **IPv4** addresses, not IPv6.

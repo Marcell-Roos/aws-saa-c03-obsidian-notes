@@ -91,7 +91,7 @@ Details to remember:
 
 - S3 File Gateway needs an IAM role for each gateway, and it can use Active Directory for SMB authentication.
 - It works with S3 Standard, Standard-IA, One Zone-IA, Intelligent-Tiering and Glacier classes, but not Glacier Instant Retrieval. Lifecycle policies normally move objects to colder classes.
-- A gateway runs as a virtual machine on-premises. Without virtualisation, use the hardware appliance.
+- A gateway runs as a virtual machine on-premises, or on an EC2 instance. The Storage Gateway Hardware Appliance has not been offered since 12 May 2025, and existing appliances are supported until May 2028.
 
 | | DataSync | Storage Gateway | Transfer Family |
 | --- | --- | --- | --- |

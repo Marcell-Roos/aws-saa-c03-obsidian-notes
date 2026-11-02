@@ -6,6 +6,40 @@ tags: [reference, scope/in]
 
 This page records how the vault's facts were checked, and what changed. The newest work comes first.
 
+## Review on 2 November 2026
+
+The whole vault was read line by line: 31 chapters, 5 practice exams (325 questions), 272 self-test questions, the labs and the reference pages. This was a review by Claude, the AI that wrote the vault, and not an independent human review.
+
+**Scripted checks, all passed:** all 189 exam guide items match AWS's text word for word, all 119 in-scope and 50 out-of-scope entries match, every internal link resolves, and all 5 answer keys and domain tables match their questions.
+
+**Checked against live AWS pages:** the claims listed below, the lifecycle dates, the exam facts and policies, and the items previously marked as not confirmed. Other facts were checked by the reviewer's own knowledge, not against a page.
+
+### Errors corrected
+
+| Note said | Now | Why |
+| --- | --- | --- |
+| FSx for Windows can use AD Connector, including the answer to chapter 2 question 9 | FSx joins AWS Managed Microsoft AD or a self-managed AD directly. Question 9 rewritten | [AWS](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html) gives only these two options |
+| EventBridge reaches S3 through a resource-based policy | CloudWatch Logs in that list, not S3 | [AWS](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-use-resource-based.html) |
+| Practice Exam 4 question 34 offered Glacier Instant Retrieval against One Zone-IA | Option replaced with Standard-IA | The old answer was ambiguous, and it conflicted with the flow chart in chapter 6 |
+| Use the Storage Gateway hardware appliance without virtualisation | No longer offered | [AWS](https://docs.aws.amazon.com/filegateway/latest/files3/hardware-appliance.html) |
+| DynamoDB TTL deletes within about 48 hours | Typically within a few days | [AWS](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html) |
+| IPv6 in a VPC has no private range | AWS offers public and private IPv6 addresses | [AWS](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html) |
+| Cost Explorer forecasts 12 months | 18 months | [AWS](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html) |
+| Compute Optimizer covers compute only | Also Aurora, RDS, DynamoDB, NAT gateways and licences | [AWS](https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html) |
+| Interface endpoints cover most services and S3 | DynamoDB too | [AWS](https://docs.aws.amazon.com/vpc/latest/privatelink/aws-services-privatelink-support.html) |
+| Savings Plans are always 1 or 3 years | Database Savings Plans are 1 year | [AWS](https://aws.amazon.com/savingsplans/database-pricing/) |
+| Recycle Bin covers snapshots and AMIs | EBS volumes too | [AWS](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) |
+| Nitro is needed for enhanced networking | Removed | Enhanced networking is not limited to Nitro instances |
+| Lab 8: a message reaches the DLQ after two receives | It moves on the next attempt, when the count passes `maxReceiveCount` | [AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html) |
+
+### Gaps filled
+
+S3 Express One Zone's minimum storage, shown as None in [AWS's table](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html). EventBridge's event size. Centralised root access, ECS Service Connect, ECS EBS volumes, reserved capacity for databases, Amazon Quick row-level security, FSx data deduplication, EFS encryption being set at creation, MRSC needing three Regions, and the features listed as in maintenance for Comprehend, Rekognition, ARC and SNS. Role chaining's one-hour limit.
+
+### Suspected, then cleared
+
+These looked wrong, and were confirmed as correct: precision time placement groups, QUIC on NLB, the Database Savings Plan service list, RDS Storage Auto Scaling conditions, 80,000 IOPS on gp3, regional NAT gateway limits, Lambda Web Functions, the newer EventBridge custom event bus, and combined cross-Region and cross-account copies for RDS in AWS Backup.
+
 ## November 2026 rewrite
 
 The vault was rebuilt on 1 November 2026. The 490 short notes were consolidated into 31 study chapters, with a study guide, 11 labs, five practice exams and a Service Index added. All notes were rewritten, which also removed the spelling and grammar errors in the source text.
@@ -34,22 +68,9 @@ Regional NAT gateway details, Transit Gateway 100 Gbps per attachment per AZ, Di
 
 ### Not confirmed on a page read
 
-These are long-standing facts that were not on the pages read in this pass. They are believed to be correct, but they were not freshly confirmed.
+The review on 2 November 2026 confirmed all but one of the items first listed here, and the rest are now removed. The one left is the usual 30-day wait before a lifecycle transition to Standard-IA, because current docs describe it through storage charges.
 
-- RDS Multi-AZ failover of 60 to 120 seconds, and under 35 seconds for Multi-AZ DB clusters
-- RDS read replica limit of 15
-- DynamoDB 400 KB item size, partition limits, and transaction capacity cost
-- KMS custom rotation range of 90 to 2,560 days, and the 7 to 30 day deletion wait
-- Secrets Manager and Parameter Store size limits
-- Shield Advanced's $3,000 monthly price
-- Lambda's asynchronous retry count
-- CloudFront price class names
-- NAT gateway bandwidth figures
-- Aurora Serverless ACU details
-- SQS FIFO five-minute deduplication window, and enhanced fan-out figures
-- The usual 30-day wait before a lifecycle transition to Standard-IA. Current docs describe it through storage charges
-
-**Conflicts in AWS's own pages:** the Lambda@Edge viewer timeout appears as 30 seconds in the current comparison table, where older material says 5 seconds. EFS One Zone availability appears with two different figures. S3 Express One Zone's minimum storage charge differs between pages, so the vault does not state it.
+**Conflicts in AWS's own pages:** the Lambda@Edge viewer timeout appears as 30 seconds in the current comparison table, where older material says 5 seconds. EFS One Zone availability appears with two different figures.
 
 ## Earlier work
 

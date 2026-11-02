@@ -56,7 +56,7 @@ Inside chapters, services that are out of scope, retired or closed to new custom
 
 ## Keeping it current
 
-AWS changes quickly, and this vault was checked on 1 November 2026. The [[Corrections Log]] and [[Sources]] record what was checked and how. Before your exam, take a quick look at the [exam guide](https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html) to see if anything has changed.
+AWS changes quickly, and this vault was checked on 1 November 2026, and reviewed again on 2 November 2026. The [[Corrections Log]] and [[Sources]] record what was checked and how. Before your exam, take a quick look at the [exam guide](https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html) to see if anything has changed.
 
 ---
 **Home:** [[Home]]

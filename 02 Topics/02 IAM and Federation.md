@@ -42,6 +42,8 @@ A few tasks need the root user, and the exam likes to ask about them:
 - Enabling [[07 S3 Security and Data Protection#MFA Delete|MFA Delete]] on an S3 bucket
 - Editing a bucket policy that has locked everyone out
 
+In an organisation, you can **centrally manage root access** for member accounts. This lets you remove their root user credentials, and carry out these privileged tasks centrally.
+
 ## IAM identities
 
 | Identity | What it is | Credentials | Use it for |
@@ -261,7 +263,7 @@ The **IAM Policy Simulator** tests what a policy would allow, before you apply i
 | `AssumeRoleWithWebIdentity` | OIDC federation. For mobile and web apps AWS recommends Cognito instead |
 | `GetSessionToken` | MFA-protected API access for an IAM user |
 
-Role sessions last one hour by default, and a role can be configured for up to 12 hours.
+Role sessions last one hour by default, and a role can be configured for up to 12 hours. **Role chaining**, where one role assumes another, is limited to one hour.
 
 Roles for AWS services:
 
@@ -312,7 +314,7 @@ The textbook example: a user in Account A must scan a DynamoDB table in Account 
 
 | Permission model | Targets |
 | --- | --- |
-| Resource-based policy | Lambda, SNS, SQS, S3, API Gateway |
+| Resource-based policy | Lambda, SNS, SQS, CloudWatch Logs, API Gateway |
 | IAM role | Kinesis Data Streams, Systems Manager Run Command, ECS tasks |
 
 ## Federation
@@ -351,6 +353,8 @@ To connect a self-managed Active Directory, use either a two-way trust through A
 | Trust with on-premises AD | **Yes** | No trust needed, it forwards | No |
 | MFA | Yes | Yes | No |
 | Pick it when | You need real AD features in AWS, or a trust | No identities may be stored in the cloud | Small, basic needs, existing customers only |
+
+AD Connector does not work with every service. FSx for Windows File Server joins either AWS Managed Microsoft AD or your self-managed AD directly, and RDS for SQL Server does not support AD Connector.
 
 > [!warning] Lifecycle
 > Simple AD has been closed to new customers since 30 June 2026. Older questions may still use it for "low cost, basic LDAP".
@@ -413,10 +417,10 @@ Access Analyzer is the answer whenever a question asks about **unintended extern
 | Each user may reach only their own S3 prefix | Identity pool and policy variables | One policy, one prefix per user |
 | Employees need SSO to accounts | Identity Center, not Cognito | Workforce versus customers |
 | Enterprise customers use their SAML IdP with your SaaS app | User pool SAML federation | Still authentication for an app |
-| FSx for Windows must use on-premises AD identities | Managed Microsoft AD with a trust, or AD Connector | Both reach on-premises identities |
+| FSx for Windows must use on-premises AD identities | Join FSx directly to the self-managed AD, or use Managed Microsoft AD with a trust | FSx does not use AD Connector |
 | No user identities may be stored in the cloud | AD Connector | A proxy only |
 | Two-way trust between AWS and on-premises domains | Managed Microsoft AD | The only option with trusts |
-| RDS for SQL Server with Windows Authentication | Managed Microsoft AD | Direct integration |
+| RDS for SQL Server with Windows Authentication | Managed Microsoft AD, or a direct join to a self-managed AD | AD Connector is not supported |
 | Worker in Account A copies a table to a bucket in Account B | Bucket policy | The worker keeps its own permissions |
 
 ## Check yourself
@@ -506,12 +510,12 @@ Access Analyzer is the answer whenever a question asks about **unintended extern
 **9.** A company must deploy FSx for Windows File Server. Users authenticate with on-premises Active Directory, and security policy forbids storing any identities in AWS. Which directory option fits?
 
 - A. Simple AD
-- B. AD Connector
+- B. Join the file system directly to the self-managed Active Directory
 - C. A Cognito user pool
 - D. AWS Managed Microsoft AD with its own users
 
 > [!success]- Answer
-> **B.** AD Connector is a proxy that forwards authentication to on-premises AD and stores no identities in AWS. Option D stores users in AWS, Simple AD cannot connect to on-premises AD, and Cognito is not a Windows directory.
+> **B.** FSx for Windows can join a self-managed Active Directory directly, so no identities are stored in AWS. It does not work with AD Connector. Option D stores users in AWS, Simple AD cannot connect to on-premises AD, and Cognito is not a Windows directory.
 
 **10.** A security team wants to know whether any S3 bucket or KMS key in the organisation can be reached from outside it. Which tool answers this directly?
 

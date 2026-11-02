@@ -30,7 +30,7 @@ In a **synchronous** design, one component calls another and waits. If the secon
 | Replay | No | No, except FIFO topics with archiving | Yes | Yes, from an archive |
 | Ordering | FIFO queues | FIFO topics | Per shard | Not by default |
 | Scaling | Automatic | Automatic | Shards, or on-demand | Automatic |
-| Maximum message | 1 MiB | 256 KiB by default, up to 1 MiB | 10 MiB record | Check the current quota |
+| Maximum message | 1 MiB | 256 KiB by default, up to 1 MiB | 10 MiB record | 1 MB per `PutEvents` request |
 | Use for | Buffering, worker pools | Notifications, fan-out | Real-time analytics | SaaS and AWS event routing |
 
 ```mermaid

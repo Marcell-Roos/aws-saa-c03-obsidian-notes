@@ -56,7 +56,7 @@ A full mesh grows fast: n VPCs need n(n-1)/2 peerings, so 25 VPCs need 300. That
 
 | | Gateway endpoint | Interface endpoint |
 | --- | --- | --- |
-| Services | **S3 and DynamoDB only** | Most AWS services, and S3 |
+| Services | **S3 and DynamoDB only** | Most AWS services, including S3 and DynamoDB |
 | How it works | Target in a route table | ENI with a private IP in your subnet |
 | Cost | **Free** | Hourly plus per GB |
 | Security | Endpoint policy | Security group plus endpoint policy |
@@ -219,7 +219,7 @@ A central team can share one DX connection across accounts, which lowers cost an
 | Maximum resiliency | **Two** connections at each of two locations | Critical workloads |
 | Cost-effective backup | Direct Connect with **Site-to-Site VPN** as backup | Cheap failover, lower throughput |
 
-A **link aggregation group (LAG)** bundles dedicated connections at one location into one logical connection: up to 4 for port speeds under 100 Gbps, or 2 for 100 Gbps. It adds bandwidth and link redundancy, but not location redundancy.
+A **link aggregation group (LAG)** bundles dedicated connections at one location into one logical connection: up to 4 for port speeds under 100 Gbps, or 2 for 100 or 400 Gbps. It adds bandwidth and link redundancy, but not location redundancy.
 
 ## Exam patterns
 

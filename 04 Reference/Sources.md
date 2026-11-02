@@ -225,6 +225,36 @@ You do not need these to follow the [[Study Guide]], but they are useful if you 
 - https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html
 - https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html
 
+## Pages added in the review on 2 November 2026
+
+- https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html
+- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html
+- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServer_SelfManagedActiveDirectory.html
+- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-use-resource-based.html
+- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevents.html
+- https://docs.aws.amazon.com/filegateway/latest/files3/hardware-appliance.html
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
+- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html
+- https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html
+- https://docs.aws.amazon.com/vpc/latest/privatelink/aws-services-privatelink-support.html
+- https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html
+- https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html
+- https://aws.amazon.com/savingsplans/database-pricing/
+- https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html
+- https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
+- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html
+- https://docs.aws.amazon.com/quick/latest/userguide/restrict-access-to-a-data-set-using-row-level-security.html
+- https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-data-dedup.html
+- https://docs.aws.amazon.com/efs/latest/ug/encryption-at-rest.html
+- https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html
+- https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html
+- https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingObjects.html
+- https://aws.amazon.com/efs/faq/
+- https://aws.amazon.com/shield/pricing/
+- https://aws.amazon.com/route53/pricing/
+
 ## GitHub community notes
 
 Searched GitHub on 1 November 2026 for `AWS Solutions Architect Associate Certification (SAA-C03)` and related terms, limited to repositories created on or after 1 November 2025. That found 288 repositories. Markdown from 287 was downloaded, and 254 contained notes. Each was scored on word count and on how many of 135 exam terms it mentions (the 119 in-scope services plus 16 category names). The 57 below passed the depth filter (at least 84 of those terms, 9,000 words, mainly English).

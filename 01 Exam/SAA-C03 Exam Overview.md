@@ -5,7 +5,7 @@ aliases: ["Exam Overview"]
 
 # SAA-C03 Exam Overview
 
-Everything official about the exam, on one page. The facts below were checked against AWS's exam guide and certification pages on 1 November 2026. AWS can change its policies, so check the [certification page](https://aws.amazon.com/certification/certified-solutions-architect-associate/) before you book.
+Everything official about the exam, on one page. The facts below were checked against AWS's exam guide and certification pages on 2 November 2026. AWS can change its policies, so check the [certification page](https://aws.amazon.com/certification/certified-solutions-architect-associate/) before you book.
 
 ## Exam facts
 

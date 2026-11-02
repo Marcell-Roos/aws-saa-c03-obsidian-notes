@@ -205,7 +205,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 3. Subscribe both queues to the topic. Confirm that the queue access policies allow SNS to send.
 4. Publish a message to the topic, and look in both queues for a copy.
 5. On `billing`, set the DLQ with `maxReceiveCount` of 2.
-6. Receive a message twice without deleting it, and watch it move to the DLQ.
+6. Receive a message twice without deleting it, waiting for the visibility timeout each time. On the next receive attempt, its receive count passes `maxReceiveCount`, and SQS moves it to the DLQ.
 7. Change the visibility timeout, and see how long a received message stays hidden.
 8. Add a **filter policy** so that `shipping` only gets messages with the attribute `type` equal to `physical`. Publish with and without that attribute.
 9. Create a Lambda function with `billing` as an **event source**, and see the queue empty as the function processes messages.
@@ -265,7 +265,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 5. Add a second resource that has an error, and watch the **rollback**.
 6. Open **Cost Explorer**. It can take a while to populate on a new account. Group costs by service.
 7. Activate a **cost allocation tag** in the Billing console, such as `Env`.
-8. Create a **Trusted Advisor** review, and look at what your support plan shows.
+8. Open **Trusted Advisor**, and look at which checks your support plan shows.
 
 **Check yourself:** why is a change set useful? What happens when a stack is deleted if `DeletionPolicy` is `Retain`?
 

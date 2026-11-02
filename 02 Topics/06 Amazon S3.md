@@ -30,7 +30,7 @@ Key facts:
 | --- | --- |
 | Durability | 11 nines (99.999999999%), designed across all current classes |
 | Consistency | Strong read-after-write |
-| Maximum object size | 48.8 TiB |
+| Maximum object size | 48.8 TiB, which AWS usually rounds to 50 TB. Older material and questions say 5 TB |
 | Multipart upload | Up to 10,000 parts, 5 MiB to 5 GiB each. Recommended over 100 MB, required over 5 GiB |
 | Console upload limit | 160 GB |
 | Buckets per account | 10,000 general purpose buckets by default, adjustable |
@@ -47,7 +47,7 @@ You choose a class per object. All classes are low latency unless noted, and all
 | **Intelligent-Tiering** | 99.9% | 3+ | None | Not monitored under 128 KB | Milliseconds, no retrieval fee | Unknown or changing access |
 | **Standard-IA** | 99.9% | 3+ | 30 days | 128 KB | Milliseconds, per-GB fee | Infrequent but needs fast access |
 | **One Zone-IA** | 99.5% | 1 | 30 days | 128 KB | Milliseconds, per-GB fee | Infrequent, re-creatable data |
-| **Express One Zone** | 99.95% | 1 | See note | None | Single-digit milliseconds | Very high request rates |
+| **Express One Zone** | 99.95% | 1 | None | None | Single-digit milliseconds | Very high request rates |
 | **Glacier Instant Retrieval** | 99.9% | 3+ | 90 days | 128 KB | Milliseconds, higher fee | Archive read about once a quarter |
 | **Glacier Flexible Retrieval** | 99.99% after restore | 3+ | 90 days | 40 KB overhead | Minutes to hours | Archive with flexible retrieval |
 | **Glacier Deep Archive** | 99.99% after restore | 3+ | 180 days | 40 KB overhead | 12 to 48 hours | Lowest cost, long-term retention |
@@ -126,7 +126,7 @@ flowchart LR
 Rules to remember:
 
 - There is no lifecycle transition from Glacier classes back to Standard. To move an object up, restore it and copy it.
-- One Zone-IA cannot transition to Standard-IA or Intelligent-Tiering.
+- One Zone-IA can transition only to Glacier Flexible Retrieval or Deep Archive.
 - Objects under 128 KB are not transitioned by default.
 - The usual pattern waits at least 30 days before moving to Standard-IA or One Zone-IA, because those classes are designed and billed for objects kept 30 days or more. Exam questions traditionally treat 30 days as the minimum.
 

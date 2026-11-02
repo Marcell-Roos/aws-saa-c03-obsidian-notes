@@ -5,7 +5,7 @@ An [Obsidian](https://obsidian.md) vault for the **AWS Certified Solutions Archi
 > [!IMPORTANT]
 > **This vault is AI-generated.** It was written and assembled by Claude, Anthropic's AI model, from the sources below. No person has reviewed it line by line, so it may contain mistakes. No study material can guarantee a pass. AWS recommends about a year of hands-on experience for this exam.
 
-Key facts were checked against AWS documentation on 1 November 2026. AWS changes quickly, so some details will go out of date. [`Corrections Log`](04%20Reference/Corrections%20Log.md) records what was checked, and what was not.
+Key facts were checked against AWS documentation on 1 November 2026, and reviewed again on 2 November 2026. AWS changes quickly, so some details will go out of date. [`Corrections Log`](04%20Reference/Corrections%20Log.md) records what was checked, and what was not.
 
 ## What's inside
 

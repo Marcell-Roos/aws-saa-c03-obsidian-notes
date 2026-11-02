@@ -190,7 +190,7 @@ EMR also offers serverless and EKS options.
 
 - It creates interactive dashboards, and connects to Athena, Redshift, RDS and others.
 - **SPICE** is its in-memory engine.
-- The Enterprise edition has **column-level security**.
+- The Enterprise edition has **row-level and column-level security**, so one dashboard can show each user only the data they may see.
 - Users and groups exist in Quick, and are separate from IAM.
 - A **dashboard** is a read-only snapshot of an analysis, which can be shared.
 

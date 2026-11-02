@@ -413,13 +413,13 @@ tags: [practice, scope/in]
 
 **34.** A company must keep recreated image previews for 90 days, read rarely, and it is fine to lose them. Which is the most cost-effective S3 class?
 
-- A. S3 Glacier Instant Retrieval
+- A. S3 Standard-IA
 - B. S3 Glacier Deep Archive
 - C. S3 One Zone-IA
 - D. S3 Standard
 
 > [!success]- Answer
-> **C.** One Zone-IA is cheaper, and the risk of loss is acceptable for data that can be recreated. Deep Archive has a 180-day minimum and slow retrieval.
+> **C.** One Zone-IA costs 20% less than Standard-IA, and the risk of loss is acceptable for data that can be recreated. S3 Standard costs more for data that is read rarely. Deep Archive has a 180-day minimum and slow retrieval.
 >
 > *Task 4.1.* Review: [[06 Amazon S3#Storage classes|Storage classes]]
 

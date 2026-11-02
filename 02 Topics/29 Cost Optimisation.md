@@ -39,7 +39,7 @@ Cost has four main levers:
 
 ### AWS Cost Explorer
 
-Cost Explorer visualises costs and usage over time, and lets you build custom reports. It can forecast usage up to 12 months ahead, based on previous usage, and it recommends a Savings Plan commitment based on your history.
+Cost Explorer visualises costs and usage over time, and lets you build custom reports. It shows up to 13 months of history, it forecasts up to 18 months ahead, and it recommends a Savings Plan commitment based on your history.
 
 ### AWS Budgets
 
@@ -59,7 +59,7 @@ Tags activated in the Billing console appear in cost reports, so that spending c
 
 ### AWS Compute Optimizer
 
-**Compute Optimizer** uses machine learning on CloudWatch history to recommend sizes for EC2 instances, Auto Scaling groups, EBS volumes, Lambda functions and ECS on Fargate.
+**Compute Optimizer** uses machine learning on CloudWatch history to make recommendations for EC2 instances, Auto Scaling groups, EBS volumes, Lambda functions, ECS on Fargate, Aurora and RDS databases, DynamoDB, NAT gateways and commercial software licences.
 
 ### AWS Pricing Calculator
 
@@ -137,7 +137,7 @@ Task 4.2 asks about the "required availability for different classes of workload
 
 | Lever | Use when |
 | --- | --- |
-| **Database Savings Plans or RIs** | Steady use |
+| **Database Savings Plans or reserved capacity** | Steady use. RDS and Aurora have Reserved Instances, ElastiCache and Redshift have reserved nodes, and DynamoDB has reserved capacity |
 | **Aurora Serverless v2 or DynamoDB on-demand** | Spiky or idle workloads |
 | **DynamoDB provisioned with auto scaling** | Steady traffic |
 | **DynamoDB Standard-IA table class** | Tables that hold a lot of rarely read data |

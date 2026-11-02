@@ -138,7 +138,7 @@ Controls come in three kinds. The kind tells you what happens to a violation.
 
 | Control | Mechanism | Effect | Example |
 | --- | --- | --- | --- |
-| **Preventive** | SCPs | Blocks the action | Restrict Regions across all accounts |
+| **Preventive** | SCPs or RCPs | Blocks the action | Restrict Regions across all accounts |
 | **Detective** | AWS Config rules | Reports the violation | Find untagged resources |
 | **Proactive** | CloudFormation Hooks | Checks resources before they are provisioned | Reject a non-compliant template |
 

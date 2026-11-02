@@ -295,7 +295,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | Lambda environment variables, layers | 4 KB, 5 layers |
 | Lambda concurrency | 1,000 by default, +1,000 environments per 10 seconds per function |
 | RI discount | Standard up to 72%, Convertible up to 66% |
-| Savings Plans discount | EC2 Instance up to 72%, Compute up to 66%, SageMaker AI up to 64%, Database up to 35% |
+| Savings Plans discount | EC2 Instance up to 72%, Compute up to 66%, SageMaker AI up to 64%, Database up to 35% on a 1-year term |
 | Spot | Up to 90% off, 2-minute notice |
 | Spread placement | 7 running instances per AZ |
 | Partition placement | 7 partitions per AZ |
@@ -308,7 +308,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 
 | Item | Value |
 | --- | --- |
-| S3 maximum object | 48.8 TiB |
+| S3 maximum object | 48.8 TiB, usually rounded to 50 TB. Older questions say 5 TB |
 | S3 multipart | Recommended over 100 MB, required over 5 GiB, 10,000 parts |
 | S3 requests per prefix | 3,500 writes, 5,500 reads per second |
 | S3 durability | 11 nines |

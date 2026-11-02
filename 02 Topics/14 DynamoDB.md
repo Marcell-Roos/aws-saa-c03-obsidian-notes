@@ -141,7 +141,7 @@ Replay of last month's changes needs Kinesis, not Streams.
 | Consistency mode | Meaning |
 | --- | --- |
 | **Multi-Region eventual (MREC)** | The default. Writes replicate asynchronously, usually within seconds |
-| **Multi-Region strong (MRSC)** | Reads can return the latest write from any Region, in a single account |
+| **Multi-Region strong (MRSC)** | Writes replicate synchronously, and strongly consistent reads return the latest write in any Region. It needs exactly three Regions: three replicas, or two replicas and a witness |
 
 Older guides say you must enable Streams first. That is no longer something you set up yourself.
 
@@ -149,7 +149,7 @@ The difference from Aurora Global Database: **DynamoDB global tables are multi-w
 
 ## Time to live
 
-**TTL** deletes items automatically after an expiry timestamp that you store in an attribute. Deletion is free and consumes no write capacity, but it is not immediate, so it can take up to about 48 hours. Filter expired items out of reads if timing matters.
+**TTL** deletes items automatically after an expiry timestamp that you store in an attribute. Deletion is free and consumes no write capacity, but it is not immediate. AWS says that items are typically deleted within a few days of expiry, and older material says 48 hours. Filter expired items out of reads if timing matters.
 
 Use it for session data, temporary records and regulatory deletion. Deleted items appear in Streams, so you can archive them to S3.
 
@@ -166,7 +166,7 @@ Use it for session data, temporary records and regulatory deletion. Deleted item
 
 - Access is controlled by IAM, with fine-grained conditions such as `dynamodb:LeadingKeys`.
 - Data is encrypted at rest by default.
-- A **gateway VPC endpoint** gives private, free access from a VPC.
+- A **gateway VPC endpoint** gives private, free access from a VPC. An interface endpoint also exists, at a cost, and that is the one on-premises networks can reach.
 
 ## Design patterns
 

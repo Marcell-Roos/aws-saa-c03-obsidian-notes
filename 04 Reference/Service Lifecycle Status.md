@@ -6,7 +6,7 @@ tags: [reference, scope/in]
 
 AWS can list a service on the exam while closing it to new customers. Learn what these services do, but do not choose them for new designs unless a question says that the company already uses them.
 
-Source: AWS's [maintenance](https://docs.aws.amazon.com/general/latest/gr/maintenance_services.html), [sunset](https://docs.aws.amazon.com/general/latest/gr/sunset_services.html) and [full shutdown](https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html) pages, read on 1 November 2026. Only services relevant to this exam are listed here.
+Source: AWS's [maintenance](https://docs.aws.amazon.com/general/latest/gr/maintenance_services.html), [sunset](https://docs.aws.amazon.com/general/latest/gr/sunset_services.html) and [full shutdown](https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html) pages, read on 2 November 2026. Only services relevant to this exam are listed here.
 
 ## What the stages mean
 
@@ -66,10 +66,15 @@ AWS Proton stays on the exam guide's in-scope list, even though its end of suppo
 | AWS Audit Manager | 31 March 2026 |
 | CloudTrail Lake | 31 March 2026 |
 | AWS Glue Ray jobs | 31 March 2026 |
-| Some Comprehend and Rekognition features | 31 March 2026 |
+| Comprehend topic modeling, event detection and prompt safety classification | 31 March 2026 |
+| Rekognition Streaming Events and batch image content moderation | 31 March 2026 |
+| Application Recovery Controller readiness check | 31 March 2026 |
+| SNS message data protection | 31 March 2026 |
 | Amazon Kendra | 30 June 2026 |
 | Simple AD | 30 June 2026 |
 | Amazon Cognito Sync | 30 June 2026 |
+
+The AWS Storage Gateway Hardware Appliance is not on these pages either, but the Storage Gateway documentation says that it has not been offered since 12 May 2025, with support for existing customers until May 2028.
 
 AWS Data Pipeline is not on these lifecycle pages, but its own documentation says that it is in maintenance mode and closed to new customers. It stays on the exam's in-scope list.
 

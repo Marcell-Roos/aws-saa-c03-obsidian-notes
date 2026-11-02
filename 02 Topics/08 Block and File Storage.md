@@ -89,7 +89,7 @@ A **snapshot** is a point-in-time backup of a volume, stored in S3 behind the sc
 | Feature | Purpose | Details |
 | --- | --- | --- |
 | **Snapshot Archive** | Cheap long-term retention | Up to 75% cheaper, 90-day minimum, restore can take up to 72 hours |
-| **Recycle Bin** | Recover after accidental deletion | Retention rules for snapshots and EBS-backed AMIs |
+| **Recycle Bin** | Recover after accidental deletion | Retention rules for EBS volumes, snapshots and EBS-backed AMIs |
 | **Fast Snapshot Restore** | Removes first-read latency on new volumes | Enabled per AZ, charged, limited number per Region |
 
 Volumes created from snapshots load data lazily from S3, so first reads are slow. Fast Snapshot Restore avoids this, at a price.
@@ -147,7 +147,7 @@ Instance store volumes must be specified at launch and cannot be attached later.
 - It can be mounted by thousands of instances across AZs at the same time.
 - It grows and shrinks automatically to petabytes, with no capacity planning. You pay for what you use.
 - On-premises Linux servers can mount it over Direct Connect or VPN.
-- Security groups control network access to its mount targets, and KMS can encrypt it at rest.
+- Security groups control network access to its mount targets, and KMS can encrypt it at rest. Encryption at rest can be chosen only when the file system is created.
 - **Access points** give applications a set entry directory and user identity.
 
 **EFS is not for Windows.** This is one of the most common traps in the exam.
@@ -164,7 +164,7 @@ Instance store volumes must be specified at launch and cannot be attached later.
 More detail:
 
 - **Infrequent Access** has a retrieval charge and no minimum storage duration. **Archive** is for data read a few times a year and has a 90-day minimum. Both bill at least 128 KiB per file. Archive requires Elastic throughput.
-- **EFS Replication** copies a file system to another Region for disaster recovery, with an RPO of minutes.
+- **EFS Replication** keeps a copy of a file system in the Region of your choice, usually another Region for disaster recovery. The RPO is 15 minutes for most file systems.
 - Older questions use Max I/O for very high parallel access. Current guidance is General Purpose, which now scales far beyond its old limits. Max I/O cannot be used with One Zone or Elastic throughput.
 
 ## Amazon FSx
@@ -183,7 +183,7 @@ More detail:
 
 - Supports SMB and NTFS, and integrates with Microsoft Active Directory.
 - Supports access control lists, user quotas and DFS Namespaces.
-- Offers SSD or HDD storage.
+- Offers SSD or HDD storage, and **data deduplication** lowers the cost of general file shares.
 - Can be accessed from on-premises over VPN or Direct Connect.
 - Can be **joined to an existing on-premises AD**, which keeps existing groups and permissions.
 - Multi-AZ provides automatic failover, and backups are taken to S3.
