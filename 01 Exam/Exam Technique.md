@@ -122,11 +122,11 @@ Do not cram new material. Read [[Final Review Cheat Sheet]], get some sleep, and
 
 ## On the day
 
-- [x] Bring the right ID, or have it ready online.
-- [x] Eat beforehand, and drink water.
-- [x] Arrive 30 minutes early, or start check-in 30 minutes before.
-- [x] Use the flag feature, and remember the Help button for service names.
-- [x] Trust your preparation.
+- [ ] Bring the right ID, or have it ready online.
+- [ ] Eat beforehand, and drink water.
+- [ ] Arrive 30 minutes early, or start check-in 30 minutes before.
+- [ ] Use the flag feature, and remember the Help button for service names.
+- [ ] Trust your preparation.
 
 ---
 **Previous:** [[SAA-C03 Exam Overview]] · **Next:** [[Final Review Cheat Sheet]] · **Plan:** [[Study Guide]]

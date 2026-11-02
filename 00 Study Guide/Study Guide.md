@@ -47,8 +47,8 @@ In total, expect about 115 hours. That is around 80 hours of chapters, 15 hours 
 
 **Standard plan: first day, about 2 hours.**
 
-- [x] Read [[SAA-C03 Exam Overview]]
-- [x] Read [[Exam Technique]]
+- [ ] Read [[SAA-C03 Exam Overview]]
+- [ ] Read [[Exam Technique]]
 - [ ] Skim the four domain pages: [[Domain 1 Design Secure Architectures|Domain 1]], [[Domain 2 Design Resilient Architectures|Domain 2]], [[Domain 3 Design High-Performing Architectures|Domain 3]], [[Domain 4 Design Cost-Optimized Architectures|Domain 4]]
 - [ ] Do [[Hands-On Labs#Lab 0 Set up a safe AWS account|Lab 0]] to set up a safe AWS account with a budget alarm
 - [ ] Pick a target exam date. Book it now if you can, because a date helps you keep going
