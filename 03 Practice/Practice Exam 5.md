@@ -601,7 +601,7 @@ tags: [practice, scope/in]
 - D. Amazon Data Firehose
 
 > [!success]- Answer
-> **B.** Kinesis supports many independent readers, ordering per key, and replay. In SQS, a message is removed once it is processed, so two applications cannot both read it and it cannot be replayed. SNS does not store messages for replay. Firehose delivers data and has no replay.
+> **B.** Kinesis supports many independent readers, ordering per key, and replay. In SQS, a message is removed once it is processed, so two applications cannot both read it and it cannot be replayed. A standard SNS topic does not hold messages for replay. Firehose delivers data and has no replay.
 >
 > *Task 2.1.* Review: [[21 Streaming and Data Ingestion#Ordering|Ordering]]
 

@@ -89,7 +89,7 @@ For ongoing replication after the first transfer, use VPN or Direct Connect with
 
 Details to remember:
 
-- S3 File Gateway needs an IAM role for each gateway, and it can use Active Directory for SMB authentication.
+- S3 File Gateway needs an IAM role for each file share, and it can use Active Directory for SMB authentication.
 - It works with S3 Standard, Standard-IA, One Zone-IA, Intelligent-Tiering and Glacier classes, but not Glacier Instant Retrieval. Lifecycle policies normally move objects to colder classes.
 - A gateway runs as a virtual machine on-premises, or on an EC2 instance. The Storage Gateway Hardware Appliance has not been offered since 12 May 2025, and existing appliances are supported until May 2028.
 
@@ -117,13 +117,13 @@ The **Snow Family** uses physical devices to move data to AWS, and to run comput
 
 | Device | Status |
 | --- | --- |
-| Snowball Edge Storage Optimized 210 TB | No new customers since 7 October 2025 |
-| Snowball Edge Compute Optimized | No new customers since 7 October 2025 |
+| Snowball Edge Storage Optimized 210 TB | No new customers since 7 November 2025 |
+| Snowball Edge Compute Optimized | No new customers since 7 November 2025 |
 | Snowball Edge 80 TB and GPU models | Shut down on 12 November 2025 |
 | Snowcone | No longer in the current docs, so treat it as gone |
 | Snowmobile | Shut down on 14 March 2024 |
 
-New customers are directed to DataSync online, **AWS Data Transfer Terminal** for physical transfers, and Outposts for edge compute.
+AWS will discontinue support for Snowball devices in all commercial Regions on 31 December 2026. New customers are directed to DataSync online, **AWS Data Transfer Terminal** for physical transfers, and Outposts for edge compute.
 
 **For the exam:** if moving data over the network would take more than about a week, Snow is the classic answer. Data on a device is encrypted with KMS keys. **Snowball cannot import directly into Glacier.** Data lands in S3, then a lifecycle rule moves it. **OpsHub** is the graphical tool for managing devices.
 
@@ -171,7 +171,7 @@ It replaced the Server Migration Service, which shut down on 1 April 2023.
 
 ## Discovery and planning
 
-**AWS Application Discovery Service** gathers configuration, usage and dependency data from on-premises servers, to plan a migration. It works through an agent (detailed data) or the agentless collector for VMware. It has been closed to new customers since 7 October 2025, and AWS points to AWS Transform, but it stays on the in-scope list.
+**AWS Application Discovery Service** gathers configuration, usage and dependency data from on-premises servers, to plan a migration. It works through an agent (detailed data) or the agentless collector for VMware. It has been closed to new customers since 7 November 2025, and AWS points to AWS Transform, but it stays on the in-scope list.
 
 **AWS Migration Hub** tracked migrations in one place. It closed to new customers on 7 November 2025.
 
@@ -201,7 +201,7 @@ It replaced the Server Migration Service, which shut down on 1 April 2023.
 | Oracle to PostgreSQL | SCT or DMS Schema Conversion, then DMS | Heterogeneous |
 | Lift and shift servers | Application Migration Service | |
 | Discover on-premises dependencies | Application Discovery Service | |
-| Move VMware workloads with the same tools | VMware Cloud on AWS | |
+| Move VMware workloads with the same tools | VMware Cloud on AWS (now sold through Broadcom, not AWS) | |
 | Migrate RDS MySQL to Aurora with little downtime | Aurora read replica, then promote | |
 
 ## Check yourself

@@ -55,7 +55,7 @@ flowchart TD
 - Size, type and IOPS can be changed while the volume is in use (Elastic Volumes). After growing a volume, extend the file system too.
 - You pay for what you provision, whether you use it or not.
 
-**Delete on termination** controls what happens when an instance is terminated. The root volume is deleted by default, and additional volumes are kept by default. To keep a root volume, set the attribute to false.
+**Delete on termination** controls what happens when an instance is terminated. The root volume is deleted by default, and additional volumes are kept by default in the console (a data volume attached at launch with the CLI defaults to delete). To keep a root volume, set the attribute to false.
 
 ### Volume types
 
@@ -83,7 +83,7 @@ A **snapshot** is a point-in-time backup of a volume, stored in S3 behind the sc
 
 - Snapshots are **incremental**. Only changed blocks are stored, but you can still restore from any one of them.
 - You can snapshot a volume in use, though stopping I/O gives better consistency.
-- Copy across AZs or Regions to move data or prepare for disaster recovery.
+- Snapshots are available in every AZ of their Region. Copy across Regions to move data or prepare for disaster recovery.
 - **Data Lifecycle Manager (DLM)** automates creating, retaining and deleting snapshots. [[28 High Availability and Disaster Recovery#AWS Backup|AWS Backup]] does this across many services.
 
 | Feature | Purpose | Details |
@@ -246,7 +246,7 @@ A managed OpenZFS file system reached over NFS. It moves ZFS workloads to AWS, d
 - A. EBS gp3
 - B. Instance store
 - C. Amazon EFS
-- D. FSx for Windows File Server
+- D. EBS io2 with Multi-Attach
 
 > [!success]- Answer
 > **C.** EFS can be mounted by many Linux instances across AZs. An EBS volume belongs to one AZ, and instance store is not shared.

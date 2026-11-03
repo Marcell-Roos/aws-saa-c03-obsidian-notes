@@ -55,7 +55,7 @@ It monitors costs with machine learning, and learns your normal pattern, so that
 
 ### Cost allocation tags
 
-Tags activated in the Billing console appear in cost reports, so that spending can be grouped by team or project. **Activate them first.** They do not apply to past costs. Combine them with consolidated billing for multi-account views.
+Tags activated in the Billing console appear in cost reports, so that spending can be grouped by team or project. **Activate them first.** They apply only from activation, unless the management account requests a backfill (up to twelve months). Combine them with consolidated billing for multi-account views.
 
 ### AWS Compute Optimizer
 

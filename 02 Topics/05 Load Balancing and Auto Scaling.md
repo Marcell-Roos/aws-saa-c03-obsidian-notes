@@ -60,7 +60,7 @@ Common error codes:
 
 | Code | Meaning |
 | --- | --- |
-| 503 | No healthy targets are registered |
+| 503 | No targets are registered, or all are in an unused state |
 | 504 | The target did not respond in time |
 | 502 | The target returned an invalid response |
 
@@ -118,7 +118,7 @@ Each load balancer node normally sends traffic only to targets in its own AZ. **
 
 ### Connection draining
 
-**Deregistration delay** gives in-flight requests time to finish when a target is removed. New requests stop, and existing ones are allowed to complete. The range is 1 to 3,600 seconds, with a default of 300. Setting it to 0 disables it. Use a low value for short requests. Errors during scale-in often point to this setting being too low.
+**Deregistration delay** gives in-flight requests time to finish when a target is removed. New requests stop, and existing ones are allowed to complete. The range is 0 to 3,600 seconds, with a default of 300. Setting it to 0 disables it. Use a low value for short requests. Errors during scale-in often point to this setting being too low.
 
 ### Sticky sessions
 

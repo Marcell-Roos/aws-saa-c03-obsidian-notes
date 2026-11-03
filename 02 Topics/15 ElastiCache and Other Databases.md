@@ -80,7 +80,7 @@ A cache needs an **invalidation strategy**, so that only current data is used. A
 | --- | --- | --- |
 | Data types | Rich: lists, sets, sorted sets | Simple key-value |
 | Replication and failover | Yes, Multi-AZ | **No** |
-| Backups and persistence | Yes | **No** |
+| Backups and persistence | Yes | **No** (node-based) |
 | Threads | Mostly single | **Multi-threaded** |
 | Publish and subscribe | Yes | No |
 | Use | Leaderboards, sessions, durability needs | Simple cache, scale out, loss is acceptable |
@@ -217,7 +217,7 @@ Use it for social networks, recommendations, knowledge graphs and fraud detectio
 - D. Neptune
 
 > [!success]- Answer
-> **B.** Memcached has no replication, failover or backups.
+> **B.** Memcached has no replication or failover.
 
 **5.** A social network must recommend friends of friends, and it runs queries over billions of relationships. Which database fits?
 

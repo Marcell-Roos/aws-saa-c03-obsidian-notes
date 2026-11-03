@@ -120,7 +120,7 @@ tags: [practice, scope/in]
 > [!success]- Answer
 > **A.** AZs are separate data centres, so Multi-AZ covers this. Multi-Region costs more than the requirement needs. One AZ or one host remains a single point of failure.
 >
-> *Task 1.1.* Review: [[01 Cloud Foundations#The global infrastructure|The global infrastructure]]
+> *Task 2.2.* Review: [[01 Cloud Foundations#The global infrastructure|The global infrastructure]]
 
 **10.** A company must classify data across its S3 estate on a continuing basis, and feed sensitive-data findings into its central security view. Which combination fits?
 
@@ -471,7 +471,7 @@ tags: [practice, scope/in]
 >
 > *Task 1.1.* Review: [[03 Multi-Account Governance#AWS Organizations|AWS Organizations]]
 
-**39.** A public API is being overused by one client, which drives up Lambda and data costs. Which change limits the cost without affecting other clients?
+**39.** A public API is being overused by one client, which drives up Lambda and data costs. Which change limits that client's request rate without affecting other clients?
 
 - A. Remove the API's custom domain
 - B. Add an API Gateway usage plan with a throttle and quota for that client

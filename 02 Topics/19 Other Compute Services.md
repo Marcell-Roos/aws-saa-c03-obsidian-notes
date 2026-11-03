@@ -96,7 +96,7 @@ Beanstalk uses CloudFormation behind the scenes. It supports common platforms su
 | **Wavelength** | Inside a telecom operator's 5G network | Ultra-low latency to mobile devices | "5G", "mobile edge" |
 | **Outposts** | AWS racks in **your** data centre | Data must stay on-premises, with the same AWS APIs | "Must remain on-premises" |
 | **Snow Family** | A portable device | Disconnected or remote sites. For existing customers | "No connectivity" |
-| **VMware Cloud on AWS** | VMware stack on AWS hardware | Extend or migrate VMware environments | "Keep using VMware tools" |
+| **VMware Cloud on AWS** | VMware stack on AWS hardware | Extend or migrate VMware environments. No longer resold by AWS | "Keep using VMware tools" |
 
 ```mermaid
 flowchart LR
@@ -149,7 +149,7 @@ Edge processing moves compute close to where data is created. This reduces laten
 | Must stay on-premises, use AWS APIs | Outposts | |
 | Ultra-low latency to 5G devices | Wavelength | |
 | Low latency to one city | Local Zones | |
-| Keep existing VMware tools | VMware Cloud on AWS | |
+| Keep existing VMware tools | VMware Cloud on AWS (no longer resold by AWS) | |
 | Fine-grained infrastructure as code | CloudFormation | Not Beanstalk |
 
 ## Check yourself

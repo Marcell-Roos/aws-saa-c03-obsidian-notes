@@ -17,7 +17,7 @@ aliases: ["Amazon CloudFront", "CloudFront", "CloudFront Origins", "CloudFront C
 | --- | --- | --- |
 | Purpose | Content delivery network that **caches** content | Routes traffic over the AWS backbone, with **no caching** |
 | Protocols | HTTP, HTTPS, WebSocket | TCP and UDP |
-| Entry point | A DNS name, and IPs that change | **2 static anycast IPs** |
+| Entry point | A DNS name, and IPs that change (optional Anycast Static IPs exist) | **2 static anycast IPs** |
 | Best for | Websites, media, static assets, APIs | Gaming, VoIP, IoT, fast Regional failover |
 | Keywords | Cache, CDN, reduce origin load | Static IP, non-HTTP, global failover |
 

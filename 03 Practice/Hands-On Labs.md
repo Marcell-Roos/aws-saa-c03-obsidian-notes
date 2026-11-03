@@ -38,7 +38,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 2. Sign in as the root user, and **enable MFA** on it. Do not create root access keys.
 3. Open **Budgets** and create a monthly cost budget of a small amount, such as $10. Add an email alert at 80% of actual spend and at 100% of forecasted spend.
 4. In **Billing preferences**, turn on the billing alerts and free tier usage alerts.
-5. Open **IAM Identity Center**, enable it, create a user for yourself, and assign the `AdministratorAccess` permission set to your account. If you prefer something simpler for labs, create an IAM user with MFA.
+5. Open **IAM Identity Center**, enable it as an organization instance (account instances do not support permission sets), create a user for yourself, and assign the `AdministratorAccess` permission set to your account. If you prefer something simpler for labs, create an IAM user with MFA.
 6. Sign out of root, and sign in with the new user. Use this user for all labs.
 
 **Check yourself:** why should you not use the root user for daily work? Which budget alert warned you before you spent the money?
@@ -57,7 +57,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 6. Run `aws s3 ls s3://YOUR-BUCKET` and `aws s3 cp s3://YOUR-BUCKET/file.txt -`. Both should work with no keys on the instance.
 7. Try `aws s3 rm s3://YOUR-BUCKET/file.txt`. It should fail with `AccessDenied`.
 8. Add an explicit `Deny` for `s3:GetObject` to the role, and test again. Remove it afterwards.
-9. Open **IAM Access Analyzer**, and look at how findings are presented. Check the **Access Advisor** tab on your role.
+9. Open **IAM Access Analyzer**, and look at how findings are presented. Check the **Last Accessed** tab on your role.
 
 **Check yourself:** where did the credentials come from? Why did the explicit deny win? Why are there two ARNs in the policy?
 
@@ -95,7 +95,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 **Goal:** see storage classes, versioning, replication and policies in action.
 
 1. Create a bucket, and leave Block Public Access on.
-2. **Enable versioning.** Upload a file, change it, and upload it again. Turn on **Show versions**, and find both.
+2. **Enable versioning.** Upload a file, change it, and upload it again. Turn on **List versions**, and find both.
 3. Delete the object, and find the delete marker. Delete the marker to restore the object.
 4. Add a **lifecycle rule**: move current versions to Standard-IA after 30 days, expire noncurrent versions after 60 days, and delete incomplete multipart uploads after 7 days.
 5. Add a **bucket policy** that denies all requests where `aws:SecureTransport` is false. See the example in [[07 S3 Security and Data Protection#Bucket policy examples|the S3 security chapter]].

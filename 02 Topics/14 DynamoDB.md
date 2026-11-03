@@ -149,7 +149,7 @@ The difference from Aurora Global Database: **DynamoDB global tables are multi-w
 
 ## Time to live
 
-**TTL** deletes items automatically after an expiry timestamp that you store in an attribute. Deletion is free and consumes no write capacity, but it is not immediate. AWS says that items are typically deleted within a few days of expiry, and older material says 48 hours. Filter expired items out of reads if timing matters.
+**TTL** deletes items automatically after an expiry timestamp that you store in an attribute. Deletion consumes no write capacity in the Region where it happens (replicated deletes in global table replicas are charged), but it is not immediate. AWS says that items are typically deleted within a few days of expiry, and older material says 48 hours. Filter expired items out of reads if timing matters.
 
 Use it for session data, temporary records and regulatory deletion. Deleted items appear in Streams, so you can archive them to S3.
 

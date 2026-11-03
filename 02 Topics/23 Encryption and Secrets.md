@@ -57,7 +57,7 @@ An unencrypted RDS instance or EBS volume cannot be encrypted in place. Copy a s
 | AWS managed | Every year, always on |
 | Customer managed, symmetric | Optional. Every 365 days by default, with a custom period from 90 to 2,560 days, plus on-demand rotation |
 | Imported key material | Not automatic. Import new material on demand, or rotate manually with a new key and an alias |
-| Asymmetric and HMAC | No automatic rotation |
+| Asymmetric and HMAC | No automatic or on-demand rotation |
 
 Rotation keeps old key material, so old data can still be decrypted, and the key ID stays the same.
 

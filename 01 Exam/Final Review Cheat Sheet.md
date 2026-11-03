@@ -301,7 +301,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | Partition placement | 7 partitions per AZ |
 | Hibernate RAM | Under 150 GiB on Linux, 16 GiB or less on Windows |
 | ASG default cooldown | 300 seconds |
-| ELB deregistration delay | 300 seconds by default, 1 to 3,600 |
+| ELB deregistration delay | 300 seconds by default, 0 to 3,600 |
 | Fargate ephemeral storage | 20 GiB default, up to 200 GiB |
 
 ### Storage

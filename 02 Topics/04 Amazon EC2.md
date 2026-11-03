@@ -162,7 +162,7 @@ You commit to a dollar amount per hour for 1 or 3 years, or for 1 year only on a
 | **SageMaker AI Savings Plan** | Up to 64% | SageMaker AI usage |
 | **Database Savings Plan** | Up to 35% | Aurora, RDS, DynamoDB, ElastiCache, DocumentDB, Neptune, Keyspaces, Timestream, DMS and OpenSearch Service, across engines and Regions. 1-year term only |
 
-Savings Plans do not reserve capacity, and a commitment cannot be changed after purchase.
+Savings Plans do not reserve capacity, and a commitment cannot be changed after purchase, though a plan of $100 per hour or less can be returned within seven days in the same calendar month.
 
 ### Spot Instances
 
@@ -247,7 +247,7 @@ An **ENI** is a virtual network card. It has a primary private IP, optional seco
 | Technology | What it is | Use |
 | --- | --- | --- |
 | **Enhanced networking (SR-IOV)** | The mechanism that lets traffic bypass the hypervisor for higher performance at lower cost | Default on modern instances |
-| **Elastic Network Adapter (ENA)** | AWS's enhanced networking interface, up to 100 Gbps and beyond on large instances | General high throughput |
+| **Elastic Network Adapter (ENA)** | AWS's enhanced networking interface, up to 100 Gbps | General high throughput |
 | **Elastic Fabric Adapter (EFA)** | ENA plus OS-bypass for tightly coupled HPC and ML using MPI or NCCL | Very low latency between nodes |
 
 EFA's OS-bypass does not work on Windows. There the interface behaves as a plain ENA.

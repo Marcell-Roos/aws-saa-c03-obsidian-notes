@@ -577,7 +577,7 @@ tags: [practice, scope/in]
 - D. Amazon SNS with email subscribers
 
 > [!success]- Answer
-> **B.** EventBridge takes AWS and SaaS events, routes on content, and can archive and replay. SQS and SNS do not integrate SaaS sources in this way, and they have no such replay.
+> **B.** EventBridge takes AWS and SaaS events, routes on content, and can archive and replay. SQS and SNS do not integrate SaaS sources in this way, and SNS replay is only for FIFO topics.
 >
 > *Task 2.1.* Review: [[20 Messaging and Integration#Amazon EventBridge|Amazon EventBridge]]
 

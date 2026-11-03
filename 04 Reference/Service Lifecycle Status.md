@@ -56,9 +56,9 @@ AWS Proton stays on the exam guide's in-scope list, even though its end of suppo
 | FSx File Gateway | 28 October 2024 |
 | Amazon Monitron | 31 October 2024 |
 | Timestream for LiveAnalytics | 20 June 2025 |
-| Application Discovery Service | 7 October 2025 |
+| Application Discovery Service | 7 October 2025 (closed to new customers 7 November 2025) |
 | S3 Glacier direct vault access | 7 October 2025 |
-| Snowball Edge Compute Optimized and Storage Optimized | 7 October 2025 |
+| Snowball Edge Compute Optimized and Storage Optimized | 7 October 2025 (closed to new customers 7 November 2025) |
 | AWS Migration Hub | 7 November 2025 |
 | S3 Object Lambda | 7 November 2025 |
 | Systems Manager Incident Manager and Change Manager | 7 November 2025 |
@@ -70,8 +70,8 @@ AWS Proton stays on the exam guide's in-scope list, even though its end of suppo
 | Rekognition Streaming Events and batch image content moderation | 31 March 2026 |
 | Application Recovery Controller readiness check | 31 March 2026 |
 | SNS message data protection | 31 March 2026 |
-| Amazon Kendra | 30 June 2026 |
-| Simple AD | 30 June 2026 |
+| Amazon Kendra | 30 June 2026 (closed to new customers 30 July 2026) |
+| Simple AD | 30 June 2026 (closed to new customers 30 July 2026) |
 | Amazon Cognito Sync | 30 June 2026 |
 
 The AWS Storage Gateway Hardware Appliance is not on these pages either, but the Storage Gateway documentation says that it has not been offered since 12 May 2025, with support for existing customers until May 2028.

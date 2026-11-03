@@ -53,7 +53,7 @@ To get a fixed IP with WAF on an ALB, put Global Accelerator in front of the ALB
 | --- | --- | --- |
 | Cost | Free, automatic | $3,000 per month per organisation, plus data transfer fees |
 | Protection | Common layer 3 and 4 attacks | Larger attacks, plus layer 7 through WAF |
-| Support | None | Shield Response Team, 24/7 |
+| Support | None | Shield Response Team, 24/7 (needs Business or Enterprise Support) |
 | Cost protection | No | Credits for scaling charges during attacks |
 | Protects | All AWS customers | CloudFront, Route 53, ELB, Global Accelerator, Elastic IPs |
 

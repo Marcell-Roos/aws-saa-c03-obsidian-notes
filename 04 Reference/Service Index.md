@@ -149,7 +149,7 @@ Use this page as a last check: cover the middle column, and say what each servic
 | AWS Application Migration Service | Lift and shift servers, now branded AWS Transform MGN | [[27 Migration and Data Transfer#AWS Application Migration Service\|Migration and Data Transfer]] |
 | AWS DataSync | Move and sync file and object data | [[27 Migration and Data Transfer#AWS DataSync\|Migration and Data Transfer]] |
 | AWS DMS | Migrate databases | [[27 Migration and Data Transfer#AWS DMS\|Migration and Data Transfer]] |
-| AWS Snow Family | Physical data transfer devices. Closed to new customers | [[27 Migration and Data Transfer#AWS Snow Family\|Migration and Data Transfer]] |
+| AWS Snow Family | Physical data transfer devices. Closed to new customers, and support for Snowball devices ends 31 December 2026 | [[27 Migration and Data Transfer#AWS Snow Family\|Migration and Data Transfer]] |
 | AWS Transfer Family | Managed SFTP, FTPS, FTP and AS2 | [[27 Migration and Data Transfer#AWS Transfer Family\|Migration and Data Transfer]] |
 
 ### Networking and Content Delivery

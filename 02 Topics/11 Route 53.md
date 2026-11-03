@@ -178,7 +178,7 @@ Failover by DNS is limited by the TTL, because clients cache old answers. If fai
 
 ## Hybrid DNS with Route 53 Resolver
 
-**Route 53 Resolver** is the DNS server in every VPC. **Resolver endpoints** connect it to on-premises DNS.
+**Route 53 VPC Resolver** (previously Route 53 Resolver) is the DNS server in every VPC. **Resolver endpoints** connect it to on-premises DNS.
 
 | Endpoint | Direction | Example |
 | --- | --- | --- |

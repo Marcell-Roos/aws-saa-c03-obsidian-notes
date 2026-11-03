@@ -322,7 +322,7 @@ tags: [practice, scope/in]
 - D. Amazon Data Firehose delivering to S3
 
 > [!success]- Answer
-> **C.** Kinesis Data Streams allows several independent consumers and replay. Firehose buffers and delivers, and offers no replay. An SQS message goes to one consumer and is deleted. SNS does not store messages.
+> **C.** Kinesis Data Streams allows several independent consumers and replay. Firehose buffers and delivers, and offers no replay. An SQS message goes to one consumer and is deleted. A standard SNS topic delivers messages to subscribers and does not hold them for replay.
 >
 > *Task 3.5.* Review: [[21 Streaming and Data Ingestion#Kinesis Data Streams|Kinesis Data Streams]]
 

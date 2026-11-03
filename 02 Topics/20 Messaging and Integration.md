@@ -121,7 +121,7 @@ The same idea appears in other forms:
 **Simple Notification Service** is a publish and subscribe service. A publisher sends one message to a **topic**, and SNS pushes a copy to every subscriber.
 
 - Subscribers can be SQS, Lambda, HTTP or HTTPS endpoints, email, SMS, mobile push and Data Firehose.
-- SNS does **not store** messages for later. An offline subscriber misses them, unless a queue sits in between.
+- A standard SNS topic **pushes** messages to subscribers and does not hold them for later. (FIFO topics can archive and replay.) An offline subscriber misses them, unless a queue sits in between.
 - Standard topics support up to 12,500,000 subscriptions per topic, and FIFO topics 100.
 - The maximum message is 256 KiB by default, and it can be raised to 1 MiB per topic.
 
@@ -331,7 +331,7 @@ If the question names a protocol or RabbitMQ, the answer is Amazon MQ. If it say
 - D. Lambda layers
 
 > [!success]- Answer
-> **A.** Archived events can be replayed to the bus. Kinesis with long retention can also replay, but SNS and a processed SQS queue cannot.
+> **A.** Archived events can be replayed to the bus. Kinesis with long retention can also replay, but SNS standard topics and a processed SQS queue cannot.
 
 **9.** A single bad message keeps failing, and it is being retried forever. What should the team configure?
 

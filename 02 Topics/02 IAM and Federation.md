@@ -36,7 +36,7 @@ Protect it as follows:
 
 A few tasks need the root user, and the exam likes to ask about them:
 
-- Changing the account's root email address or name, or closing the account
+- Changing the root email address of a standalone account, or closing a standalone account
 - Restoring IAM permissions if the only administrator has lost access
 - Changing some billing and support settings
 - Enabling [[07 S3 Security and Data Protection#MFA Delete|MFA Delete]] on an S3 bucket
@@ -314,7 +314,7 @@ The textbook example: a user in Account A must scan a DynamoDB table in Account 
 
 | Permission model | Targets |
 | --- | --- |
-| Resource-based policy | Lambda, SNS, SQS, CloudWatch Logs, API Gateway |
+| Resource-based policy | CloudWatch Logs, API Gateway, and Lambda, SNS and SQS (these three can use an IAM role instead) |
 | IAM role | Kinesis Data Streams, Systems Manager Run Command, ECS tasks |
 
 ## Federation
@@ -357,7 +357,7 @@ To connect a self-managed Active Directory, use either a two-way trust through A
 AD Connector does not work with every service. FSx for Windows File Server joins either AWS Managed Microsoft AD or your self-managed AD directly, and RDS for SQL Server does not support AD Connector.
 
 > [!warning] Lifecycle
-> Simple AD has been closed to new customers since 30 June 2026. Older questions may still use it for "low cost, basic LDAP".
+> Simple AD entered maintenance on 30 June 2026 and has been closed to new customers since 30 July 2026. Older questions may still use it for "low cost, basic LDAP".
 
 ## Amazon Cognito
 

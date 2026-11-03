@@ -45,7 +45,7 @@ flowchart TD
 - It works across accounts and across Regions.
 - You must add routes in **both** VPCs, and allow traffic in security groups.
 - Security groups can reference a peered VPC's group, in the same Region.
-- There is no hourly charge, only data transfer. There is no bandwidth bottleneck.
+- There is no hourly charge. Data transfer is free within an AZ, but charged across AZs and Regions. There is no bandwidth bottleneck.
 - No edge-to-edge routing: a peer cannot use your internet gateway, NAT gateway or VPN.
 
 A full mesh grows fast: n VPCs need n(n-1)/2 peerings, so 25 VPCs need 300. That is when you should move to Transit Gateway.
@@ -60,7 +60,7 @@ A full mesh grows fast: n VPCs need n(n-1)/2 peerings, so 25 VPCs need 300. That
 | How it works | Target in a route table | ENI with a private IP in your subnet |
 | Cost | **Free** | Hourly plus per GB |
 | Security | Endpoint policy | Security group plus endpoint policy |
-| From on-premises or peered VPCs | **No** | **Yes**, over VPN or Direct Connect |
+| From on-premises, other-Region peered VPCs or via TGW | **No** | **Yes**, over VPN or Direct Connect |
 
 An **endpoint policy** limits what can be done through the endpoint. It does not replace IAM or bucket policies. All of them must allow the request.
 
@@ -214,7 +214,7 @@ A central team can share one DX connection across accounts, which lowers cost an
 
 | Level | Design | Use |
 | --- | --- | --- |
-| Development | One connection | No redundancy |
+| Development | Separate connections on separate devices in one location | Protects against device failure only |
 | High resiliency | One connection at each of **two** locations | Protects against a location failure |
 | Maximum resiliency | **Two** connections at each of two locations | Critical workloads |
 | Cost-effective backup | Direct Connect with **Site-to-Site VPN** as backup | Cheap failover, lower throughput |

@@ -13,7 +13,7 @@ aliases: ["S3", "Amazon S3", "S3 bucket", "S3 buckets", "Amazon S3 Glacier", "Gl
 
 ## The basics
 
-**Amazon Simple Storage Service (S3)** stores objects in buckets. It is object storage: you read and write whole objects through an HTTP API, and you cannot edit part of a file in place or mount it as a normal disk.
+**Amazon Simple Storage Service (S3)** stores objects in buckets. It is object storage: you read and write whole objects through an HTTP API, and you cannot edit part of an object in place.
 
 | Term | Meaning |
 | --- | --- |

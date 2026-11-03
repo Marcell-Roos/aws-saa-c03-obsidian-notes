@@ -533,7 +533,7 @@ tags: [practice, scope/in]
 
 **44.** A company runs Kafka Connect and many Kafka consumers on EC2, and it wants to reduce operations without changing client code. Which service fits?
 
-- A. Amazon Kinesis Data Firehose
+- A. Amazon Data Firehose
 - B. Amazon SQS
 - C. AWS Glue
 - D. Amazon MSK

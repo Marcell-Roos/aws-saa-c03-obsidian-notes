@@ -13,12 +13,12 @@ aliases: ["S3 Security", "S3 Access Control", "S3 Encryption", "S3 Access Logs",
 
 ## How access is decided
 
-Four mechanisms can affect access to an S3 object.
+Four main mechanisms can affect access to an S3 object.
 
 | Mechanism | Type | Use |
 | --- | --- | --- |
 | **IAM policies** | Identity-based | What this user or role can do. Covers S3 and everything else |
-| **Bucket policies** | Resource-based | Rules on the bucket. Essential for cross-account access and public access |
+| **Bucket policies** | Resource-based | Rules on the bucket. Used for cross-account access and public access |
 | **ACLs** | Legacy | Disabled by default. Avoid them |
 | **Block Public Access** | Safety override | Stops public access, whatever the policies say |
 
@@ -32,7 +32,7 @@ If a public bucket policy exists but access still fails, Block Public Access is 
 
 ### Object Ownership and ACLs
 
-New buckets default to the **Bucket owner enforced** setting: ACLs are disabled, and the bucket owner owns every object. If ACLs are enabled again, an uploader from another account owns its objects unless it grants `bucket-owner-full-control`. An S3 ACL has nothing to do with a network ACL.
+New buckets default to the **Bucket owner enforced** setting: ACLs are disabled, and the bucket owner owns every object. If ACLs are enabled again with **Object writer**, an uploader from another account owns its objects. With **Bucket owner preferred**, the bucket owner owns new objects uploaded with the `bucket-owner-full-control` canned ACL. An S3 ACL has nothing to do with a network ACL.
 
 ### Bucket policy examples
 
@@ -199,7 +199,7 @@ The word in the question decides the mode. "**Even administrators**" or "**not e
 
 | Tool | What it records | Best for |
 | --- | --- | --- |
-| **Server access logs** | Each request to a bucket, delivered to a log bucket in the same Region. Free apart from storage | Cheap, complete, delayed access records |
+| **Server access logs** | Each request to a bucket, delivered to a log bucket in the same Region. Free apart from storage | Cheap, best-effort, delayed access records |
 | **CloudTrail data events** | Object-level API calls with IAM identity, paid per event | Audit with identity detail, near real time |
 | **CloudTrail management events** | Bucket-level changes | Who changed a bucket policy |
 | **Amazon Macie** | Finds sensitive data in buckets | PII discovery |

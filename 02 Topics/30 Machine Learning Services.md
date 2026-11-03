@@ -27,7 +27,7 @@ The memory aid is to think about what goes in and what comes out.
 
 ### More detail
 
-**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content. AWS listed its Streaming Events and batch image content moderation features as in maintenance on 31 March 2026.
+**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content. AWS listed its Streaming Events and batch image content moderation features as in maintenance on 31 March 2026. AWS also states that Streaming Video and Bulk Image Analysis close to new customers from 30 April 2026.
 
 **Amazon Textract** extracts text, handwriting and data from scanned documents. It goes beyond plain text recognition, because it understands forms and tables. Use it for invoices and forms. Rekognition is not the right choice for those.
 
@@ -51,7 +51,7 @@ These are not on the in-scope list. They are here so that you can recognise them
 | --- | --- | --- |
 | **Amazon Personalize** | Real-time recommendations | Out of scope |
 | **Amazon Connect** | Cloud contact centre | Neither list |
-| **Amazon Kendra** | ML-powered document search | Closed to new customers since 30 June 2026 |
+| **Amazon Kendra** | ML-powered document search | In maintenance since 30 June 2026, closed to new customers since 30 July 2026 |
 | **Amazon Forecast** | Time-series forecasting | Closed to new customers since 29 July 2024. AWS points to SageMaker Canvas |
 | **Amazon Monitron** | Predictive maintenance for machinery | Closed to new customers since 31 October 2024 |
 | **AWS Panorama** | Computer vision at the edge | Shut down on 20 May 2026 |

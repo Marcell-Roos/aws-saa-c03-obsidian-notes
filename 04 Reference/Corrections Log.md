@@ -6,6 +6,27 @@ tags: [reference, scope/in]
 
 This page records how the vault's facts were checked, and what changed. The newest work comes first.
 
+## Second review on 3 November 2026 (chapters 1 to 9 so far)
+
+This was a second pass by Claude. Each line was checked against AWS pages, and every correction below rests on a quote from an AWS page. **It is not finished:** only chapters 1 to 9 have been through the fix stage. Claims that no AWS page confirmed were left as they are, not removed, because most are widely held exam facts and deleting them would hurt more than keeping them.
+
+- Root user: changing the account name does not need the root user. Only the root email address (standalone accounts) and closing a standalone account do.
+- EventBridge: Lambda, SNS and SQS can use an IAM role or a resource-based policy.
+- Simple AD: it entered maintenance on 30 June 2026 and closed to new customers on 30 July 2026. Two events, two dates.
+- Savings Plans: a plan of $100 per hour or less can be returned within seven days in the same calendar month.
+- ENA: the documented ceiling is 100 Gbps.
+- ALB: a 503 also covers targets that are all in an unused state. The deregistration delay range is 0 to 3,600 seconds.
+- S3: it can now also be reached as a file system (S3 Files), so "cannot mount it" was removed.
+- S3 ACLs: the bucket owner owns new objects only under Bucket owner preferred. Under Object writer the uploader owns them.
+- S3 server access logs are best-effort, not complete.
+- EBS: data volumes attached at launch with the CLI default to delete. Snapshots are already available in every AZ of their Region.
+- Chapter 8 self-test Q1: option D (FSx for Windows) could also be mounted from Linux, so it was replaced with io2 Multi-Attach.
+- Chapters 10 to 18 (applied on the same day): VPC peering data transfer is free within an AZ and charged across AZs and Regions. Gateway endpoints are unreachable from other-Region peered VPCs and through a transit gateway, not from all peered VPCs. The Direct Connect development tier uses separate connections on separate devices. Route 53 Resolver is now Route 53 VPC Resolver. CloudFront has optional Anycast Static IPs. DynamoDB TTL deletes are charged in global table replicas. Memcached backups exist for ElastiCache Serverless only. Lambda Managed Instances functions can run up to 90 minutes.
+- Chapters 19 to 27 and 30 (applied on the same day): SNS standard topics push to subscribers and do not hold messages for replay, but FIFO topics can archive and replay. VMware Cloud on AWS is no longer resold by AWS. KMS asymmetric and HMAC keys have no automatic or on-demand rotation. The Shield Response Team needs Business or Enterprise Support. S3 File Gateway needs an IAM role for each file share. Snowball Edge and Application Discovery Service were announced on 7 October 2025 and closed to new customers on 7 November 2025. Snowball devices lose support on 31 December 2026. The Infrastructure Composer standalone console ends support on 7 December 2026. Kendra went into maintenance on 30 June 2026 and closed to new customers on 30 July 2026. **Unresolved:** AWS pages disagree on the WAF Classic end-of-support date (7 October 2026 on the General Reference sunset list, 30 September 2025 in the WAF guide), so the vault keeps the sunset-list date and the exam is unlikely to test it.
+
+- Chapters 28 and 29, exam pages, labs and practice exams (applied on the same day): Aurora replica promotion is under 60 seconds and often under 30. Cost allocation tags can be backfilled by the management account for up to twelve months. The exam overview now says the domain weights are percentages of scored content (about 15, 13, 12 and 10 of the 50 scored questions). Console labels in the labs now match AWS (Last Accessed tab, List versions, organization instance for permission sets). Practice Exam 2 Q47 notes that SNS replay needs a FIFO topic, Practice Exam 3 uses the name Amazon Data Firehose, Practice Exam 4 has one task tag corrected and one stem reworded so it no longer implies throttling controls cost.
+- **Not confirmed against an AWS page, and left as they are:** the per-strategy RPO and RTO figures in chapter 28 (AWS shows them only in a diagram), and about 400 other lines that the first pass could not source. The first pass over the practice exams, labs and cheat sheet, and the per-service coverage checks, were not finished.
+
 ## Review on 2 November 2026
 
 The whole vault was read line by line: 31 chapters, 5 practice exams (325 questions), 272 self-test questions, the labs and the reference pages. This was a review by Claude, the AI that wrote the vault, and not an independent human review.

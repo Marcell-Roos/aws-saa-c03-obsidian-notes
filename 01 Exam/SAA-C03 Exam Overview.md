@@ -41,12 +41,14 @@ pie showData
     "Cost-Optimized" : 20
 ```
 
-| Domain | Weight | About this many of the 65 | Tasks |
+| Domain | Weight | Share of the 65 | Tasks |
 | --- | --- | --- | --- |
 | [[Domain 1 Design Secure Architectures]] | 30% | 20 | 1.1, 1.2, 1.3 |
 | [[Domain 2 Design Resilient Architectures]] | 26% | 17 | 2.1, 2.2 |
 | [[Domain 3 Design High-Performing Architectures]] | 24% | 15 | 3.1, 3.2, 3.3, 3.4, 3.5 |
 | [[Domain 4 Design Cost-Optimized Architectures]] | 20% | 13 | 4.1, 4.2, 4.3, 4.4 |
+
+AWS gives these weights as a percentage of **scored** content, and only 50 of the 65 questions are scored, so the scored counts are about 15, 13, 12 and 10. The practice exams here use 20, 17, 15 and 13 questions out of 65, so every domain gets plenty of practice.
 
 Each domain page lists every item in AWS's exam guide, says what you need to know about it, and links to the right chapter.
 

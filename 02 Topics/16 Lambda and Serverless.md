@@ -44,7 +44,7 @@ Memorise this table. Many questions turn on these numbers.
 
 Two reasoning points follow from this table:
 
-- A job longer than 15 minutes cannot run in Lambda. Use Fargate, ECS or AWS Batch. If it can be split into shorter steps, use [[20 Messaging and Integration#AWS Step Functions|Step Functions]].
+- A job longer than 15 minutes cannot run in standard Lambda. (Lambda Managed Instances functions can run up to 90 minutes when invoked asynchronously or through most event source mappings, but expect 15 minutes as the exam answer.) Use Fargate, ECS or AWS Batch. If it can be split into shorter steps, use [[20 Messaging and Integration#AWS Step Functions|Step Functions]].
 - A CPU-bound function that is too slow needs **more memory**, because there is no separate CPU setting.
 
 ### Packaging

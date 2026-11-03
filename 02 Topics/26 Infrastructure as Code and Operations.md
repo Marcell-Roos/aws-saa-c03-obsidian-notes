@@ -100,7 +100,7 @@ Resources:
     UpdateReplacePolicy: Snapshot
 ```
 
-**AWS Infrastructure Composer** is a visual tool for designing templates. It reaches end of support on 29 September 2027.
+**AWS Infrastructure Composer** is a visual tool for designing templates. It reaches end of support on 29 September 2027, and the standalone console ends support on 7 December 2026.
 
 ## AWS Systems Manager
 
