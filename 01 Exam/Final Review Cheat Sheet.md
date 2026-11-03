@@ -329,7 +329,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | RDS read replicas | 15, with no more than 5 recommended for Oracle |
 | RDS backup retention | 0 to 35 days |
 | Multi-AZ instance failover | Typically 1 to 2 minutes |
-| Aurora | 6 copies in 3 AZs, 15 replicas, 256 TiB, failover under 30 seconds |
+| Aurora | 6 copies in 3 AZs, 15 replicas, 256 TiB, failover typically under 60 seconds |
 | Aurora Global Database | 10 secondary Regions, 16 replicas each |
 | Aurora Backtrack | Up to 72 hours |
 | DynamoDB item | 400 KB |
@@ -386,7 +386,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | KMS rotation | Yearly by default, custom 90 to 2,560 days |
 | Secrets Manager secret | 64 KB |
 | Parameter Store | 4 KB standard, 8 KB advanced |
-| ACM expiry events | Start 45 days before |
+| ACM expiry events | Start 45 days before for private and imported certificates, 30 for public |
 | Shield Advanced | $3,000 per month per organisation |
 | CloudTrail event history | 90 days |
 | EC2 metrics | 5 minutes, or 1 minute with detailed monitoring |

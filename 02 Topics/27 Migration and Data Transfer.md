@@ -104,6 +104,7 @@ Details to remember:
 
 - You pay per provisioned endpoint per hour, plus per GB.
 - It can store users' credentials, or integrate with existing authentication systems.
+- The public endpoint type does not support fixed IP addresses. If partners must allow-list a static IP in their firewall, use a VPC hosted endpoint, which can have Elastic IPs attached.
 - **AS2** exchanges EDI documents between businesses.
 
 If partners cannot change their workflow and use SFTP, the answer is Transfer Family. Do not build an SFTP server on EC2.

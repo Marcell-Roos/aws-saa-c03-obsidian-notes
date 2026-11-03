@@ -136,6 +136,7 @@ To scale workers on a queue, use the SQS queue depth metric.
 - **Fargate Spot** is a cheaper option for interruptible tasks, with a two-minute warning. It works on ECS, not EKS.
 - Compute Savings Plans cover Fargate.
 - It does not support GPUs, so GPU containers need EC2.
+- Each task has its own isolation boundary and does not share a kernel, CPU resources, memory or network interface with other tasks, so choose it for isolation and security as well as convenience.
 
 ## Amazon EKS
 

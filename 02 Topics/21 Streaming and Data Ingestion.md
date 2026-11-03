@@ -119,7 +119,7 @@ flowchart LR
 
 This service runs **Apache Flink** applications for real-time stream processing, such as windows and aggregations, with automatic scaling and backups. It reads from KDS or MSK, but not from Firehose.
 
-It is the former Kinesis Data Analytics for Apache Flink. The SQL version of Kinesis Data Analytics shut down on 27 January 2026, so older questions that mention "Kinesis Data Analytics" should be read as this service. It is not on the in-scope list by name, but "Amazon Kinesis" is.
+It is the former Kinesis Data Analytics for Apache Flink. AWS started deleting applications of the SQL version of Kinesis Data Analytics on 27 January 2026, so older questions that mention "Kinesis Data Analytics" should be read as this service. It is not on the in-scope list by name, but "Amazon Kinesis" is.
 
 ## Amazon MSK
 
@@ -137,6 +137,8 @@ Consumers include Managed Flink, Glue streaming ETL, Lambda, and applications on
 ## Amazon Kinesis Video Streams
 
 **Kinesis Video Streams** ingests, stores and processes video from cameras, for playback and machine learning. Pair it with Rekognition for video analysis.
+
+A stream can durably store media for a retention period you set, and the data is encrypted at rest. It can also carry non-video, time-serialized data such as audio, thermal imagery and RADAR. Applications can process the video live, or batch-process stored video later.
 
 ## Securing ingestion
 

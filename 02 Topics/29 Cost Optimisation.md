@@ -61,6 +61,8 @@ Tags activated in the Billing console appear in cost reports, so that spending c
 
 **Compute Optimizer** uses machine learning on CloudWatch history to make recommendations for EC2 instances, Auto Scaling groups, EBS volumes, Lambda functions, ECS on Fargate, Aurora and RDS databases, DynamoDB, NAT gateways and commercial software licences.
 
+You must **opt in** before it analyses anything. By default it looks at the last 14 days of CloudWatch metrics, and the paid **enhanced infrastructure metrics** preference extends that to 93 days.
+
 ### AWS Pricing Calculator
 
 Estimates the cost of an architecture before you build it. Cost Explorer analyses what you have already spent.

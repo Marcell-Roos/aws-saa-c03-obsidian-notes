@@ -154,6 +154,10 @@ AWS documents several newer Lambda features that are not in the exam guide, so y
 
 A catalogue for finding, sharing and deploying serverless applications built with the AWS Serverless Application Model (SAM).
 
+- Teams can deploy a pre-built application without cloning, building, packaging or publishing its source code first.
+- Applications can be shared privately, with specific AWS accounts, or publicly.
+- There is no additional charge for the repository. You pay only for the resources the deployed application uses.
+
 ## When to use serverless
 
 | Use Lambda when | Use something else when |

@@ -102,6 +102,8 @@ Findings can go to **EventBridge**, which can trigger Lambda or SNS. It is good 
 
 GuardDuty detects threats. It does not block them. To respond automatically, use an EventBridge rule that runs a remediation.
 
+For many accounts, use **AWS Organizations**, which AWS recommends, to manage GuardDuty from one place. GuardDuty then consolidates findings across the accounts. Macie and Security Hub work the same way, with one administrator account and member accounts.
+
 ## Amazon Inspector
 
 **Amazon Inspector** continuously scans workloads for software vulnerabilities (CVEs) and unintended network exposure.
@@ -125,6 +127,8 @@ Findings go to Security Hub and EventBridge. Inspector Classic shut down on 20 M
 ## AWS Security Hub
 
 **Security Hub** gathers findings from GuardDuty, Inspector, Macie and partner tools into one view, and it checks accounts against standards such as CIS, PCI DSS, NIST and AWS Foundational Security Best Practices. AWS now calls the posture management product **AWS Security Hub CSPM**. The exam guide says AWS Security Hub. It needs AWS Config for most of its checks. Findings can trigger EventBridge rules for automated response.
+
+With **cross-Region aggregation**, you pick a home Region and link other Regions to it. You then see and manage findings, insights and compliance statuses from all of them in the home Region. For many accounts, associate member accounts with a single administrator account, through AWS Organizations.
 
 ## AWS Artifact
 

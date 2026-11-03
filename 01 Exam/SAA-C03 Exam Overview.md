@@ -16,10 +16,12 @@ Everything official about the exam, on one page. The facts below were checked ag
 | Questions | 65: 50 scored, and 15 unscored that are not identified |
 | Duration | 130 minutes |
 | Question types | Multiple choice (1 correct of 4), multiple response (2 or more correct of 5 or more) |
+| Distractors | Incorrect options that look plausible and match the content area, aimed at candidates with incomplete knowledge |
 | Passing score | 720, on a scale of 100 to 1,000 |
 | Scoring | Compensatory: you must pass overall, not in each domain |
 | Unanswered questions | Marked incorrect. There is no penalty for guessing |
 | Result | Pass or fail, with a scaled score |
+| Score report | Scaled scoring equates scores across exam forms of slightly different difficulty. Your report may include a table of classifications for each section. Read it with caution, because it is only general information on strengths and weaknesses |
 | Cost | 150 USD, and exchange rates may apply |
 | Delivery | Pearson VUE test centre, or online proctored |
 | Languages | English, French (France), Italian, Japanese, Korean, Portuguese (Brazil), Spanish (Latin America), Spanish (Spain), Simplified Chinese, Traditional Chinese |
@@ -29,6 +31,8 @@ Everything official about the exam, on one page. The facts below were checked ag
 AWS's FAQ adds that candidates with 1 to 3 years of IT experience have earned this certification as a starting point. Those with no IT work experience would benefit from taking AWS Certified Cloud Practitioner first.
 
 The exam gives 2 minutes per question. You will not know which 15 are unscored, so treat every question as if it counts.
+
+AWS says the exam validates your ability to design solutions based on the AWS Well-Architected Framework. See [[01 Cloud Foundations#The AWS Well-Architected Framework|the framework]] for the pillars. AWS lists three tasks the exam validates: designing solutions that meet current business requirements and future projected needs; designing architectures that are secure, resilient, high-performing and cost-optimized; and reviewing existing solutions and determining improvements. AWS uses your answers to the unscored questions to evaluate them for future use as scored questions.
 
 ## Domains
 
@@ -56,6 +60,8 @@ Each domain page lists every item in AWS's exam guide, says what you need to kno
 
 AWS says these technologies and concepts might appear. The order says nothing about their weight.
 
+AWS says this list is non-exhaustive and subject to change, so the chapters go beyond it.
+
 - Compute
 - Cost management
 - Database
@@ -73,6 +79,8 @@ AWS says these technologies and concepts might appear. The order says nothing ab
 ## Service names on the exam
 
 The exam uses short names for well-known services. For example, Amazon Simple Notification Service appears as Amazon SNS. The **Help** feature, available on every question, lists short names with their full names. Not every abbreviation is expanded, so names such as Amazon EMR and Amazon API Gateway appear as they are.
+
+You can also read the AWS Service Names list on the AWS Certification website before the exam. A service on that list that is out of scope will not appear on the exam. Other abbreviations may also appear without explanation, so learn the common ones in the [[Service Index]].
 
 The in-scope and out-of-scope lists are in [[Service Index]].
 

@@ -155,6 +155,7 @@ The exam guide asks about improving reliability "when application changes are no
 - **Backup plans** set frequency, retention, and lifecycle to cold storage.
 - It supports EC2, EBS, S3, EFS, FSx, RDS, Aurora, DynamoDB, DocumentDB, Neptune, Redshift, Storage Gateway volumes, Timestream and VMware, among others.
 - It supports on-demand and scheduled backups, and point-in-time recovery for some services.
+- Resources are added to a backup plan by tag or by resource ID, so tagging resources is how new ones are picked up automatically. Continuous backups of S3 can restore to any point in time within the last 35 days, while periodic backups can be kept indefinitely.
 - **Cross-Region backup** copies to another Region for disaster recovery.
 - **Cross-account backup** copies to a central vault, which protects against a compromised account. Copy support varies by resource type.
 - **AWS Organizations** backup policies apply plans across accounts.

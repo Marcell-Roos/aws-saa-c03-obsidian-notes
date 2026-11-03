@@ -33,13 +33,19 @@ The memory aid is to think about what goes in and what comes out.
 
 **Amazon Transcribe** converts speech to text, using automatic speech recognition. It can **redact personal data** automatically, and it supports audio with multiple languages.
 
+It transcribes in real time (streaming) or in batch from files in S3.
+
 **Amazon Polly** turns text into speech. **SSML** controls pronunciation, pauses and emphasis, and **lexicons** customise how words are said.
 
 **Amazon Translate** gives natural language translation, for localising content such as websites and applications.
 
 **Amazon Comprehend** performs natural language processing. It extracts key phrases, places and people, works out sentiment, and organises a collection of text files by topic. AWS listed topic modeling, event detection and prompt safety classification as in maintenance on 31 March 2026, so sentiment, entities and key phrases are the safest uses to learn. **Comprehend Medical** extracts medical information from clinical text.
 
+Comprehend can also detect **personally identifiable information (PII)** in text, such as addresses, bank account numbers and phone numbers. Pre-trained models need no training data, and you can train custom models for classification and entity recognition.
+
 **Amazon Lex** builds chatbots and voice bots, using the same technology as Alexa, with speech recognition and natural language understanding.
+
+Lex works out the user's intent, then fulfils it by invoking a business function, typically a Lambda function.
 
 **Amazon SageMaker AI** is a fully managed service for developers and data scientists to build, train and deploy custom ML models. Pick it when a pre-built service does not fit, and you need your own model.
 

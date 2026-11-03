@@ -12,6 +12,10 @@ This was a second pass by Claude. Each line was checked against AWS pages, and e
 
 - Root user: changing the account name does not need the root user. Only the root email address (standalone accounts) and closing a standalone account do.
 - EventBridge: Lambda, SNS and SQS can use an IAM role or a resource-based policy.
+- Practice Exam 5 question 64: S3 lifecycle rules skip objects under 128 KB by default (not 1 MB), so the 50 KB objects would not transition unless the rule is changed. Practice Exam 4: the Athena explanation now notes its interactive Spark support. Cheat sheet: Aurora failover is typically under 60 seconds, and ACM expiry events start 45 days before for private and imported certificates but 30 for public ones.
+- Coverage additions from the per-service check (each rests on an AWS page): Redshift encryption, Lake Formation sharing and tag-based access, OpenSearch availability, Kinesis Video Streams, Data Exchange delivery types, X-Ray sampling, Device Farm, Amplify Hosting, Fargate task isolation, SNS durability and dead-letter queues, Serverless Application Repository, DocumentDB, Keyspaces, Neptune, Comprehend, Lex, Transcribe, Compute Optimizer, License Manager, Transfer Family fixed IPs, AWS Backup, Client VPN, Site-to-Site VPN routing, ALB idle timeout, GuardDuty and Security Hub multi-account, and nine exam-process facts in the exam overview.
+- Second search (Stage 4): Direct Connect no longer "takes weeks or months"; AWS says up to 72 business hours to review the request and provision a port. The Kinesis Data Analytics for SQL date is now worded as the start of deletion, as AWS says. The other 83 claims found in the second search matched the vault and needed no change. Trusted Advisor stays "fault tolerance": AWS's check reference still uses that category name, although another page says "resilience".
+- Checked and left unchanged: Practice Exam 2 question 28 stays Task 2.1, because the exam guide lists caching strategies under both Task 2.1 and Task 3.3. The Practice Exam 4 load balancer question stays Task 4.2, as the guide places it.
 - Simple AD: it entered maintenance on 30 June 2026 and closed to new customers on 30 July 2026. Two events, two dates.
 - Savings Plans: a plan of $100 per hour or less can be returned within seven days in the same calendar month.
 - ENA: the documented ceiling is 100 Gbps.
@@ -210,7 +214,7 @@ Every change made to the source notes (VasilijeJukic01/AWS-SAA-C03-Notes), check
 
 ## Structural changes
 - **Images removed.** The source used about 260 screenshots, some of which look like course slides, so they weren't copied. Image-only content was rebuilt as tables or Mermaid diagrams, including EC2 instance types, Lambda limits, CloudFront price classes, SQS vs SNS vs Kinesis, Security Groups vs NACLs and the DR comparison.
-- **Kinesis Data Analytics for SQL removed.** It shut down on 27 January 2026. The Flink part moved to [[21 Streaming and Data Ingestion|Managed Service for Apache Flink]].
+- **Kinesis Data Analytics for SQL removed.** AWS started deleting its applications on 27 January 2026. The Flink part moved to [[21 Streaming and Data Ingestion|Managed Service for Apache Flink]].
 - **`aws-auth` detail removed** from [[18 Containers|EKS Security]] in favour of access entries.
 - **Snow Family rewritten.** Device specs for retired models were removed. See [[27 Migration and Data Transfer|AWS Snow Family]].
 - **Step Functions Map examples rewritten.** The Distributed mode example used an invalid state type. See [[20 Messaging and Integration|Step Functions Map State]].

@@ -143,6 +143,8 @@ Facts to remember:
 
 **X-Ray** traces requests through distributed applications. It shows a service map, and pinpoints latency and errors. Choose it when a question asks which microservice is slow. CloudWatch gives metrics and logs, and X-Ray gives per-request traces. It works with Lambda, API Gateway, ECS, EC2 and others.
 
+X-Ray does not trace every request. By default, the X-Ray SDK records the first request each second, and five percent of any additional requests. Sampling rules can change this.
+
 ## AWS Health Dashboard
 
 | View | Shows |

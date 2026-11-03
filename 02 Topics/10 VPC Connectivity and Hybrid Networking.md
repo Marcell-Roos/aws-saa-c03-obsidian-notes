@@ -147,6 +147,7 @@ What you need to know:
 - Each connection has **two tunnels** for redundancy, each ending in a different AZ.
 - A standard tunnel carries up to **1.25 Gbps**. **Large bandwidth tunnels** reach 5 Gbps on Transit Gateway.
 - Setup takes hours, not weeks.
+- **Routing:** use dynamic routing (BGP) if the customer gateway device supports BGP. If it does not, use static routing and enter the on-premises prefixes yourself.
 - Performance varies, because it uses the internet.
 - **Enable route propagation** for the VGW in the subnets' route tables, or add static routes.
 - **Accelerated VPN** routes through Global Accelerator, on Transit Gateway.
@@ -157,6 +158,8 @@ What you need to know:
 ## AWS Client VPN
 
 **Client VPN** is a managed, OpenVPN-based service for **individual users**, such as remote employees reaching a VPC from a laptop. Site-to-Site VPN connects whole networks. Users authenticate through Active Directory, SAML federation or certificates.
+
+Access is controlled by **authorization rules**, which allow an Active Directory or identity provider group to reach a given network. By default there are no rules, so users cannot reach anything until you add them. By default all client traffic goes through the tunnel. **Split-tunnel** sends only traffic for the VPC and other routes you define through the tunnel, and the rest uses the user's own internet connection.
 
 ## AWS Direct Connect
 
@@ -176,7 +179,7 @@ Reasons to use it:
 | **Dedicated** | 1, 10, 100, 400 Gbps | A physical port for you, requested from AWS |
 | **Hosted** | 50 Mbps to 25 Gbps | Through a partner. Capacity can be changed more easily |
 
-New connections can take **weeks or months** to set up. If a question needs connectivity in days, use VPN first.
+AWS says it can take up to 72 business hours just to review a request and provision a port, so a new connection is slow compared with a VPN, which can be configured in minutes. If a question needs connectivity in days, use VPN first.
 
 ### Virtual interfaces
 
@@ -238,7 +241,7 @@ A **link aggregation group (LAG)** bundles dedicated connections at one location
 | Private instances reach S3 at lowest cost | Gateway endpoint | Free |
 | On-premises reaches S3 privately | Interface endpoint | Gateway endpoints are not reachable from there |
 | Reach KMS or Secrets Manager with no internet | Interface endpoint | |
-| Connect in days, encrypted | Site-to-Site VPN | DX takes weeks |
+| Connect in days, encrypted | Site-to-Site VPN | DX port provisioning alone can take up to 72 business hours |
 | 5 TB nightly, VPN is inconsistent | Direct Connect | |
 | Cost-effective backup for DX | Site-to-Site VPN | |
 | Data over DX must be encrypted | VPN over DX, or MACsec | Private is not encrypted |

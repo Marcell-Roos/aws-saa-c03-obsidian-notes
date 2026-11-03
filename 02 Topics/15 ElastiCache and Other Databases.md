@@ -121,6 +121,11 @@ A **replication group** has one primary node for writes and replica nodes for re
 
 **DocumentDB** is AWS's MongoDB-compatible document database. It is fully managed, has an architecture like Aurora's with replication across three AZs, and its storage grows automatically in 10 GB steps. "MongoDB" in a question points here.
 
+- Up to 15 read replicas share the same storage, and a reader endpoint spreads read connections. If the primary fails, DocumentDB fails over to a replica in another AZ.
+- Automated backups are always on, with point-in-time recovery and a retention of up to 35 days.
+- **Global Clusters** replicate to clusters in up to five Regions, for low-latency global reads and recovery from a Region outage.
+- **Elastic Clusters** shard the data (hash-based partitioning) so that a workload can scale beyond a single writer.
+
 ## Amazon Keyspaces
 
 **Keyspaces** is a serverless, managed database compatible with Apache Cassandra.
@@ -132,6 +137,8 @@ A **replication group** has one primary node for writes and replica nodes for re
 
 "Cassandra" in a question points here. Typical uses are IoT device data and time-series data.
 
+Point-in-time recovery restores a table to any second in the preceding 35 days. **Multi-Region replication** is fully managed and active-active, so applications can read and write in each Region you choose.
+
 ## Amazon Neptune
 
 **Neptune** is a managed graph database, built for highly connected data.
@@ -141,6 +148,8 @@ A **replication group** has one primary node for writes and replica nodes for re
 - **Neptune Streams** provides a real-time ordered sequence of changes.
 
 Use it for social networks, recommendations, knowledge graphs and fraud detection, where the question is about **relationships**.
+
+Cross-Region replication uses **Neptune Global Database**. **Neptune Serverless** scales capacity automatically, so there is no capacity to manage. Backups are continuous to S3, with point-in-time recovery.
 
 ## Amazon Timestream
 

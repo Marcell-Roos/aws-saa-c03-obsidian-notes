@@ -142,9 +142,13 @@ It is not on the in-scope list, but "GraphQL" in a question points to it.
 
 If a question describes a front-end team wanting to build and host a web or mobile app quickly, think Amplify.
 
+Amplify Hosting deploys to the AWS global content delivery network (CDN). It supports SSR frameworks such as Next.js, single-page apps such as React and Angular, and static site generators. Feature branches give separate environments, and pull request previews show changes during code review.
+
 ## AWS Device Farm
 
 **Device Farm** tests web and mobile apps on real devices hosted by AWS. "Test on many real phones" points here.
+
+You can run automated tests on many devices in parallel by uploading your app and tests, or open a device in your browser for manual testing. Test hosts and devices can connect to your VPC to reach private endpoints.
 
 ## Exam patterns
 

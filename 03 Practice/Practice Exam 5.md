@@ -780,13 +780,13 @@ tags: [practice, scope/in]
 
 **64.** A company has 200 million objects of about 50 KB each, and they are rarely read. It plans a lifecycle rule to move them to Glacier Deep Archive to save money. What is the main concern, and what should it do?
 
-- A. Lifecycle rules do not work on objects under 1 MB
+- A. Lifecycle rules do not work on objects under 128 KB
 - B. Deep Archive cannot store small objects, so use S3 Standard
 - C. Small objects cannot be restored from Deep Archive
 - D. Per-object transition charges and overhead are high for small objects, so combine them into larger archive files first
 
 > [!success]- Answer
-> **D.** Each object costs a transition request and adds 40 KB of overhead, so large numbers of small objects can cost more than they save. Lifecycle rules skip objects under 128 KB by default too. Deep Archive can store them, but it is not cost-effective unless they are combined.
+> **D.** Each object costs a transition request and adds 40 KB of overhead, so large numbers of small objects can cost more than they save. Lifecycle rules skip objects under 128 KB by default, so these 50 KB objects would not transition at all unless the rule is changed. Deep Archive can store them, but it is not cost-effective unless they are combined.
 >
 > *Task 4.1.* Review: [[06 Amazon S3#Storage classes|Storage classes]]
 

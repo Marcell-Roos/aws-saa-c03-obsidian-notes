@@ -430,7 +430,7 @@ tags: [practice, scope/in]
 - D. Order a new AWS Direct Connect connection
 
 > [!success]- Answer
-> **C.** 8 TB at 1 Gbps takes under a day, so the existing link is enough. Direct Connect takes weeks to set up. A device costs more and takes longer. A new link is not needed.
+> **C.** 8 TB at 1 Gbps takes under a day, so the existing link is enough. Direct Connect port provisioning alone can take up to 72 business hours. A device costs more and takes longer. A new link is not needed.
 >
 > *Task 4.1.* Review: [[27 Migration and Data Transfer#Choosing a transfer method|Choosing a transfer method]]
 

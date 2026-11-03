@@ -122,6 +122,7 @@ The same idea appears in other forms:
 
 - Subscribers can be SQS, Lambda, HTTP or HTTPS endpoints, email, SMS, mobile push and Data Firehose.
 - A standard SNS topic **pushes** messages to subscribers and does not hold them for later. (FIFO topics can archive and replay.) An offline subscriber misses them, unless a queue sits in between.
+- SNS stores several copies of each message across AZs before acknowledging a publish. If delivery to a subscriber keeps failing beyond its retry policy, SNS discards the message unless a **dead-letter queue** is attached to the subscription.
 - Standard topics support up to 12,500,000 subscriptions per topic, and FIFO topics 100.
 - The maximum message is 256 KiB by default, and it can be raised to 1 MiB per topic.
 

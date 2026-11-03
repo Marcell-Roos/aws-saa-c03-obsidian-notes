@@ -166,7 +166,7 @@ tags: [practice, scope/in]
 - D. Amazon EMR with Spot task nodes
 
 > [!success]- Answer
-> **D.** EMR runs Spark, and Spot suits task nodes. Athena is SQL-focused. Data Pipeline is closed to new customers.
+> **D.** EMR runs Spark, and Spot suits task nodes. Athena is mainly SQL, and its Spark support is interactive rather than for running existing jobs. Data Pipeline is closed to new customers.
 >
 > *Task 3.5.* Review: [[22 Data Lakes and Analytics#Choosing an analytics service|Choosing an analytics service]]
 

@@ -120,6 +120,8 @@ Each load balancer node normally sends traffic only to targets in its own AZ. **
 
 **Deregistration delay** gives in-flight requests time to finish when a target is removed. New requests stop, and existing ones are allowed to complete. The range is 0 to 3,600 seconds, with a default of 300. Setting it to 0 disables it. Use a low value for short requests. Errors during scale-in often point to this setting being too low.
 
+The **idle timeout** is how long a connection can stay inactive before the load balancer closes it. On an ALB the default is 60 seconds. For lengthy operations such as file uploads, increase it, or send data before it elapses.
+
 ### Sticky sessions
 
 Stickiness sends a client to the same target each time, so session data held on that target stays available.

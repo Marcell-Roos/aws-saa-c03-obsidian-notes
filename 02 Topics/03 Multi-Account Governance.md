@@ -168,6 +168,8 @@ If a question says "self-service" plus "approved configurations" plus "without g
 
 **License Manager** tracks software licences, such as those from Microsoft or Oracle, and enforces rules on how many can be used. It helps with bring-your-own-licence scenarios, often together with [[04 Amazon EC2#Dedicated Hosts and Dedicated Instances|Dedicated Hosts]].
 
+Licences can be counted by vCPUs, cores, sockets or machines. Administrators set **hard or soft limits** on usage. It works across Regions and accounts in an organisation.
+
 ## Exam patterns
 
 | If the question says | Think | Why |

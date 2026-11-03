@@ -69,6 +69,8 @@ If a question says "convert CSV to Parquet with no servers", the answer is Glue.
 - **Blueprints** ingest data from S3, relational and NoSQL sources.
 - **Centralised permissions** give fine-grained, **row and column level** access control.
 - Data from multiple accounts can be consolidated.
+- You can share data across AWS accounts and organizations, or directly with IAM principals in another account, with fine-grained access to the Data Catalog metadata and the data underneath.
+- Tag-based access control (TBAC) manages permissions on databases, tables and columns by tag. The Lake Formation permissions model augments IAM permissions rather than replacing them.
 - It works with Athena, Redshift Spectrum and EMR.
 
 If the question asks for column-level or row-level security across a data lake, the answer is Lake Formation. S3 policies work only at the object level.
@@ -145,6 +147,9 @@ All of these reduce the amount of data scanned, which is what you pay for.
 - **Manual** snapshots stay until deleted.
 - Redshift can **automatically copy snapshots to another Region** for disaster recovery.
 - Multi-AZ deployments are available.
+- You can choose to encrypt a cluster when you provision it, and use AWS KMS to manage the keys. Encryption applies to the cluster and its backups.
+- Encryption is an immutable property of the cluster. To change an encrypted cluster to an unencrypted one, unload the data and reload it into a new cluster.
+- SSL encrypts the connection between a SQL client and the cluster.
 
 ## Choosing an analytics service
 
@@ -178,6 +183,8 @@ EMR also offers serverless and EKS options.
 
 **OpenSearch** provides search on any field, including partial matches, plus log analytics with OpenSearch Dashboards. It is usually a complement to a primary database. It runs as a managed cluster or serverless.
 
+For availability, a domain can spread its nodes across two or three Availability Zones (Multi-AZ), and dedicated master nodes offload cluster management. Domains can be placed in a VPC and use VPC security groups, and data is encrypted at rest. UltraWarm and cold storage keep read-only data at a lower cost.
+
 | Pattern | How |
 | --- | --- |
 | Search DynamoDB data | Streams to Lambda to OpenSearch, with DynamoDB as the source of truth |
@@ -199,6 +206,8 @@ EMR also offers serverless and EKS options.
 ## Other services
 
 **AWS Data Exchange** lets you find and subscribe to third-party datasets, delivered into AWS.
+
+A data set can be delivered as files, an API, an Amazon Redshift data share, an Amazon S3 data access, or an AWS Lake Formation data permission.
 
 **AWS Data Pipeline** moved and transformed data on a schedule. It is on the in-scope list, but it is closed to new customers and in maintenance. AWS points to Glue, Step Functions and Amazon MWAA.
 
