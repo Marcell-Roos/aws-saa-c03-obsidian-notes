@@ -81,7 +81,7 @@ AWS recommends a year of hands-on experience for this exam. These labs give you 
 4. Create a **target group** for instances, with an HTTP health check on `/`.
 5. Create an internet-facing **Application Load Balancer** across at least two AZs, with a listener that forwards to the target group.
 6. Create an **Auto Scaling group** from the launch template across the same AZs, with minimum 2, desired 2 and maximum 4, attached to the target group. Turn on **ELB health checks**.
-7. Open the load balancer's DNS name and refresh. The hostname should change between instances.
+7. Open the load balancer's DNS name and refresh. The hostname may change between instances.
 8. Add a **target tracking** policy on average CPU at 50%.
 9. Terminate one instance by hand, and watch the group replace it.
 10. Stop the web server through Session Manager (`sudo systemctl stop httpd`) and watch the target become unhealthy and get replaced. This shows why ELB health checks matter.

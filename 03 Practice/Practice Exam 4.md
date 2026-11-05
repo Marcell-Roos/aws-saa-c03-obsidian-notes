@@ -120,7 +120,7 @@ tags: [practice, scope/in]
 > [!success]- Answer
 > **A.** AZs are separate data centres, so Multi-AZ covers this. Multi-Region costs more than the requirement needs. One AZ or one host remains a single point of failure.
 >
-> *Task 2.2.* Review: [[01 Cloud Foundations#The global infrastructure|The global infrastructure]]
+> *Task 1.1.* Review: [[01 Cloud Foundations#The global infrastructure|The global infrastructure]]
 
 **10.** A company must classify data across its S3 estate on a continuing basis, and feed sensitive-data findings into its central security view. Which combination fits?
 
@@ -504,7 +504,7 @@ tags: [practice, scope/in]
 - E. Convert the bucket to SSE-S3
 
 > [!success]- Answer
-> **C and D.** Cross-account KMS use needs the key policy and an IAM policy in the calling account. Key material is never shared that way. KMS keys cannot be copied.
+> **C and D.** Cross-account KMS use needs the key policy and an IAM policy in the calling account. Key material is never shared that way. Access is granted through policies, not by copying the key.
 >
 > *Task 1.3.* Review: [[23 Encryption and Secrets#Key policies|Key policies]]
 

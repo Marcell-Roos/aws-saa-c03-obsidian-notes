@@ -21,7 +21,7 @@ Serverless means no servers to provision or patch, automatic scaling, and paying
 
 - Functions are **stateless**. Keep state in DynamoDB, S3 or ElastiCache.
 - It scales automatically, by running more copies in parallel.
-- It integrates with most AWS services, and with many programming languages.
+- It integrates with many AWS services, and supports many programming languages.
 - Logs and metrics go to CloudWatch. Tracing goes to X-Ray.
 
 **Pricing:** you pay per request and for compute time, in GB-seconds. The free tier includes 1 million requests and 400,000 GB-seconds per month. Graviton (arm64) functions offer better price-performance.
@@ -58,7 +58,7 @@ Two reasoning points follow from this table:
 
 | Model | Examples | What happens on failure |
 | --- | --- | --- |
-| **Synchronous** | API Gateway, ALB, function URLs | The caller gets the error and must handle it |
+| **Synchronous** | API Gateway, ALB | The caller gets the error and must handle it |
 | **Asynchronous** | S3 events, SNS, EventBridge | Lambda retries twice, then sends to a dead-letter queue or a destination |
 | **Event source mapping** (polling) | SQS, Kinesis Data Streams, DynamoDB Streams, MSK | Lambda polls in batches. Failures return to the queue, or block a shard until handled |
 
@@ -77,7 +77,7 @@ With a polling source, Lambda reads batches for you, so the behaviour on failure
 
 If an SQS queue's visibility timeout is shorter than the function's run time, the message reappears while it is still being processed, and the work happens twice.
 
-The metric `IteratorAge` shows how far a stream consumer has fallen behind. A rising value means that you should add shards, raise the parallelisation factor, or speed up the function.
+The metric `IteratorAge` shows how far a stream consumer has fallen behind. A rising value means that the consumer is falling behind, and raising the parallelisation factor can help.
 
 ### Cold starts and concurrency
 
@@ -125,7 +125,7 @@ An environment is reused for later requests, which has practical effects:
 
 - Permissions come from the **execution role**.
 - A **resource-based policy** controls what can invoke the function, such as S3 or another account.
-- Environment variables are encrypted at rest by default, but they are still visible to anyone who can view the function. Use encryption helpers for sensitive values, or better, keep secrets in Secrets Manager or Parameter Store.
+- Environment variables are encrypted at rest by default. For database credentials and other sensitive values, use Secrets Manager instead of environment variables.
 
 ### Monitoring
 
@@ -164,7 +164,7 @@ A catalogue for finding, sharing and deploying serverless applications built wit
 | --- | --- |
 | Work is short and event-driven | A job runs longer than 15 minutes |
 | Traffic is spiky or unpredictable | Traffic is steady and heavy, where EC2 or containers can be cheaper |
-| You want no servers to manage | The app needs a long-lived process or a heavy runtime |
+| You want no servers to manage | The app needs a long-lived process |
 | You are gluing services together | You need OS-level access or GPUs |
 
 See [[19 Other Compute Services#Choosing compute|Choosing compute]] and [[31 Architecture Patterns#Serverless web application|the serverless web application pattern]].
@@ -200,7 +200,7 @@ See [[19 Other Compute Services#Choosing compute|Choosing compute]] and [[31 Arc
 - D. API Gateway
 
 > [!success]- Answer
-> **B.** Lambda stops at 15 minutes. Batch on Fargate handles long-running jobs with no servers to manage.
+> **B.** Lambda stops at 15 minutes. Batch on Fargate runs containers with no servers to manage.
 
 **2.** An API behind API Gateway and Lambda is fast most of the time, but it has latency spikes after quiet periods. What is the most direct fix?
 

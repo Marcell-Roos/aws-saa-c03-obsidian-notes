@@ -108,10 +108,10 @@ A **replication group** has one primary node for writes and replica nodes for re
 ### Security
 
 - Security groups control network access. Caches live in private subnets.
-- **IAM policies** control management APIs, such as creating a cluster.
+- **IAM policies** control access to ElastiCache resources and actions.
 - **IAM authentication** is available for Valkey and Redis.
 - **Redis AUTH** adds a password or token, set with `--auth-token`, on top of security groups. Encryption in transit is available.
-- Memcached supports SASL-based authentication.
+- Memcached supports encryption in transit (TLS).
 
 ## Amazon MemoryDB
 
@@ -119,11 +119,11 @@ A **replication group** has one primary node for writes and replica nodes for re
 
 ## Amazon DocumentDB
 
-**DocumentDB** is AWS's MongoDB-compatible document database. It is fully managed, has an architecture like Aurora's with replication across three AZs, and its storage grows automatically in 10 GB steps. "MongoDB" in a question points here.
+**DocumentDB** is AWS's MongoDB-compatible document database. It is fully managed, replicates six copies of its data across three AZs, and its storage grows automatically in 10 GB steps. "MongoDB" in a question points here.
 
 - Up to 15 read replicas share the same storage, and a reader endpoint spreads read connections. If the primary fails, DocumentDB fails over to a replica in another AZ.
 - Automated backups are always on, with point-in-time recovery and a retention of up to 35 days.
-- **Global Clusters** replicate to clusters in up to five Regions, for low-latency global reads and recovery from a Region outage.
+- **Global Clusters** have one primary Region and up to 10 read-only secondary Regions, for low-latency global reads and recovery from a Region outage.
 - **Elastic Clusters** shard the data (hash-based partitioning) so that a workload can scale beyond a single writer.
 
 ## Amazon Keyspaces
@@ -143,7 +143,7 @@ Point-in-time recovery restores a table to any second in the preceding 35 days. 
 
 **Neptune** is a managed graph database, built for highly connected data.
 
-- It is available across three AZs, with up to 15 read replicas.
+- Its storage volume spans three AZs, with up to 15 read replicas.
 - It stores billions of relationships, and it queries them with millisecond latency.
 - **Neptune Streams** provides a real-time ordered sequence of changes.
 
@@ -160,7 +160,7 @@ Cross-Region replication uses **Neptune Global Database**. **Neptune Serverless*
 
 ## Services that have gone
 
-**Amazon QLDB** was a ledger database that provided an immutable, cryptographically verifiable transaction log. It ended on 31 July 2025. Older practice questions may mention it. AWS suggests a relational database with audit tables.
+**Amazon QLDB** was a ledger database that provided an immutable, cryptographically verifiable transaction log. It ended on 31 July 2025. Older practice questions may mention it. AWS suggests Aurora PostgreSQL for audit use cases.
 
 **Amazon Managed Blockchain** ran Hyperledger Fabric and Ethereum networks. It reaches end of support on 29 September 2027 and is not on either exam list.
 

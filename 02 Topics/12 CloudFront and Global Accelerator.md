@@ -114,8 +114,8 @@ Your application decides who is allowed, then gives them a signed URL or cookie 
 | Class | Edge locations | Trade-off |
 | --- | --- | --- |
 | Price Class All | All | Best performance, highest cost |
-| Price Class 200 | Most Regions, excluding the most expensive | Middle ground |
-| Price Class 100 | North America and Europe | Lowest cost |
+| Price Class 200 | Price Class 100 plus parts of Africa, the Middle East and Asia | Middle ground |
+| Price Class 100 | USA, Canada, Europe and Israel | Lowest cost |
 
 AWS also now offers **flat-rate plans** that bundle CDN, WAF, DNS and DDoS protection for a fixed monthly price, with no overage charges. They are a newer option, so older questions assume pay-as-you-go.
 
@@ -126,7 +126,7 @@ AWS also now offers **flat-rate plans** that bundle CDN, WAF, DNS and DDoS prote
 | Runtime | JavaScript | Node.js, Python |
 | Triggers | Viewer request and response | Viewer and origin, request and response |
 | Run time | Under 1 millisecond | Seconds |
-| Memory | 2 MB | Up to 10 GB |
+| Memory | 2 MB | 128 MB for viewer events, up to 10 GB for origin events |
 | Scale | Millions of requests per second | Thousands per second |
 | Network and body access | No | Yes |
 | Use | Header changes, redirects, URL rewrites, simple auth | Heavier logic, external calls, image transformation |

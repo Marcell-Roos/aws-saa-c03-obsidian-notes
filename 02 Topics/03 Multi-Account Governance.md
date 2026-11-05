@@ -86,7 +86,7 @@ Good practice is an **organisation trail** in CloudTrail sending all logs to a c
 
 There are two styles:
 
-- **Deny list (the usual way):** keep `FullAWSAccess` and add explicit denies.
+- **Deny list (the default setup):** keep `FullAWSAccess` and add explicit denies.
 - **Allow list:** replace `FullAWSAccess` and list only what is allowed. Stricter, and more work to maintain.
 
 Typical uses are restricting Regions, preventing accounts from leaving the organisation, and protecting CloudTrail from being turned off.

@@ -29,7 +29,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | Per-socket licences | Dedicated Host |
 | Lowest latency between nodes | Cluster placement group, EFA |
 | Isolate a few critical instances | Spread placement group |
-| Kafka, Cassandra, Hadoop on EC2 | Partition placement group |
+| HDFS, HBase or Cassandra on EC2 | Partition placement group |
 | Keep RAM across a stop | Hibernate |
 | Keep a metric at a value | Target tracking |
 | Known time pattern | Scheduled scaling |
@@ -164,7 +164,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | Hadoop or Spark | EMR |
 | Query S3 from Redshift | Redshift Spectrum |
 | Row and column security on a data lake | Lake Formation |
-| Fuzzy search | OpenSearch |
+| Full-text search | OpenSearch |
 | BI dashboards | Amazon Quick |
 | SaaS data to S3 | AppFlow |
 
@@ -210,7 +210,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | --- | --- |
 | Lift and shift servers | Application Migration Service |
 | Migrate a database with little downtime | DMS with CDC |
-| Data would take over a week | Snow Family or Data Transfer Terminal |
+| Data too large for the available bandwidth | Snow Family or Data Transfer Terminal |
 | Cheapest DR, hours acceptable | Backup and restore |
 | Data live, servers off | Pilot light |
 | Small running copy | Warm standby |
@@ -295,7 +295,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 | Lambda environment variables, layers | 4 KB, 5 layers |
 | Lambda concurrency | 1,000 by default, +1,000 environments per 10 seconds per function |
 | RI discount | Standard up to 72%, Convertible up to 66% |
-| Savings Plans discount | EC2 Instance up to 72%, Compute up to 66%, SageMaker AI up to 64%, Database up to 35% on a 1-year term |
+| Savings Plans discount | EC2 Instance up to 72% and Compute up to 66% (1 or 3-year terms), SageMaker AI up to 64%, Database up to 35% on a 1-year term only |
 | Spot | Up to 90% off, 2-minute notice |
 | Spread placement | 7 running instances per AZ |
 | Partition placement | 7 partitions per AZ |
@@ -326,7 +326,7 @@ Parts of the traps table are adapted from [RonitSachdev/aws-saa-c03-guides](http
 
 | Item | Value |
 | --- | --- |
-| RDS read replicas | 15, with no more than 5 recommended for Oracle |
+| RDS read replicas | 15 per source DB instance, with no more than 5 recommended for Oracle |
 | RDS backup retention | 0 to 35 days |
 | Multi-AZ instance failover | Typically 1 to 2 minutes |
 | Aurora | 6 copies in 3 AZs, 15 replicas, 256 TiB, failover typically under 60 seconds |

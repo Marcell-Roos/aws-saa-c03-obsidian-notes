@@ -65,7 +65,7 @@ An **Amazon Machine Image (AMI)** is the template for an instance: OS, software 
 | --- | --- | --- |
 | Golden AMI | Pre-install everything | Fast boot, consistent instances |
 | User data | Install at boot | Dynamic configuration |
-| Hybrid | Golden AMI plus a small user data script | Most real systems. Elastic Beanstalk works this way |
+| Hybrid | Golden AMI plus a small user data script | Most real systems. Elastic Beanstalk supports this with custom AMIs |
 | RDS or EBS snapshot | Restore a database or disk with data already in place | Avoids slow loading |
 
 ### Instance lifecycle
@@ -189,7 +189,7 @@ To reduce interruptions, use several instance types and AZs. An Auto Scaling gro
 | Visibility of sockets and cores | No | **Yes** |
 | Bring your own per-socket or per-core licences | No | **Yes** |
 | Control of instance placement | No | Yes |
-| Cost | Lower | Highest |
+| Billing | Per-instance billing | Per-host billing |
 
 Choose a Dedicated Host when the scenario mentions per-socket licensing, bring your own licence (BYOL) or strict compliance about physical placement. A requirement for hardware isolation alone is met by a Dedicated Instance.
 
@@ -217,7 +217,7 @@ Placement groups influence how instances are arranged on hardware.
 | --- | --- | --- | --- | --- |
 | **Cluster** | Packed close together in one AZ | High, one rack can fail together | Single AZ | Lowest latency and highest throughput between instances, HPC |
 | **Spread** | Each instance on separate hardware | Lowest | **7 running instances per AZ** per group | A few critical instances that must not fail together |
-| **Partition** | Groups of instances on separate racks | A partition can fail, not the group | **7 partitions per AZ**, hundreds of instances | Hadoop, Cassandra, Kafka |
+| **Partition** | Groups of instances on separate racks | A partition can fail, not the group | **7 partitions per AZ**, hundreds of instances | HDFS, HBase, Cassandra |
 
 A **precision time** placement group also exists for high-precision time sources. It is new and unlikely to feature.
 
@@ -266,7 +266,7 @@ EFA's OS-bypass does not work on Windows. There the interface behaves as a plain
 | Family may change during a 3-year reservation | Convertible RI | Up to 66% |
 | Guarantee capacity in one AZ for an event | Capacity Reservation or zonal RI | Savings Plans do not hold capacity |
 | Per-socket Windows Server licences | Dedicated Host | Sockets, cores and BYOL |
-| Physical isolation only, no licence concerns | Dedicated Instance | Cheaper than a host |
+| Physical isolation only, no licence concerns | Dedicated Instance | Billed per instance, not per host |
 | SAP HANA | X family | Extreme memory |
 | Redis or in-memory analytics on EC2 | R family | Memory optimised |
 | Lots of random local IOPS | I family | NVMe instance store |
@@ -276,7 +276,7 @@ EFA's OS-bypass does not work on Windows. There the interface behaves as a plain
 | Best price-performance, Arm-compatible | Graviton | `g` suffix |
 | Lowest latency between nodes | Cluster placement group, EFA | Same AZ |
 | A few critical instances isolated from each other | Spread placement group | 7 per AZ |
-| Kafka, Cassandra or Hadoop | Partition placement group | Rack awareness |
+| HDFS, HBase or Cassandra | Partition placement group | Rack awareness |
 | Standby must keep the same private IP | Move the ENI | Same AZ only |
 | Users cannot reach the instance after stop and start | Public IP changed | Elastic IP |
 | Keep RAM state across a stop | Hibernate | RAM to encrypted EBS root |

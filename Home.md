@@ -4,7 +4,7 @@ tags: [map, scope/in]
 
 # Home
 
-Study vault for the **AWS Certified Solutions Architect - Associate (SAA-C03)** exam. Facts were checked against AWS documentation on 1 November 2026, and reviewed again on 2 November 2026.
+Study vault for the **AWS Certified Solutions Architect - Associate (SAA-C03)** exam. Facts were checked against AWS documentation on 1 November 2026, reviewed again on 2 November 2026, and checked a third time line by line between 3 and 5 November 2026.
 
 > [!tip] Start here
 > Open the **[[Study Guide]]** and follow it step by step. It tells you what to read, what to build, and how to know when you are ready.

@@ -123,31 +123,31 @@ It is the former Kinesis Data Analytics for Apache Flink. AWS started deleting a
 
 ## Amazon MSK
 
-**Amazon Managed Streaming for Apache Kafka (MSK)** runs Apache Kafka as a managed service. It creates and manages brokers and the metadata layer, in your VPC, across AZs. Data is stored on EBS for as long as you like. **MSK Serverless** removes capacity management.
+**Amazon Managed Streaming for Apache Kafka (MSK)** runs Apache Kafka as a managed service. It creates and manages brokers and the metadata layer, in your VPC, across AZs. Data is stored on EBS, and tiered storage on Standard brokers lets you store virtually unlimited data. **MSK Serverless** removes capacity management.
 
 | | Kinesis Data Streams | Amazon MSK |
 | --- | --- | --- |
 | API | AWS proprietary | Open-source Apache Kafka |
 | Unit | Shards | Topics and partitions on brokers |
-| Retention | Up to 365 days | As long as storage allows |
-| Choose when | You want the simplest AWS-native stream | You are migrating Kafka, or need its ecosystem |
+| Retention | Up to 365 days | Configurable; virtually unlimited with tiered storage |
+| Choose when | You do not need Kafka compatibility | You are migrating Kafka, or need its ecosystem |
 
-Consumers include Managed Flink, Glue streaming ETL, Lambda, and applications on EC2, ECS or EKS.
+Consumers include Managed Flink, Glue streaming ETL, Lambda, and microservices.
 
 ## Amazon Kinesis Video Streams
 
 **Kinesis Video Streams** ingests, stores and processes video from cameras, for playback and machine learning. Pair it with Rekognition for video analysis.
 
-A stream can durably store media for a retention period you set, and the data is encrypted at rest. It can also carry non-video, time-serialized data such as audio, thermal imagery and RADAR. Applications can process the video live, or batch-process stored video later.
+A stream can durably store media for a retention period you set, and the data is encrypted at rest. It can also carry non-video, time-serialised data such as audio, thermal imagery and RADAR. Applications can process the video live, or batch-process stored video later.
 
 ## Securing ingestion
 
 The exam guide lists "secure access to ingestion access points". In practice:
 
 - Use IAM roles for producers, not access keys.
-- Use VPC endpoints for private access from VPCs, and VPN or Direct Connect from on-premises.
+- Use VPC endpoints for private access from VPCs.
 - Encrypt in transit with TLS, and at rest with KMS.
-- Limit S3 buckets with policies, and use Lake Formation for the data lake.
+- Use Lake Formation for the data lake.
 
 ## Sizes and speeds
 
@@ -157,8 +157,8 @@ The exam guide also lists "sizes and speeds needed to meet business requirements
 | --- | --- |
 | Total MB/s | Number of shards, at 1 MB/s each for writes |
 | Fresh within a second | KDS, not Firehose |
-| Fresh within a minute or so | Firehose is fine |
-| Hourly or daily files | Batch, which is usually cheapest |
+| Fresh within a minute or so | Firehose is fine if the buffer interval is set low (0 to 900 seconds) |
+| Hourly or daily files | Batch |
 | Very large one-off datasets | [[27 Migration and Data Transfer#Choosing a transfer method\|Network versus physical transfer]] |
 
 > [!example] Worked example

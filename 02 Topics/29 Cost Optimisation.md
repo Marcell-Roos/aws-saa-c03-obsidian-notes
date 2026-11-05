@@ -107,7 +107,7 @@ Knowing what you pay for tells you how to pay less.
 
 ### Load balancer costs
 
-Choose the simplest load balancer that meets the need. An ALB is right for HTTP routing, and an NLB for TCP or static IPs. Do not add a load balancer that a Lambda function URL could replace. Cross-zone traffic is charged on NLB and GWLB if enabled.
+Choose the simplest load balancer that meets the need. An ALB is right for HTTP routing, and an NLB for TCP or static IPs. Do not add a load balancer that a Lambda function URL could replace. Cross-zone traffic is charged on an NLB or a GWLB if enabled, but not on an ALB.
 
 ### Availability for each class of workload
 
@@ -310,7 +310,7 @@ Choosing bandwidth: a single VPN gives 1.25 Gbps per tunnel. Multiple VPNs with 
 - D. Enable versioning
 
 > [!success]- Answer
-> **A.** Transfer from S3 to CloudFront is free, and CloudFront's data-out pricing is lower.
+> **A.** Transfer from S3 to CloudFront is free, and caching at the edge reduces the load on the origin.
 
 **9.** A company's bill rose suddenly last week, and it does not know why. Which tools help it find the cause? (Choose two.)
 

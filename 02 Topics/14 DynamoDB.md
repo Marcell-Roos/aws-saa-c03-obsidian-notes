@@ -21,7 +21,7 @@ aliases: ["Amazon DynamoDB", "DynamoDB", "DynamoDB Accelerator", "DAX", "DynamoD
 - It is integrated with IAM for access control.
 - It has a flexible schema, so items in a table can have different attributes.
 
-It does **not** support joins or complex SQL. If a workload needs relational queries, use RDS or Aurora.
+It is designed to avoid joins, and supports only a subset of PartiQL. If a workload needs relational queries, use RDS or Aurora.
 
 ## Data model
 
@@ -190,7 +190,7 @@ Use it for session data, temporary records and regulatory deletion. Deleted item
 | Debit and credit, both or neither | Transactions | Twice the capacity |
 | Store 2 MB documents | S3 plus a pointer | 400 KB limit |
 | Must see the latest write | Strongly consistent read | Not on a GSI |
-| Reporting needs joins | RDS, Aurora or Redshift | Not DynamoDB |
+| Reporting needs many joins | RDS, Aurora or Redshift | DynamoDB models data to avoid joins |
 | Recover to any second in 35 days | PITR | New table |
 | Analyse a table without affecting it | Export to S3, then Athena | |
 | Replay changes from weeks ago | Kinesis Data Streams | Streams keeps 24 hours |
@@ -216,7 +216,7 @@ Use it for session data, temporary records and regulatory deletion. Deleted item
 - D. Global tables
 
 > [!success]- Answer
-> **B.** DAX is API-compatible with DynamoDB. ElastiCache would need more code changes, and DynamoDB has no read replicas.
+> **B.** DAX is API-compatible with DynamoDB.
 
 **3.** A table is keyed on `order_id`. A new feature must query orders by `customer_id`. The table has been live for a year. What should the team add?
 

@@ -20,7 +20,7 @@ aliases: ["VPC Peering", "VPC Endpoints", "Gateway Endpoint", "Interface Endpoin
 | **PrivateLink** | Private access to one service | Exposing one service, SaaS, or overlapping CIDRs |
 | **Gateway endpoint** | Route to S3 or DynamoDB | Private and free access to those two services |
 | **Interface endpoint** | Private IP for an AWS service | Private access to most AWS services |
-| **Site-to-Site VPN** | IPsec tunnel over the internet | Quick, cheap, encrypted. Variable latency |
+| **Site-to-Site VPN** | IPsec tunnel over the internet | Quick to configure, encrypted. Variable latency |
 | **Direct Connect** | Private dedicated line | Consistent, high bandwidth |
 | **Client VPN** | VPN for individual users | Remote workers |
 
@@ -92,7 +92,7 @@ flowchart LR
 
 - The provider puts a **Network Load Balancer** in front of the service and creates an endpoint service.
 - The consumer creates an interface endpoint (ENI).
-- No peering, internet gateway, NAT or route tables are needed.
+- No internet gateway, NAT device, public IP address, VPN or Direct Connect is needed.
 - **Overlapping CIDRs do not matter**, because only one service is exposed, and not the whole network.
 - It is one-way: consumers start connections to the provider.
 
@@ -146,7 +146,7 @@ What you need to know:
 
 - Each connection has **two tunnels** for redundancy, each ending in a different AZ.
 - A standard tunnel carries up to **1.25 Gbps**. **Large bandwidth tunnels** reach 5 Gbps on Transit Gateway.
-- Setup takes hours, not weeks.
+- It can be configured in minutes.
 - **Routing:** use dynamic routing (BGP) if the customer gateway device supports BGP. If it does not, use static routing and enter the on-premises prefixes yourself.
 - Performance varies, because it uses the internet.
 - **Enable route propagation** for the VGW in the subnets' route tables, or add static routes.
@@ -177,7 +177,7 @@ Reasons to use it:
 | Type | Speeds | How |
 | --- | --- | --- |
 | **Dedicated** | 1, 10, 100, 400 Gbps | A physical port for you, requested from AWS |
-| **Hosted** | 50 Mbps to 25 Gbps | Through a partner. Capacity can be changed more easily |
+| **Hosted** | 50 Mbps to 25 Gbps | Through a partner. Port speed can only be changed by the partner |
 
 AWS says it can take up to 72 business hours just to review a request and provision a port, so a new connection is slow compared with a VPN, which can be configured in minutes. If a question needs connectivity in days, use VPN first.
 
@@ -191,7 +191,7 @@ AWS says it can take up to 72 business hours just to review a request and provis
 
 ### Direct Connect Gateway
 
-A **Direct Connect Gateway** links one DX connection to VPCs in **many Regions**, in the same or different accounts. It does not route traffic between those VPCs.
+A **Direct Connect Gateway** links one DX connection to VPCs in **many Regions**, in the same or different accounts. It does not normally route traffic between those VPCs.
 
 ```mermaid
 flowchart LR
@@ -204,7 +204,7 @@ flowchart LR
 
 **SiteLink** can link your sites through AWS's DX network, without traffic passing through a Region.
 
-A central team can share one DX connection across accounts, which lowers cost and simplifies management. Use a DX gateway, or a transit VIF with Transit Gateway shared through RAM.
+A central team can share one DX connection across accounts. Use a DX gateway, or a transit VIF with Transit Gateway shared through RAM.
 
 ### Encryption
 
@@ -251,7 +251,7 @@ A **link aggregation group (LAG)** bundles dedicated connections at one location
 | Branch offices connect to each other | VPN CloudHub | |
 | More VPN bandwidth | ECMP on Transit Gateway | Or large bandwidth tunnels |
 | Survive a DX location failure | Connections at two locations | |
-| VPN is up, but no traffic flows | Route propagation | |
+| VPN is up, but no traffic flows | Check route propagation on the route table | Or routes and security rules |
 
 ## Check yourself
 
@@ -293,7 +293,7 @@ A **link aggregation group (LAG)** bundles dedicated connections at one location
 - D. Client VPN
 
 > [!success]- Answer
-> **B.** A VPN can be running in hours and is encrypted. Direct Connect usually takes much longer than a week.
+> **B.** A VPN can be configured in minutes and is encrypted, so it suits an immediate need.
 
 **5.** A company uses Direct Connect and needs a low-cost failover. What is the most cost-effective answer?
 

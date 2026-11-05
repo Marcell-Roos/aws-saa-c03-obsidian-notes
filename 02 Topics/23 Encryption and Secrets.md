@@ -111,7 +111,7 @@ KMS keys are Regional. To move an encrypted EBS volume to another Region, snapsh
 
 **Multi-Region keys** are identical keys in different Regions, with the same key ID and material. You can encrypt in one Region and decrypt in another, with no re-encryption. They are not global. There is a primary and replicas, and each is managed independently.
 
-Use them with **client-side encryption** on DynamoDB global tables or Aurora Global Database, so that specific fields stay protected, even from database administrators, and clients in each Region decrypt locally.
+Use them with **client-side encryption**, so that clients in each Region can decrypt locally without a cross-Region call.
 
 ### Custom key stores
 
@@ -173,7 +173,7 @@ Applications should never contain passwords. They should fetch them at runtime, 
 | Purpose | Secrets | Configuration and secrets |
 | **Automatic rotation** | **Yes**, managed or through Lambda | No native rotation |
 | Cost | Per secret, per month | Standard tier is free |
-| Cross-Region replication | Yes | No |
+| Cross-Region replication | Yes | Parameters are configured per Region |
 | Cross-account sharing | Resource policy | Limited |
 | Size limit | 64 KB | 4 KB standard, 8 KB advanced |
 | Pick for | Database credentials that rotate | App configuration and low-cost strings |

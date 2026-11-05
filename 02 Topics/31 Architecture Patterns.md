@@ -12,7 +12,7 @@ aliases: ["Architecture Patterns", "Multi-Tier Architecture", "Stateless and Sta
 
 ## Multi-tier architecture
 
-A multi-tier design separates **presentation, application and data** layers, each in its own subnets and scaled independently.
+A multi-tier design separates **presentation, application and data** layers.
 
 ```mermaid
 flowchart TB
@@ -37,7 +37,7 @@ Move state out of the instance:
 | Files | S3 or EFS |
 | Relational data | RDS or Aurora |
 
-Sticky sessions are a workaround, not a fix.
+Sticky sessions send a client's requests to the same target and are meant for servers that maintain state.
 
 ## Horizontal and vertical scaling
 
@@ -46,7 +46,7 @@ Sticky sessions are a workaround, not a fix.
 | How | Bigger instance | More instances |
 | Limit | Largest instance size | Almost none |
 | Availability | Single point of failure | Survives instance loss |
-| Downtime | Usually needs a restart | None |
+| Downtime | Needs a stop and start | None when adding instances |
 | Suits | Databases, legacy apps | Stateless web and worker tiers |
 
 **Scaling each component:**
@@ -101,7 +101,7 @@ Typical sources are S3 event notifications, DynamoDB Streams and EventBridge. Th
 | **Compute** | Fargate, Lambda, ECS, EKS |
 | **Data** | One data store per service, chosen for that service |
 
-Challenges include the overhead of creating each new service, getting good use out of servers, and running many versions at once. Serverless patterns help: API Gateway and Lambda scale automatically, you pay per use, and environments are easy to reproduce.
+Serverless patterns help: API Gateway and Lambda scale automatically and you pay per use.
 
 ## Serverless web application
 
@@ -116,7 +116,7 @@ flowchart LR
     C -.-> API
 ```
 
-This is the most common serverless design in the exam. Static content comes from S3 through CloudFront, dynamic calls go through API Gateway to Lambda and DynamoDB, and Cognito handles sign-in.
+Static content comes from S3 through CloudFront, dynamic calls go through API Gateway to Lambda and DynamoDB, and Cognito handles sign-in.
 
 ## Other patterns to recognise
 
@@ -181,7 +181,7 @@ flowchart LR
 
 | Decision | Choice | Reason |
 | --- | --- | --- |
-| Session data | ElastiCache | Sticky sessions make instances stateful. Cookies carry security risks |
+| Session data | ElastiCache | Sticky sessions make instances stateful |
 | User data | RDS | Relational |
 | Read load | Read replicas, or lazy loading with ElastiCache | Hundreds of users |
 | Availability | RDS Multi-AZ | Survives an AZ failure |
@@ -230,11 +230,11 @@ flowchart LR
 
 **Situation:** an EC2 application distributes software updates. When a new version appears, demand spikes, and the transfer costs are high.
 
-**Solution:** add CloudFront. Update files are static, so they cache well at the edge. **No architecture change** is needed, availability improves, EC2 can stay small, and network cost falls.
+**Solution:** add CloudFront. Update files are static, so they cache well at the edge. **No architecture change** is needed, availability improves, and network cost falls.
 
 ### Case 6: Designing microservices
 
-Use synchronous calls where a user is waiting, and asynchronous ones for background work. Give each service its own data store. Serverless services reduce repeated setup, and they let you clone an API to reproduce an environment.
+Use synchronous calls where a user is waiting, and asynchronous ones for background work. Give each service its own data store. Serverless services reduce repeated setup.
 
 ## How to approach any design question
 

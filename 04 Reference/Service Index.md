@@ -69,7 +69,7 @@ Use this page as a last check: cover the middle column, and say what each servic
 | Amazon ECS Anywhere | ECS tasks on your own servers | [[18 Containers#Where tasks run\|Containers]] |
 | Amazon EKS | Managed Kubernetes | [[18 Containers#Amazon EKS\|Containers]] |
 | Amazon EKS Anywhere | Kubernetes on your own infrastructure | [[18 Containers#Running Kubernetes elsewhere\|Containers]] |
-| Amazon EKS Distro | The Kubernetes distribution used by EKS | [[18 Containers#Running Kubernetes elsewhere\|Containers]] |
+| Amazon EKS Distro | The open-source Kubernetes distribution from AWS, built from the same code as EKS | [[18 Containers#Running Kubernetes elsewhere\|Containers]] |
 
 ### Database
 

@@ -344,7 +344,7 @@ To connect a self-managed Active Directory, use either a two-way trust through A
 
 ## AWS Directory Service
 
-**Active Directory (AD)** is Microsoft's directory for users, computers and groups. Windows workloads on AWS, such as FSx for Windows File Server, RDS for SQL Server and domain-joined EC2 instances, need one. AWS offers three options:
+**Active Directory (AD)** is Microsoft's directory for users, computers and groups. Windows workloads on AWS, such as FSx for Windows File Server, RDS for SQL Server and domain-joined EC2 instances, need one. The main options are:
 
 | | AWS Managed Microsoft AD | AD Connector | Simple AD |
 | --- | --- | --- | --- |
@@ -419,7 +419,7 @@ Access Analyzer is the answer whenever a question asks about **unintended extern
 | Enterprise customers use their SAML IdP with your SaaS app | User pool SAML federation | Still authentication for an app |
 | FSx for Windows must use on-premises AD identities | Join FSx directly to the self-managed AD, or use Managed Microsoft AD with a trust | FSx does not use AD Connector |
 | No user identities may be stored in the cloud | AD Connector | A proxy only |
-| Two-way trust between AWS and on-premises domains | Managed Microsoft AD | The only option with trusts |
+| Two-way trust between AWS and on-premises domains | Managed Microsoft AD | Supports trusts; Simple AD does not |
 | RDS for SQL Server with Windows Authentication | Managed Microsoft AD, or a direct join to a self-managed AD | AD Connector is not supported |
 | Worker in Account A copies a table to a bucket in Account B | Bucket policy | The worker keeps its own permissions |
 

@@ -128,7 +128,7 @@ Today this is rarely the best answer, because gp3 and io2 offer high performance
 
 ## EC2 instance store
 
-**Instance store** is storage physically attached to the host. It gives the highest I/O performance, but it is **ephemeral**.
+**Instance store** is storage physically attached to the host. It gives very high I/O performance, but it is **ephemeral**.
 
 | Event | Instance store data |
 | --- | --- |
@@ -156,7 +156,7 @@ Instance store volumes must be specified at launch and cannot be attached later.
 
 | Setting | Options | Guidance |
 | --- | --- | --- |
-| **File system type** | Regional (multi-AZ) or One Zone | One Zone is cheaper, for data that does not need multi-AZ |
+| **File system type** | Regional (multi-AZ) or One Zone | One Zone is for data that does not need multi-AZ resilience |
 | **Storage class** | Standard, Infrequent Access, Archive | Lifecycle policies move files automatically |
 | **Throughput mode** | **Elastic**, Provisioned, Bursting | Elastic is recommended, especially for spiky workloads |
 | **Performance mode** | **General Purpose**, Max I/O | General Purpose. Max I/O is a previous-generation mode |
@@ -181,7 +181,7 @@ More detail:
 
 ### FSx for Windows File Server
 
-- Supports SMB and NTFS, and integrates with Microsoft Active Directory.
+- Supports SMB, and integrates with Microsoft Active Directory.
 - Supports access control lists, user quotas and DFS Namespaces.
 - Offers SSD or HDD storage, and **data deduplication** lowers the cost of general file shares.
 - Can be accessed from on-premises over VPN or Direct Connect.
@@ -190,12 +190,12 @@ More detail:
 
 ### FSx for Lustre
 
-Lustre is a **parallel** distributed file system for large-scale computing. It delivers throughput up to multiple TB per second and sub-millisecond latency.
+Lustre is a high-performance file system for workloads where speed matters, such as HPC and machine learning. It delivers throughput up to multiple TB per second and sub-millisecond latency.
 
 | Deployment | Replication | Use |
 | --- | --- | --- |
 | **Scratch** | None. Data is lost if a file server fails | Short-term, cheapest, high burst |
-| **Persistent** | Replicated within one AZ (SSD and HDD), failed files replaced in minutes | Long-term processing, sensitive data |
+| **Persistent** | Replicated within one AZ (SSD and HDD), failed files replaced in minutes | Long-term processing, workloads sensitive to disruption |
 
 It **links to an S3 bucket**: S3 objects appear as files, jobs read them at high speed, and results can be written back to S3. This is the answer when HPC or ML needs fast access to data held in S3.
 

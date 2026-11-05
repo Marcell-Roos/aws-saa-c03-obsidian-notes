@@ -71,7 +71,7 @@ Actions include notifying SNS, scaling an ASG, and stopping, terminating, reboot
 
 ### Events
 
-**Amazon EventBridge** was formerly called CloudWatch Events, and older questions may use that name. Use it to react to state changes, such as an instance stopping or a CloudTrail API call.
+**Amazon EventBridge** was formerly called CloudWatch Events. Use it to react to state changes, such as an instance stopping or a CloudTrail API call.
 
 **CloudWatch Synthetics** runs scripted checks that act like users, so that you learn about a failure before customers do. **Cross-account observability** lets one monitoring account view metrics and logs from many accounts.
 
@@ -161,18 +161,18 @@ X-Ray does not trace every request. By default, the X-Ray SDK records the first 
 - The basic plan gets service limit checks, and selected security and fault tolerance checks.
 - The full set of checks, and programmatic access through the AWS Support API, need Business Support+ or a higher plan.
 
-It is not on AWS's in-scope list by name, but it appears in many questions, for instance on idle instances, open security groups and approaching quotas.
+It is not on AWS's in-scope list by name, but it checks for things such as idle instances, open security groups and approaching quotas.
 
 | Tool | Focus |
 | --- | --- |
 | Trusted Advisor | Broad best-practice checks |
 | AWS Config | Your own resource compliance rules |
-| Compute Optimizer | Rightsizing with machine learning. See [[29 Cost Optimisation#AWS Compute Optimizer\|Cost Optimisation]] |
-| Well-Architected Tool | A guided workload review |
+| Compute Optimizer | Rightsizing recommendations. See [[29 Cost Optimisation#AWS Compute Optimizer\|Cost Optimisation]] |
+| Well-Architected Tool | A workload review |
 
 ## Grafana and Prometheus
 
-**Amazon Managed Grafana** provides managed Grafana dashboards for metrics, logs and traces from many sources, including on-premises. It integrates with IAM Identity Center.
+**Amazon Managed Grafana** provides managed Grafana dashboards for metrics, logs and traces from multiple data sources. It integrates with IAM Identity Center.
 
 **Amazon Managed Service for Prometheus** is managed Prometheus-compatible monitoring for containers, usually viewed in Grafana. Pick these two when a scenario already uses open-source Grafana or Prometheus.
 
@@ -220,7 +220,7 @@ It is not on AWS's in-scope list by name, but it appears in many questions, for 
 - D. Use CloudTrail Insights
 
 > [!success]- Answer
-> **B.** Memory is not a default metric, because the hypervisor cannot see inside the OS.
+> **B.** Memory is not a default metric; the CloudWatch agent collects it.
 
 **3.** A compliance team wants to know if any security group allows SSH from the internet, and to fix it automatically. What should be used?
 

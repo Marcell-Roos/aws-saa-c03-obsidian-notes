@@ -97,7 +97,7 @@ These words have exact meanings. The exam uses them deliberately.
 | **Vertical scaling** | Scaling up or down with a bigger or smaller instance. Common for databases and other non-distributed systems. Limited by the largest instance and usually needs a restart | `t3.micro` to `t3.large` |
 | **Horizontal scaling** | Scaling out or in by adding or removing instances. Requires a distributed design | An Auto Scaling group |
 | **Elasticity** | Scaling automatically with demand, and paying only for what you use | Target tracking on CPU |
-| **High availability** | The system stays usable after a failure, perhaps with a short interruption. On AWS this means at least two AZs | RDS Multi-AZ failing over in a minute or two |
+| **High availability** | The system stays usable after a failure, perhaps with a short interruption. On AWS this usually means spreading across at least two AZs | RDS Multi-AZ failing over in a minute or two |
 | **Fault tolerance** | The system keeps working through a failure with no visible interruption, usually through full redundancy | Active-active across AZs with spare capacity |
 | **Durability** | The chance that data is not lost | S3's 11 nines |
 | **Availability** | The chance that the service can be used at a given moment | S3 Standard's 99.99% |
@@ -133,7 +133,7 @@ The framework is AWS's description of a good cloud design. Almost every scenario
 
 The **AWS Well-Architected Tool** is a free console service. You answer questions about a workload and receive a report of high-risk issues and an improvement plan. It is a review tool, not a scanner. **AWS Trusted Advisor** is the opposite: it inspects your account automatically. See [[25 Monitoring and Auditing#AWS Trusted Advisor|Trusted Advisor]].
 
-The older cloud best-practice principles still appear in question wording:
+Older cloud best-practice wording that may appear in questions:
 
 - **Scalability:** design to grow, vertically and horizontally.
 - **Disposable resources:** servers should be replaceable, not repaired.

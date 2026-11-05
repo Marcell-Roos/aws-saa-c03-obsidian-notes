@@ -40,12 +40,12 @@ The "7 Rs" describe how to move each application.
 
 | Situation | Use |
 | --- | --- |
-| Small data, spare bandwidth | Internet or Site-to-Site VPN |
+| Small data, spare bandwidth | Online transfer, such as DataSync |
 | Large, repeated transfers | Direct Connect |
 | Scheduled file sync | DataSync |
 | Databases | DMS |
 | Global uploads to S3 | S3 Transfer Acceleration |
-| Network transfer would take more than about a week | Snow Family, or physical transfer |
+| Not enough bandwidth for a high-speed online service | Snow Family, or physical transfer |
 
 **Do the arithmetic.** A 1 Gbps link moves about 125 MB per second at best.
 
@@ -122,11 +122,11 @@ The **Snow Family** uses physical devices to move data to AWS, and to run comput
 | Snowball Edge Compute Optimized | No new customers since 7 November 2025 |
 | Snowball Edge 80 TB and GPU models | Shut down on 12 November 2025 |
 | Snowcone | No longer in the current docs, so treat it as gone |
-| Snowmobile | Shut down on 14 March 2024 |
+| Snowmobile | No longer offered |
 
 AWS will discontinue support for Snowball devices in all commercial Regions on 31 December 2026. New customers are directed to DataSync online, **AWS Data Transfer Terminal** for physical transfers, and Outposts for edge compute.
 
-**For the exam:** if moving data over the network would take more than about a week, Snow is the classic answer. Data on a device is encrypted with KMS keys. **Snowball cannot import directly into Glacier.** Data lands in S3, then a lifecycle rule moves it. **OpsHub** is the graphical tool for managing devices.
+**For the exam:** if there is not enough bandwidth for a high-speed online service such as DataSync, Snow is the classic answer. Data on a device is encrypted with KMS keys. **Snowball cannot import directly into Glacier.** Data lands in S3, then a lifecycle rule moves it. **OpsHub** is the graphical tool for managing devices.
 
 ## AWS DMS
 
@@ -168,8 +168,6 @@ Other details:
 
 Install the replication agent on source servers, whether physical, virtual or in another cloud. Block-level replication runs continuously to AWS. When you launch **test** or **cutover** instances, MGN converts the servers to boot natively on AWS. Cutover takes minutes.
 
-It replaced the Server Migration Service, which shut down on 1 April 2023.
-
 ## Discovery and planning
 
 **AWS Application Discovery Service** gathers configuration, usage and dependency data from on-premises servers, to plan a migration. It works through an agent (detailed data) or the agentless collector for VMware. It has been closed to new customers since 7 November 2025, and AWS points to AWS Transform, but it stays on the in-scope list.
@@ -195,7 +193,7 @@ It replaced the Server Migration Service, which shut down on 1 April 2023.
 | Copy between S3 and EFS | DataSync | |
 | Partners upload through SFTP | Transfer Family | Never SFTP on EC2 |
 | Ongoing hybrid access or a one-off move | Storage Gateway or DataSync | |
-| Transfer would take more than a week | Snow Family | Or Data Transfer Terminal |
+| Not enough bandwidth for a high-speed online transfer | Snow Family | Or Data Transfer Terminal |
 | Archive to Glacier with Snowball | S3 first, then a lifecycle rule | |
 | Compute at a disconnected site | Snowball Edge Compute Optimized | Existing customers |
 | Migrate a database with little downtime | DMS with CDC | Source stays live |

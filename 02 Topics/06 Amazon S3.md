@@ -22,7 +22,7 @@ aliases: ["S3", "Amazon S3", "S3 bucket", "S3 buckets", "Amazon S3 Glacier", "Gl
 | **Key** | The full name of an object, such as `folder1/folder2/file.txt`. There are no real directories, only keys that contain slashes |
 | **Prefix** | The part of the key before the object name. Performance limits apply per prefix |
 
-S3 looks global because of the console, but buckets are Regional, and data never leaves the Region unless you replicate it.
+S3 looks global because of the console, but buckets are created in a single Region, and objects never leave it unless you explicitly transfer or replicate them.
 
 Key facts:
 
@@ -60,7 +60,7 @@ Minimum storage durations matter. If an object is deleted early, you are still c
 
 | Class | Tier | Time | Cost |
 | --- | --- | --- | --- |
-| Flexible Retrieval | Expedited | 1 to 5 minutes, for objects under 250 MB | Highest. Provisioned capacity guarantees availability |
+| Flexible Retrieval | Expedited | 1 to 5 minutes, for objects under 250 MB | Highest. Provisioned capacity helps ensure availability |
 | Flexible Retrieval | Standard | 3 to 5 hours | Moderate |
 | Flexible Retrieval | Bulk | 5 to 12 hours | **Free** |
 | Deep Archive | Standard | Within 12 hours | Low |
@@ -100,7 +100,7 @@ flowchart TD
     F -->|"No"| GFR["Glacier Flexible Retrieval"]
 ```
 
-**S3 Glacier as a separate service:** the exam guide lists Amazon S3 Glacier. Today this mostly means the Glacier storage classes above. The original vault-based Glacier API has been closed to new customers since 7 October 2025, but older questions may mention vaults. See [[07 S3 Security and Data Protection#Glacier Vault Lock|Glacier Vault Lock]].
+**S3 Glacier as a separate service:** the exam guide lists Amazon S3 Glacier. Today this mostly means the Glacier storage classes above. The original vault-based Glacier API is no longer accepting new customers, but older questions may mention vaults. See [[07 S3 Security and Data Protection#Glacier Vault Lock|Glacier Vault Lock]].
 
 ## Lifecycle rules
 
@@ -109,7 +109,7 @@ flowchart TD
 - **Transition actions** move objects to a cheaper class.
 - **Expiration actions** delete objects.
 
-Rules can also act on **noncurrent versions** and **remove incomplete multipart uploads**. The second one is an easy saving, because abandoned parts are billed but invisible in normal listings.
+Rules can also act on **noncurrent versions** and **remove incomplete multipart uploads**. The second one is an easy saving, because parts of unfinished uploads are billed until the upload is completed or stopped.
 
 Transitions flow **down** a waterfall, and never back up.
 
@@ -158,7 +158,7 @@ Rules to remember:
 
 | Type | Use |
 | --- | --- |
-| **Cross-Region Replication (CRR)** | Disaster recovery, compliance, lower latency for users in another Region |
+| **Cross-Region Replication (CRR)** | Disaster recovery, compliance, lower latency for users in another Region, compute clusters in different Regions |
 | **Same-Region Replication (SRR)** | Log aggregation, copying between production and test accounts |
 
 Requirements:
@@ -195,7 +195,7 @@ S3 scales automatically to at least **3,500 write requests (PUT, COPY, POST, DEL
 | **Byte-range fetches** | Requests specific byte ranges in parallel | Speeding up downloads, or reading only part of an object |
 | **S3 Express One Zone** | Directory bucket in one AZ with single-digit millisecond latency | Very latency-sensitive workloads next to compute |
 
-Global **uploads** to one bucket point to Transfer Acceleration. Global **downloads** point to CloudFront.
+Global **uploads** to one bucket point to Transfer Acceleration. For global **downloads**, consider CloudFront.
 
 **S3 Express One Zone** uses a special **directory bucket**. Data lives in one AZ, so place compute in the same AZ. It does not support SSE-C, DSSE-KMS, lifecycle transitions or server access logs.
 
@@ -208,7 +208,7 @@ S3 can react to events such as object creation, deletion and restore, or replica
 | **Lambda** | Run code on each object |
 | **SQS** | Standard queues only. **FIFO queues are not supported** directly |
 | **SNS** | Fan out to many subscribers |
-| **EventBridge** | All events can go here, with advanced filtering, multiple targets such as Step Functions and Kinesis, and archive and replay |
+| **EventBridge** | All events can go here, and EventBridge rules can route them to additional targets |
 
 Delivery is at least once, typically within seconds, and sometimes a minute or longer. Lambda, SQS and SNS need a resource policy that lets S3 send to them.
 
@@ -216,7 +216,7 @@ Delivery is at least once, typically within seconds, and sometimes a minute or l
 
 | Tool | Purpose |
 | --- | --- |
-| **S3 Batch Operations** | One job acting on many existing objects: copy, change tags or metadata, restore from Glacier, encrypt unencrypted objects, or invoke Lambda on each. It tracks progress and retries |
+| **S3 Batch Operations** | One job acting on many existing objects: copy, change tags or metadata, restore from Glacier, encrypt unencrypted objects, or invoke Lambda on each. It tracks progress and produces a completion report |
 | **S3 Inventory** | A scheduled report of objects and their metadata, often the input to Batch Operations |
 | **S3 Storage Lens** | Organisation-wide metrics and recommendations. Finds incomplete multipart uploads, the fastest-growing buckets and data protection gaps. Free metrics are kept 14 days, and advanced metrics 15 months |
 | **Storage Class Analysis** | Recommends when to move data between Standard and Standard-IA |
@@ -246,7 +246,7 @@ The website endpoint is HTTP only. The better design is **CloudFront in front of
 | If the question says | Think | Why |
 | --- | --- | --- |
 | Unknown or unpredictable access, minimise cost | Intelligent-Tiering | Its one clear signal |
-| Known pattern over time | Lifecycle rule | Cheaper than paying for monitoring |
+| Known pattern over time | Lifecycle rule | No monitoring fee |
 | Data can be regenerated, infrequent access | One Zone-IA | Single-AZ risk is acceptable |
 | Deleted after 20 days | Standard | Under every minimum duration |
 | Infrequent, needs instant access | Standard-IA | Milliseconds |
@@ -260,7 +260,7 @@ The website endpoint is HTTP only. The better design is **CloudFront in front of
 | 15-minute replication commitment | Replication Time Control | SLA backed |
 | Protect against accidental deletes | Versioning | Add MFA Delete for stronger control |
 | Global users upload multi-GB files | Transfer Acceleration plus multipart | Upload path |
-| Global users download content | CloudFront | Download path |
+| Global users download content | CloudFront | Caches content near users |
 | More requests per second | More prefixes | Limits are per prefix |
 | Download part of a large file | Byte-range fetch | |
 | Abandoned upload parts are costing money | Lifecycle rule to abort incomplete uploads | |
@@ -281,7 +281,7 @@ The website endpoint is HTTP only. The better design is **CloudFront in front of
 - D. S3 One Zone-IA
 
 > [!success]- Answer
-> **B.** Expedited retrieval takes 1 to 5 minutes, and storage is much cheaper than Standard. Deep Archive cannot return data in under 12 hours, and One Zone-IA risks losing compliance data.
+> **B.** Expedited retrieval takes 1 to 5 minutes, and it is a low-cost archive class. Deep Archive cannot return data in under 12 hours, and One Zone-IA risks losing compliance data.
 
 **2.** Log files are read heavily for 30 days, rarely until 90 days, and must always be retrievable in milliseconds. After a year they can be deleted. Which approach is the most cost-effective?
 
@@ -362,7 +362,7 @@ The website endpoint is HTTP only. The better design is **CloudFront in front of
 - D. Object tags. Remove the tags
 
 > [!success]- Answer
-> **B.** Parts of unfinished multipart uploads are billed but do not appear in normal listings. Storage Lens can also reveal them.
+> **B.** Parts of unfinished multipart uploads are billed until the upload is completed or stopped. Storage Lens can also reveal them.
 
 **10.** A research group shares a 500 TB dataset with other organisations and does not want to pay for their downloads. What should it use?
 

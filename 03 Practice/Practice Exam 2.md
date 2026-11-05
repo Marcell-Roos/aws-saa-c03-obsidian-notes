@@ -327,7 +327,7 @@ tags: [practice, scope/in]
 >
 > *Task 1.2.* Review: [[05 Load Balancing and Auto Scaling#TLS on a load balancer|TLS on a load balancer]]
 
-**27.** A team runs a read-heavy MySQL application with 12 read replicas, and it wants failover in under 30 seconds, storage that grows automatically, and replicas with very low lag. Which solution fits best?
+**27.** A team runs a read-heavy MySQL application with 12 read replicas, and it wants failover typically under 60 seconds, storage that grows automatically, and replicas with very low lag. Which solution fits best?
 
 - A. RDS for MySQL Multi-AZ instance deployment
 - B. DynamoDB

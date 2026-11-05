@@ -114,7 +114,7 @@ For many accounts, use **AWS Organizations**, which AWS recommends, to manage Gu
 | **ECR container images** | As they are pushed |
 | **Lambda functions** | Function code and package dependencies, as they are deployed |
 
-Findings go to Security Hub and EventBridge. Inspector Classic shut down on 20 May 2026, so everything here refers to the current version.
+Findings go to Security Hub and EventBridge. Everything here refers to the current version of Amazon Inspector.
 
 ## Amazon Macie
 
@@ -152,7 +152,7 @@ flowchart LR
 | GuardDuty reports a bad IP | Lambda adds it to a WAF IP set or a NACL |
 | Macie finds PII in a bucket | Lambda moves the object to a restricted bucket |
 | Config finds an open security group | SSM Automation removes the rule |
-| Inspector finds a critical CVE | Systems Manager patches the instance |
+| Inspector finds a critical CVE | An EventBridge rule sends the finding to a target |
 
 ## Compliance in practice
 

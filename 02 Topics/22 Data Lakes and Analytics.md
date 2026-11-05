@@ -44,7 +44,7 @@ flowchart LR
 
 Converting CSV or JSON to Parquet is a common exam task. **Glue jobs** do this in batch, and **Firehose** does it as a stream.
 
-**Partition** data by date or key, as in `year=2026/month=11/day=01`, so that queries read only the relevant files. Compression and larger files (over about 128 MB) also reduce cost.
+**Partition** data by date or key, as in `year=2026/month=11/day=01`, so that queries read only the relevant files. Compression and avoiding many small files also reduce cost.
 
 ## AWS Glue
 
@@ -64,16 +64,16 @@ If a question says "convert CSV to Parquet with no servers", the answer is Glue.
 
 ## AWS Lake Formation
 
-**Lake Formation** builds and secures a data lake in days. It sits on top of Glue.
+**Lake Formation** helps you centrally govern, secure, and globally share data for analytics and machine learning. It sits on top of Glue.
 
-- **Blueprints** ingest data from S3, relational and NoSQL sources.
+- **Blueprints** ingest data from JDBC database sources and log files.
 - **Centralised permissions** give fine-grained, **row and column level** access control.
 - Data from multiple accounts can be consolidated.
-- You can share data across AWS accounts and organizations, or directly with IAM principals in another account, with fine-grained access to the Data Catalog metadata and the data underneath.
+- You can share data across AWS accounts and organisations, or directly with IAM principals in another account, with fine-grained access to the Data Catalog metadata and the data underneath.
 - Tag-based access control (TBAC) manages permissions on databases, tables and columns by tag. The Lake Formation permissions model augments IAM permissions rather than replacing them.
 - It works with Athena, Redshift Spectrum and EMR.
 
-If the question asks for column-level or row-level security across a data lake, the answer is Lake Formation. S3 policies work only at the object level.
+If the question asks for column-level or row-level security across a data lake, the answer is Lake Formation, which enforces permissions at the column, row, and cell level.
 
 ### Securing a data lake
 
@@ -122,9 +122,9 @@ All of these reduce the amount of data scanned, which is what you pay for.
 
 ### Loading data
 
-- The **`COPY` command** from S3 is the fastest bulk load.
+- The **`COPY` command** from S3 is much more efficient than `INSERT` statements for bulk loads.
 - **Firehose** loads streams through S3 and `COPY`.
-- Large batches work far better than many small inserts.
+- Use `COPY` or multi-row inserts rather than many single-row inserts.
 - **Zero-ETL integrations** load data from Aurora and other sources with no pipeline.
 
 ### Redshift Spectrum
@@ -135,7 +135,7 @@ All of these reduce the amount of data scanned, which is what you pay for.
 
 | Feature | What it does |
 | --- | --- |
-| **Concurrency Scaling** | Adds temporary capacity for bursts of queries |
+| **Concurrency Scaling** | Adds cluster capacity for bursts of queries |
 | **Enhanced VPC Routing** | Forces `COPY` and `UNLOAD` traffic through your VPC, so that VPC controls apply |
 | **Materialized views** | Speed up repeated queries |
 | **Workload Management** | Prioritises query queues |
@@ -147,8 +147,8 @@ All of these reduce the amount of data scanned, which is what you pay for.
 - **Manual** snapshots stay until deleted.
 - Redshift can **automatically copy snapshots to another Region** for disaster recovery.
 - Multi-AZ deployments are available.
-- You can choose to encrypt a cluster when you provision it, and use AWS KMS to manage the keys. Encryption applies to the cluster and its backups.
-- Encryption is an immutable property of the cluster. To change an encrypted cluster to an unencrypted one, unload the data and reload it into a new cluster.
+- Clusters are encrypted at rest by default, with keys managed in AWS KMS. Encryption applies to the cluster and its backups.
+- You can modify an unencrypted cluster to use KMS encryption, and Redshift migrates the data to a new encrypted cluster.
 - SSL encrypts the connection between a SQL client and the cluster.
 
 ## Choosing an analytics service
@@ -181,7 +181,7 @@ EMR also offers serverless and EKS options.
 
 ## Amazon OpenSearch Service
 
-**OpenSearch** provides search on any field, including partial matches, plus log analytics with OpenSearch Dashboards. It is usually a complement to a primary database. It runs as a managed cluster or serverless.
+**OpenSearch** provides search, plus log analytics with OpenSearch Dashboards. It is usually a complement to a primary database. It runs as a managed cluster or serverless.
 
 For availability, a domain can spread its nodes across two or three Availability Zones (Multi-AZ), and dedicated master nodes offload cluster management. Domains can be placed in a VPC and use VPC security groups, and data is encrypted at rest. UltraWarm and cold storage keep read-only data at a lower cost.
 
@@ -198,7 +198,7 @@ For availability, a domain can spread its nodes across two or three Availability
 - It creates interactive dashboards, and connects to Athena, Redshift, RDS and others.
 - **SPICE** is its in-memory engine.
 - The Enterprise edition has **row-level and column-level security**, so one dashboard can show each user only the data they may see.
-- Users and groups exist in Quick, and are separate from IAM.
+- Users and groups are managed in Quick, according to your account identity configuration (IAM Identity Center, Active Directory and so on).
 - A **dashboard** is a read-only snapshot of an analysis, which can be shared.
 
 "Visualisation", "dashboards" and "BI" in a question point here.
@@ -207,7 +207,7 @@ For availability, a domain can spread its nodes across two or three Availability
 
 **AWS Data Exchange** lets you find and subscribe to third-party datasets, delivered into AWS.
 
-A data set can be delivered as files, an API, an Amazon Redshift data share, an Amazon S3 data access, or an AWS Lake Formation data permission.
+A data set can be delivered as files, an API, an Amazon Redshift data share, Amazon S3 data access, or an AWS Lake Formation data permission.
 
 **AWS Data Pipeline** moved and transformed data on a schedule. It is on the in-scope list, but it is closed to new customers and in maintenance. AWS points to Glue, Step Functions and Amazon MWAA.
 
@@ -238,7 +238,7 @@ Each stage has a clear job:
 | Discover the schema of S3 data | Glue crawler | |
 | Petabyte data warehouse for complex BI | Redshift | |
 | Query S3 from an existing Redshift cluster, no loading | Redshift Spectrum | |
-| Fastest bulk load into Redshift | `COPY` from S3 | |
+| Efficient bulk load into Redshift | `COPY` from S3 | |
 | Burst of many BI users | Concurrency Scaling | |
 | Force Redshift traffic through the VPC | Enhanced VPC Routing | |
 | Redshift DR to another Region | Automatic snapshot copy | |
@@ -302,7 +302,7 @@ Each stage has a clear job:
 - D. Security groups
 
 > [!success]- Answer
-> **B.** Lake Formation gives column and row level permissions. S3 policies work only at the object level.
+> **B.** Lake Formation enforces permissions at column, row and cell level.
 
 **6.** A company runs nightly Spark jobs, and it wants to reduce cost. The jobs can tolerate lost workers. What is the best approach?
 

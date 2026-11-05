@@ -26,7 +26,7 @@ Compared with running a database yourself on EC2, RDS gives you:
 
 The trade-off is that **you cannot SSH into an RDS instance**, except on RDS Custom. If an application needs OS-level access, use RDS Custom for Oracle or SQL Server, or install the database on EC2.
 
-Choosing an engine usually follows the application or licences you already have. MySQL and PostgreSQL are both open source: PostgreSQL has richer data types and standards support, and MySQL is simple and very widely used. Oracle and SQL Server carry licence costs, so moving away from them is a common cost saving.
+Choosing an engine usually follows the application or licences you already have. MySQL and PostgreSQL are both open source. Oracle and SQL Server need a licence, either included in the price or brought yourself, so licence costs apply.
 
 ### Instance and storage
 
@@ -74,7 +74,7 @@ A **Multi-AZ DB cluster** has one writer and **two readable standbys** across th
 
 A **read replica** is a read-only copy, updated asynchronously. Up to 15 are available for most engines, and AWS recommends no more than 5 for Oracle.
 
-- Reads are **eventually consistent**.
+- Replication is asynchronous, so reads are **eventually consistent** and can be stale.
 - Replicas can be in the same AZ, across AZs or across Regions.
 - Applications must be pointed at the replica. Connection strings have to change.
 - A replica can be **promoted** to a standalone database, manually.
@@ -151,7 +151,7 @@ The exam guide mentions proxies explicitly under high availability, so this is a
 
 **Blue/Green Deployments** create a synchronised staging copy of production, so that you can upgrade engines or change schemas and then switch over with little downtime. They are supported for RDS MariaDB, MySQL and PostgreSQL, and for Aurora.
 
-**RDS Custom** gives access to the underlying OS and database for Oracle and SQL Server. Pause automation before you customise, and take a snapshot first. RDS Custom for Oracle reaches end of support on 31 March 2027.
+**RDS Custom** gives access to the underlying OS and database for Oracle and SQL Server. Pause automation before you customise, and back up your data first. RDS Custom for Oracle reaches end of support on 31 March 2027.
 
 **Monitoring:**
 
@@ -159,13 +159,13 @@ The exam guide mentions proxies explicitly under high availability, so this is a
 - **Enhanced Monitoring** gives real-time OS metrics.
 - **CloudWatch Database Insights** replaced Performance Insights, which ended on 31 July 2026. Older questions may use the old name for finding slow queries.
 
-**Event notifications** report on the database instance itself, such as failover or snapshot events, in near real time, through SNS or EventBridge. They say nothing about the data.
+**Event notifications** report on the database instance itself, such as failover or snapshot events, through SNS or EventBridge. They say nothing about the data.
 
 **Invoking Lambda from the database** is supported for RDS for PostgreSQL and Aurora MySQL, to process data events. The database needs outbound network access to Lambda, and permission to invoke it.
 
 ## Amazon Aurora
 
-**Aurora** is AWS's cloud-native relational database, compatible with MySQL and PostgreSQL. AWS quotes up to 5 times the throughput of MySQL and 3 times that of PostgreSQL. It costs more per instance than RDS, but it is more efficient and more capable.
+**Aurora** is AWS's cloud-native relational database, compatible with MySQL and PostgreSQL. AWS positions it as faster than standard MySQL and PostgreSQL.
 
 ### Architecture
 
@@ -185,7 +185,7 @@ flowchart TB
 - Data is kept in **6 copies across 3 AZs**. Writes need 4 of 6, and reads need 3 of 6.
 - Storage is self-healing.
 - There is one writer and up to **15 replicas**, which share the storage, so replica lag is low.
-- Failover usually takes **under 30 seconds**. If replicas exist, one is promoted. You can set failover priority tiers.
+- Failover is typically **under 60 seconds**, and often under 30. If replicas exist, one is promoted. You can set failover priority tiers.
 
 ### Endpoints
 
@@ -212,7 +212,7 @@ A **Global Database** spans Regions: one primary Region for writes, and up to 10
 
 | Event | Use | Recovery |
 | --- | --- | --- |
-| Planned move | **Switchover** | No data loss, typically under 30 seconds on recent versions |
+| Planned move | **Switchover** | No data loss (RPO 0) |
 | Outage | **Managed failover** | RPO measured in seconds, a new primary within minutes |
 
 AWS's marketing and older exam material quote an **RPO of about 1 second and an RTO of about 1 minute**. Expect those numbers in questions, though the current documentation is more cautious. **Write forwarding** lets secondary Regions send writes on to the primary.
@@ -231,14 +231,14 @@ Aurora automated backups have a retention of 1 to 35 days and cannot be disabled
 
 ### Aurora Machine Learning
 
-Aurora can call SageMaker AI and Comprehend from SQL, to add predictions without ML expertise. It is not on the in-scope list, so treat it as background.
+Aurora machine learning lets a cluster use Amazon Bedrock, Amazon Comprehend or SageMaker AI. It is not on the in-scope list, so treat it as background.
 
 ## Choosing RDS or Aurora
 
 | Need | Choose |
 | --- | --- |
 | Oracle, SQL Server or Db2 | RDS |
-| Lowest cost for a small MySQL or PostgreSQL database | RDS |
+| A small MySQL or PostgreSQL database that does not need Aurora features | RDS |
 | Fast failover, many low-lag replicas, automatic storage growth | Aurora |
 | Global database with one writer | Aurora Global Database |
 | Unpredictable or idle workload, relational | Aurora Serverless v2 |
@@ -260,7 +260,7 @@ Aurora can call SageMaker AI and Comprehend from SQL, to add predictions without
 | Restore to 10 minutes ago | Point-in-time restore | Creates a new DB |
 | Undo a bad DELETE quickly, Aurora MySQL | Backtrack | In place |
 | Full copy of production for testing, quick and cheap | Aurora cloning | Copy-on-write |
-| Cross-Region DR, RPO about 1 second | Aurora Global Database | |
+| Cross-Region DR, RPO typically seconds | Aurora Global Database | |
 | Dev database idle at night | Aurora Serverless v2 | Scales to zero |
 | OS-level access | RDS Custom or EC2 | Plain RDS has none |
 | Storage runs out unpredictably | Storage Auto Scaling | Set a maximum |

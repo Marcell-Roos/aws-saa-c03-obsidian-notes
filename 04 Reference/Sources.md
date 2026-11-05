@@ -4,7 +4,7 @@ tags: [reference, scope/in]
 
 # Sources
 
-Everything this vault draws on. Read on 1 November 2026. Facts that were not confirmed on a page read are listed in the [[Corrections Log]].
+Everything this vault draws on. Read on 1 November 2026 and again between 3 and 5 November 2026. Facts that were not confirmed on a page read are listed in the [[Corrections Log]].
 
 ## Primary source notes
 

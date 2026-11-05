@@ -158,7 +158,7 @@ flowchart TD
 
 **SSE-KMS and throttling.** Each upload calls `GenerateDataKey` and each download calls `Decrypt`. These count toward KMS request quotas and cost money. An **S3 Bucket Key** reduces KMS calls by up to 99% by using a bucket-level key. It gives a coarser audit trail in CloudTrail.
 
-**Enforcing encryption.** SSE-S3 applies automatically, but a bucket policy can insist on a particular type, by denying `PutObject` requests without the right header. Bucket policies are evaluated before default encryption.
+**Enforcing encryption.** SSE-S3 applies automatically, but a bucket policy can insist on a particular type, by denying `PutObject` requests without the right header.
 
 **Encrypting existing objects.** Use [[06 Amazon S3#Tools for managing S3 at scale|S3 Batch Operations]] to copy them in place with new settings.
 
@@ -200,7 +200,7 @@ The word in the question decides the mode. "**Even administrators**" or "**not e
 | Tool | What it records | Best for |
 | --- | --- | --- |
 | **Server access logs** | Each request to a bucket, delivered to a log bucket in the same Region. Free apart from storage | Cheap, best-effort, delayed access records |
-| **CloudTrail data events** | Object-level API calls with IAM identity, paid per event | Audit with identity detail, near real time |
+| **CloudTrail data events** | Object-level API calls with IAM identity, paid per event | Audit with identity detail |
 | **CloudTrail management events** | Bucket-level changes | Who changed a bucket policy |
 | **Amazon Macie** | Finds sensitive data in buckets | PII discovery |
 | **IAM Access Analyzer** | Buckets reachable from outside | Unintended sharing |

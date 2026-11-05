@@ -43,7 +43,7 @@ Choose an HTTP API unless you need something in the REST column. The exam often 
 
 | Endpoint | For | Notes |
 | --- | --- | --- |
-| **Edge-optimised** | Global clients | Routed through CloudFront edge locations. The API still lives in one Region |
+| **Edge-optimised** | Global clients | Routed through CloudFront edge locations |
 | **Regional** | Clients in the same Region | Can be combined with your own CloudFront distribution for more control |
 | **Private** | Only within a VPC | Reached through an interface VPC endpoint. Use a resource policy |
 
@@ -62,11 +62,11 @@ A direct AWS service integration can remove a Lambda function that only forwards
 
 ### Direct service integrations
 
-API Gateway can call other AWS services without any Lambda function in between. This removes code, cost and latency.
+API Gateway can call other AWS services without any Lambda function in between. This removes the need for code in between.
 
 | Pattern | Benefit |
 | --- | --- |
-| API Gateway to **SQS** | Accepts requests quickly and buffers them |
+| API Gateway to **SQS** | Queues requests for later processing |
 | API Gateway to **Kinesis** | Ingests records from clients |
 | API Gateway to **DynamoDB** | Simple reads and writes |
 | API Gateway to **Step Functions** | Starts a workflow and returns at once |
@@ -95,7 +95,7 @@ API Gateway protects your backend by throttling.
 
 A **usage plan** sets who can call an API, how fast and how much, using API keys. This is how a SaaS company offers pricing tiers, such as a free tier at 100 requests per day.
 
-Throttling is also a cost control, because it stops runaway clients driving up backend charges.
+Throttling also protects backend systems from traffic spikes.
 
 ### Caching
 
@@ -109,7 +109,7 @@ REST APIs can cache responses per stage. The default TTL is **300 seconds**. Thi
 | Payload | 10 MB |
 | Account throttle | 10,000 requests per second by default |
 
-If a backend takes minutes, do not wait for it. **Go asynchronous:** return `202 Accepted`, put the work on SQS or start a Step Functions workflow, and let the client check later. This is the right design even where the timeout could be raised. Older material treats 29 seconds as a hard limit.
+If a backend takes minutes, do not wait for it. **Go asynchronous:** return `202 Accepted`, put the work on SQS or start a Step Functions workflow, and let the client check later. Older material treats 29 seconds as a hard limit. Raising the timeout above 29 seconds might require a lower Region-level throttle quota, so asynchronous is still the better design.
 
 ### WebSocket APIs
 
@@ -154,7 +154,7 @@ You can run automated tests on many devices in parallel by uploading your app an
 
 | If the question says | Think | Why |
 | --- | --- | --- |
-| REST API with no servers, pay per request | API Gateway, Lambda, DynamoDB | The standard chain |
+| REST API with no servers, pay per request | API Gateway, Lambda, DynamoDB | A common serverless chain |
 | Different request limits for each pricing tier | Usage plans and API keys | REST API |
 | Mobile users must sign in before calling the API | Cognito user pool authoriser | |
 | Existing third-party token system | Lambda authoriser | Custom logic |

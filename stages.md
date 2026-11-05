@@ -45,15 +45,22 @@ Realistic ceiling: about 9/10 on facts and 9/10 on coverage. Some facts AWS only
 - 13 groups rs1..rs13 (rs11 to rs13 cover the practice exams, cheat sheet, labs and refs). `review.py check rs rsN` prints OK for all. Results are in `S/review/rs_rsN.jsonl` (FOUND with quote, or STILL_UNSOURCED with note). No vault edits were made in this stage.
 - Item files were built from the a8467d0 snapshot (`S/v2`). Before Stage 5, refresh `S/v2` to current HEAD or expect `old` text to differ where the vault has since changed (Stage 2/3 edits). Line numbers in ids are from the old snapshot.
 
-### Stage 5: adjudication. STATUS: not started
+### Stage 5: adjudication. STATUS: DONE (4 Nov 2026)
+- 13 groups a1..a13 (`S/review/adj_aN.jsonl`, `items_aN.jsonl`), 372 items: 171 APPLY (all applied as `S/fixes/g14.json`, plus 3 follow-ups: Practice Exam 3 line 410, chapter 22 line 305 and the g13 already-applied items), 201 KEEP. `S/v2` refreshed to HEAD 1f6ed43 first. Link check 1212 bad 0, pxcheck no problems. Panorama 20 May 2026 kept (General Reference full_shutdown_services page). WAF Classic is 7 Oct 2026 everywhere. Nothing committed.
+- Weakest APPLY: ch17:78 (design opinion deleted, weak evidence). Review in Stage 7.
 - For each UNSOURCED claim: APPLY a fix, or KEEP with evidence (distractors, absence from the in-scope list and maths are allowed bases). Rule: never delete a correct exam fact just because a source was hard to find; narrow the wording instead.
 - Do: one agent per group, `stage adj (KIND adj)`, then apply every APPLY with `applyedits.py` and log it.
 - Known cross-vault items still to settle: "SNS does not store" wording elsewhere (grep), WAF Classic date conflict (7 Oct 2026 vs 30 Sep 2025), Rekognition feature names (Streaming Events vs Streaming Video), DR strategy RPO/RTO figures (diagram only, keep and flag), Quick "evolved from QuickSight", Kendra and Comprehend dates.
 
-### Stage 6: strict re-judging of "supported" entries. STATUS: not started
+### Stage 6: strict re-judging of "supported" entries. STATUS: judging DONE (4 Nov 2026), WEAK adjudication NOT started
+- 19 groups j1..j19 (Sonnet agents, `S/review/sup_jN.jsonl` and `rj_jN.jsonl`; brief `S/RJ.md`). 6,854 entries judged, 1,648 WEAK (24%). All WEAK rows with their reasons are in `S/review/weak_all.jsonl`, tagged k = exam (445 practice-exam wrong options and explanations), num (384 claims with numbers, dates, limits) or other (819).
+- j14 ran `rjdone` early, so some ids may have both PROVES and WEAK rows: WEAK wins.
+- `num` group DONE 4 Nov 2026: 7 groups b1..b7 (`items_bN`, `adj_bN`, brief `S/ADJB.md`), 384 items: 8 edits applied (`S/fixes/g15.json`), 376 KEEP with fuller quotes or maths. Link check 1212 bad 0. `other` sample DONE (100 random, `items_c1/c2`, 5 minor rewordings, `S/fixes/g16.json`); remaining `other` (719) not adjudicated. NOT yet done: `other` remainder and `exam` (445) WEAK groups.
+- Most WEAK items mean the quote is incomplete, not that the vault is wrong. Plan: adjudicate `num` first (real risk), then sample `other`, treat `exam` wrong options as distractors unless the stem fact is unsourced. Nothing in the vault changed in this stage yet.
 - About 6,100 entries marked SUPPORTED; many rest on loose quotes, especially wrong options in practice exams and self-tests. Build files with `review.py supported GROUP BATCH...`, one agent per group (`stage rj`), then adjudicate every WEAK entry as in Stage 5.
 
-### Stage 7: final independent review. STATUS: not started
+### Stage 7: final independent review. STATUS: DONE (5 Nov 2026)
+- Opus reviewer report: `S/review/FINAL_REVIEW.md`. 22 fixes applied (`S/fixes/g17.json`) plus Corrections Log, README, Home and Sources updates. Task B sample: 15 of 100 quotes too thin on their own, none hiding a wrong fact; those 15 ids (ch08:114, pe4a:282, pe2b:51, ch04a:17, ch05:106, ch20:115, pe5b:180, pe4a:285, ch04b:26, ch18:154, ch22:99, ch28:61, pe1a:106, ch26:109, ch10:34) were not re-sourced. Not done on purpose: remaining 719 `other` and 445 `exam` WEAK entries; reviewer items 2.7-2.9 (EFS One Zone cheaper, FSx NTFS, Inspector automated response) left as they are, no source. Nothing committed.
 - One `opus` agent (not the one that edited) reviews every changed line (`git diff`), the Corrections Log, and a random sample of 100 SUPPORTED entries against their pages. Recount the checks: 189/189 exam guide items verbatim, 119 in-scope, 50 out-of-scope, 1,210 links, 5 exams x 65 questions, answer keys match, no duplicate stems.
 - Then write the final confidence report with the remaining unconfirmed list. Update README, Home, Sources and Corrections Log dates and counts.
 

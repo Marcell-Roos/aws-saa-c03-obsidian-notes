@@ -118,7 +118,7 @@ Each load balancer node normally sends traffic only to targets in its own AZ. **
 
 ### Connection draining
 
-**Deregistration delay** gives in-flight requests time to finish when a target is removed. New requests stop, and existing ones are allowed to complete. The range is 0 to 3,600 seconds, with a default of 300. Setting it to 0 disables it. Use a low value for short requests. Errors during scale-in often point to this setting being too low.
+**Deregistration delay** gives in-flight requests time to finish when a target is removed. New requests stop, and existing ones are allowed to complete. The range is 0 to 3,600 seconds, with a default of 300. If a deregistering target closes the connection before the delay elapses, the client receives a 500-level error.
 
 The **idle timeout** is how long a connection can stay inactive before the load balancer closes it. On an ALB the default is 60 seconds. For lengthy operations such as file uploads, increase it, or send data before it elapses.
 
@@ -179,7 +179,7 @@ A **launch template** defines what to launch: AMI, instance type, key pair, secu
 
 Good metrics include average CPU, request count per target and average network in or out. You can also publish any custom metric. **Choosing the metric is part of the question.** For an SQS worker fleet, CPU tells you little. The right metric is **backlog per instance**, calculated from queue depth. See [[20 Messaging and Integration#Scaling workers on queue depth|Messaging and Integration]].
 
-**Cooldown** (default 300 seconds) stops a simple scaling policy acting again before metrics settle. For target tracking and step scaling, the **instance warm-up** setting does a similar job. A golden AMI shortens the time needed.
+**Cooldown** (default 300 seconds) stops a simple scaling policy acting again before metrics settle. For target tracking and step scaling, the **instance warm-up** setting does a similar job.
 
 ### Health checks
 
@@ -216,7 +216,7 @@ A **warm pool** keeps pre-initialised instances ready in a Stopped, Running or H
 
 ### Mixed instances
 
-A **mixed instances policy** combines several instance types and purchase options in one group: for example, an On-Demand base, then a percentage of Spot above it. Use the `price-capacity-optimized` strategy for Spot. Adding instance types increases the pools available and so reduces interruptions.
+A **mixed instances policy** combines several instance types and purchase options in one group: for example, an On-Demand base, then a percentage of Spot above it. Use the `price-capacity-optimized` strategy for Spot. Adding instance types increases the pools available.
 
 ### Pausing an Auto Scaling group
 
@@ -252,11 +252,11 @@ The names are confusing, so learn the difference.
 | Many domains with different certificates on one load balancer | SNI | Multiple certificates, one listener |
 | Redirect HTTP to HTTPS | ALB redirect action | Built in |
 | UDP game traffic with a static IP | NLB | ALB has no UDP or static IP |
-| Partners must allow-list your IPs | NLB with Elastic IPs, or Global Accelerator in front of an ALB | ALB IPs change |
+| Partners must allow-list your IPs | NLB with Elastic IPs, or Global Accelerator in front of an ALB | ALB has no static IP |
 | Static IP and path routing | NLB in front of an ALB | ALB is a valid NLB target |
 | Millions of requests per second, ultra-low latency | NLB | Layer 4 |
 | Inspect all traffic with third-party appliances | Gateway Load Balancer | GENEVE, bump-in-the-wire |
-| Put WAF on a load balancer | ALB | Layer 7 only |
+| Put WAF on a load balancer | ALB | ALB supports AWS WAF |
 | Application needs the original client IP behind an ALB | `X-Forwarded-For` | NLB preserves it natively |
 | PrivateLink service | NLB | Endpoint service front |
 | Lambda behind a load balancer | ALB | Lambda is an ALB target type |
@@ -264,16 +264,16 @@ The names are confusing, so learn the difference.
 | Keep average CPU at 40% with least configuration | Target tracking | "Keep at a value" |
 | Traffic spikes at a known time | Scheduled scaling | Predictable |
 | Forecast recurring patterns | Predictive scaling | Scales ahead of the load |
-| Scale workers by unprocessed jobs | Queue backlog per instance | CPU is the wrong signal |
+| Scale workers by unprocessed jobs | Queue backlog per instance | Custom metric from the queue |
 | Uneven load across AZs | Cross-zone load balancing | Each node spreads evenly |
 | In-flight requests fail during scale-in | Deregistration delay | Connection draining |
 | Sessions are lost when an instance is replaced | Store sessions in DynamoDB or ElastiCache | Make the tier stateless |
 | Run a script before an instance enters service | Lifecycle hook | Pending wait |
 | Roll a new AMI through a group with no outage | Instance refresh | Minimum healthy percentage |
-| Instances must start much faster | Warm pool or golden AMI | Pre-initialised capacity |
+| Instances must start much faster | Warm pool, or a golden AMI | Pre-initialised capacity, or software already installed |
 | Stop people going around the load balancer | Instance SG allows only the load balancer's SG | SG-to-SG reference |
-| Failover between instances | ELB | Immediate, in the path |
-| Failover between Regions | Route 53 | DNS-based, slower |
+| Failover between instances | ELB | Health checks, in the path |
+| Failover between Regions | Route 53 | DNS-based |
 
 ## Check yourself
 

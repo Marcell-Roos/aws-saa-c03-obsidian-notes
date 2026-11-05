@@ -27,7 +27,7 @@ The memory aid is to think about what goes in and what comes out.
 
 ### More detail
 
-**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content. AWS listed its Streaming Events and batch image content moderation features as in maintenance on 31 March 2026. AWS also states that Streaming Video and Bulk Image Analysis close to new customers from 30 April 2026.
+**Amazon Rekognition** finds objects, people, text and scenes in images and videos. It supports facial analysis and facial search, for user verification and people counting. It can also flag inappropriate content. AWS listed its Streaming Events and batch image content moderation features as in maintenance on 31 March 2026. AWS also states that Streaming Video and Bulk Image Analysis closed to new customers on 30 April 2026.
 
 **Amazon Textract** extracts text, handwriting and data from scanned documents. It goes beyond plain text recognition, because it understands forms and tables. Use it for invoices and forms. Rekognition is not the right choice for those.
 
@@ -39,7 +39,7 @@ It transcribes in real time (streaming) or in batch from files in S3.
 
 **Amazon Translate** gives natural language translation, for localising content such as websites and applications.
 
-**Amazon Comprehend** performs natural language processing. It extracts key phrases, places and people, works out sentiment, and organises a collection of text files by topic. AWS listed topic modeling, event detection and prompt safety classification as in maintenance on 31 March 2026, so sentiment, entities and key phrases are the safest uses to learn. **Comprehend Medical** extracts medical information from clinical text.
+**Amazon Comprehend** performs natural language processing. It extracts key phrases, places and people, works out sentiment, and organises a collection of text files by topic. AWS says topic modeling, event detection and prompt safety classification are no longer available to new customers, so sentiment, entities and key phrases are the safest uses to learn. **Comprehend Medical** extracts medical information from clinical text.
 
 Comprehend can also detect **personally identifiable information (PII)** in text, such as addresses, bank account numbers and phone numbers. Pre-trained models need no training data, and you can train custom models for classification and entity recognition.
 
@@ -58,8 +58,8 @@ These are not on the in-scope list. They are here so that you can recognise them
 | **Amazon Personalize** | Real-time recommendations | Out of scope |
 | **Amazon Connect** | Cloud contact centre | Neither list |
 | **Amazon Kendra** | ML-powered document search | In maintenance since 30 June 2026, closed to new customers since 30 July 2026 |
-| **Amazon Forecast** | Time-series forecasting | Closed to new customers since 29 July 2024. AWS points to SageMaker Canvas |
-| **Amazon Monitron** | Predictive maintenance for machinery | Closed to new customers since 31 October 2024 |
+| **Amazon Forecast** | Time-series forecasting | No longer available to new customers |
+| **Amazon Monitron** | Predictive maintenance for machinery | No longer open to new customers |
 | **AWS Panorama** | Computer vision at the edge | Shut down on 20 May 2026 |
 
 If an answer option names one of the out-of-scope or retired services, treat it with suspicion. An out-of-scope service should not be a correct answer.

@@ -141,7 +141,7 @@ tags: [practice, scope/in]
 - D. DynamoDB read replicas
 
 > [!success]- Answer
-> **B.** DAX is a DynamoDB-compatible cache with microsecond reads. ElastiCache needs more code changes. DynamoDB has no read replicas. More capacity does not reach microseconds.
+> **B.** DAX is a DynamoDB-compatible cache with microsecond reads. ElastiCache needs more code changes. More capacity does not reach microseconds.
 >
 > *Task 3.3.* Review: [[14 DynamoDB#DynamoDB Accelerator|DynamoDB Accelerator]]
 
@@ -165,7 +165,7 @@ tags: [practice, scope/in]
 - D. Use API Gateway to call the container when files arrive
 
 > [!success]- Answer
-> **A.** Fargate tasks have no 15-minute limit, and EventBridge can start them on S3 events. Lambda stops at 15 minutes. Polling Reserved Instances means servers to manage and idle capacity. API Gateway is not an event source for S3.
+> **A.** Fargate runs a containerised task that stops when its work is done, and EventBridge can start them on S3 events. Lambda stops at 15 minutes. Polling Reserved Instances means servers to manage and idle capacity. API Gateway is not an event source for S3.
 >
 > *Task 2.1.* Review: [[18 Containers#Event-driven patterns|Event-driven patterns]]
 
@@ -202,7 +202,7 @@ tags: [practice, scope/in]
 - D. Application Load Balancer
 
 > [!success]- Answer
-> **C.** An NLB handles TCP at layer 4 with very low latency and one static IP per AZ. An ALB is for HTTP and has no static IPs. A GWLB is for appliances. The Classic Load Balancer is a previous-generation product.
+> **C.** An NLB handles TCP at layer 4 with very low latency and one static IP per AZ. An ALB is for HTTP, and a static IP for it needs an NLB in front. A GWLB is for appliances. The Classic Load Balancer is a previous-generation product.
 >
 > *Task 3.4.* Review: [[05 Load Balancing and Auto Scaling#Network Load Balancer|Network Load Balancer]]
 

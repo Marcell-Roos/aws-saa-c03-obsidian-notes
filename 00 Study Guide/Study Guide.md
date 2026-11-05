@@ -77,7 +77,7 @@ In total, expect about 115 hours. That is around 80 hours of chapters, 15 hours 
 
 ### Step 3 Storage
 
-**Standard plan: week 3. About 11 hours.** S3 appears in every domain, so take your time.
+**Standard plan: week 3. About 11 hours.** S3 is on the exam's in-scope list, so take your time.
 
 - [ ] Read [[06 Amazon S3]] and score at least 80%
 - [ ] Read [[07 S3 Security and Data Protection]] and score at least 80%

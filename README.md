@@ -5,7 +5,24 @@ An [Obsidian](https://obsidian.md) vault for the **AWS Certified Solutions Archi
 > [!IMPORTANT]
 > **This vault is AI-generated.** It was written and assembled by Claude, Anthropic's AI model, from the sources below. No person has reviewed it line by line, so it may contain mistakes. No study material can guarantee a pass. AWS recommends about a year of hands-on experience for this exam.
 
-Key facts were checked against AWS documentation on 1 November 2026, and reviewed again on 2 November 2026. AWS changes quickly, so some details will go out of date. [`Corrections Log`](04%20Reference/Corrections%20Log.md) records what was checked, and what was not.
+Key facts were checked against AWS documentation on 1 November 2026, reviewed again on 2 November 2026, and checked a third time line by line between 3 and 5 November 2026. AWS changes quickly, so some details will go out of date. [`Corrections Log`](04%20Reference/Corrections%20Log.md) records what was checked, and what was not.
+
+## How far to trust the content
+
+This is an honest summary of the third review (3 to 5 November 2026). It is not a guarantee.
+
+| Check | Result |
+| --- | --- |
+| Exam guide coverage | All 189 knowledge and skill items match AWS's text and map to a chapter section. All 119 in-scope and 50 out-of-scope services match AWS's lists. |
+| Structure | 1,212 internal links resolve. Five practice exams of 65 questions each, with consistent answer keys and no duplicate questions. |
+| Facts checked line by line | About 6,850 claims were each tied to a quote from an AWS page, and every quote was machine-checked to exist on the page. |
+| Claims AWS pages could not confirm | 372 were each narrowed to what AWS says or kept with a stated reason. 171 were reworded. |
+| Numbers, dates, limits and prices | 384 claims that a strict second judge thought only partly proven were re-sourced. 7 were corrected. |
+| Independent review | A separate model reviewed every changed line and found 31 problems, mostly from earlier fixes. All were corrected. |
+
+**Confidence.** High that the numbers, limits, dates and service names are right, and that every exam guide item is covered. Medium for finer wording: comparisons, "only" and "cannot" claims, and the reasons given for wrong practice-exam options. About 1,160 such lines were judged only partly proven by their quotes and were not re-sourced. A random sample of 100 wording claims found 5 needing rewording and none wrong, and a random sample of 100 other entries found none hiding a wrong fact, so the risk looks low but is not zero. A few facts have no AWS page at all (for example, EFS One Zone being cheaper, and NTFS for FSx for Windows); they are left in as widely held exam facts.
+
+Nothing here replaces AWS's own documentation and the official exam guide, so check anything that decides an answer against them.
 
 ## What's inside
 

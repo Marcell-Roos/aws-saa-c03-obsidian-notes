@@ -101,7 +101,7 @@ To serve a website from S3 through Route 53 directly, the bucket name must match
 | **Simple** | One resource | No |
 | **Weighted** | Percentage split, canary releases | Yes |
 | **Latency** | Lowest latency Region | Yes |
-| **Failover** | Active-passive disaster recovery | Yes, required on primary |
+| **Failover** | Active-passive disaster recovery | Yes, on primary (or Evaluate Target Health on an alias) |
 | **Geolocation** | By user's country or continent | Yes |
 | **Geoproximity** | By distance, with an adjustable bias | Yes |
 | **IP-based** | By client IP range | Yes |
@@ -161,7 +161,7 @@ Health checks give you automated DNS failover. They can notify through CloudWatc
 
 | Type | Monitors |
 | --- | --- |
-| **Endpoint** | An IP or domain, over HTTP, HTTPS or TCP, from about 15 global checkers |
+| **Endpoint** | An IP or domain, over HTTP, HTTPS or TCP, from health checkers around the world |
 | **Calculated** | Other health checks, combined with AND, OR and NOT |
 | **CloudWatch alarm** | The state of an alarm. This is how you check **private** resources |
 | **ARC routing controller** | Manual on-off switches for failover, part of Application Recovery Controller |

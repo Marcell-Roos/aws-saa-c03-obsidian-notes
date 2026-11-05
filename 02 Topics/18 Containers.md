@@ -12,7 +12,7 @@ aliases: ["Amazon ECS", "ECS", "Amazon ECS Anywhere", "ECS Auto Scaling", "ECS E
 
 ## Containers in brief
 
-A **container** packages an application with its dependencies, so that it runs the same everywhere. Unlike a VM, it shares the host's kernel, so it starts in seconds and uses less memory. An **image** is the template, and a **container** is a running image.
+A **container** packages an application with its dependencies, so that it runs the same everywhere. Unlike a VM, it shares the host's kernel, so it needs no hypervisor. An **image** is the template, and a **container** is a running image.
 
 An **orchestrator** decides where containers run, restarts failed ones and scales them.
 

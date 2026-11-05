@@ -71,7 +71,7 @@ To work out the number of addresses, use 2 to the power of (32 minus the prefix)
 **VPC sizing rules:**
 
 - A CIDR block can be from /16 (65,536 addresses) to /28 (16 addresses).
-- You can add secondary IPv4 CIDR blocks: 5 by default, up to 50.
+- You can add secondary IPv4 CIDR blocks. The quota is 5 IPv4 CIDR blocks per VPC by default, including the primary, and can be raised to 50.
 - Do not overlap with other VPCs or on-premises networks you may ever want to connect.
 - Plan generously, because you cannot resize a subnet.
 
@@ -93,7 +93,7 @@ A subnet belongs to **one AZ**. AWS reserves **five addresses** in each subnet. 
 
 ## Internet gateways and route tables
 
-An **internet gateway (IGW)** connects a VPC to the internet. It is highly available and scales automatically. A VPC has one, and an IGW attaches to one VPC.
+An **internet gateway (IGW)** connects a VPC to the internet. It is highly available and scales automatically. Only one internet gateway can be attached to a VPC at a time.
 
 A **route table** holds rules that send traffic to a target. Each subnet is associated with one route table. When several routes match, the **most specific route wins** (longest prefix match).
 
@@ -132,7 +132,7 @@ A **NAT gateway** is the managed option. It is charged per hour and per GB proce
 A zonal gateway has these rules:
 
 - It lives in a **public subnet**, with an Elastic IP, and needs an internet gateway.
-- It cannot be used by instances in its own subnet.
+- Its own subnet routes internet traffic to the internet gateway, so it serves instances in private subnets.
 - It scales up to 100 Gbps automatically.
 - It has no security group. Control traffic with the instances' security groups and NACLs.
 
@@ -149,7 +149,7 @@ A **NAT instance** is an EC2 instance doing NAT. It is the legacy option.
 | | NAT gateway | NAT instance |
 | --- | --- | --- |
 | Managed | Yes | No, you patch it |
-| Availability | Within an AZ, or regional mode across AZs | Needs your own failover, such as an ASG |
+| Availability | Within an AZ, or regional mode across AZs | Needs your own failover, such as a script |
 | Bandwidth | Scales automatically | Depends on instance type |
 | Security groups | Not attachable | Yes |
 | Can be a bastion | No | Yes |
@@ -157,7 +157,7 @@ A **NAT instance** is an EC2 instance doing NAT. It is the legacy option.
 | Cost | Hourly plus per GB | Instance cost |
 | Setup | None | **Disable the source/destination check** |
 
-The source/destination check is a very common exam item. EC2 normally drops traffic not addressed to itself, and NAT only works if you turn that check off. A small NAT instance can be cheaper for low traffic in non-production environments.
+The source/destination check is a very common exam item. EC2 normally drops traffic not addressed to itself, and NAT only works if you turn that check off. NAT gateways are charged by number, duration and data processed; NAT instances by number, duration, instance type and size.
 
 ## Bastion hosts
 
@@ -334,7 +334,7 @@ Query flow logs with Athena on S3 or with CloudWatch Logs Insights. A metric fil
 | Instance launch fails in a dual-stack subnet | No IPv4 addresses left | Add an IPv4 CIDR |
 | Private hosted zone does not resolve | Enable DNS hostnames and DNS support | Both VPC attributes |
 | Connection times out | Firewall | Check SG and NACL |
-| Connection refused | Application | The port is reachable |
+| Connection refused | Application or instance firewall | Check the service is running and listening |
 
 ## Check yourself
 

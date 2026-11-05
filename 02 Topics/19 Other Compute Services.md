@@ -41,7 +41,7 @@ flowchart TD
 
 **Health monitoring** tracks environment health, and it pushes metrics to CloudWatch.
 
-Architecture models are a **single instance** for development, **load balancer plus ASG** for web production, and **ASG only** for non-web production.
+Environments are either a **single instance** for development and testing, or **load balanced and scalable** (a load balancer plus ASG) for production. A worker environment pulls tasks from an SQS queue.
 
 ### Deployment policies
 
@@ -49,10 +49,10 @@ Architecture models are a **single instance** for development, **load balancer p
 | --- | --- | --- | --- | --- |
 | **All at once** | **Yes** | None for a short time | None | Manual redeploy |
 | **Rolling** | No | Reduced by a batch | None | Manual redeploy |
-| **Rolling with additional batch** | No | **Full** | Small | Manual redeploy |
-| **Immutable** | No | Full, on a new group of instances | Higher | Quick: delete the new group |
+| **Rolling with additional batch** | No | **Full** | An extra batch of instances | Manual redeploy |
+| **Immutable** | No | Full, on a new group of instances | A full set of new instances | Quick: delete the new group |
 | **Traffic splitting** | No | Full | Higher | Quick: reroute traffic. ALB only |
-| **Blue/green** | No | Full, on a separate environment | Highest | Swap the CNAME back |
+| **Blue/green** | No | Full, on a separate environment | A full second environment | Swap the CNAME back |
 
 Single-instance environments support only All at once and Immutable.
 
@@ -74,7 +74,7 @@ Beanstalk uses CloudFormation behind the scenes. It supports common platforms su
 
 ## AWS Batch
 
-**AWS Batch** runs batch jobs at any scale, up to hundreds of thousands of jobs. A batch job has a start and an end.
+**AWS Batch** runs batch jobs at any scale, up to hundreds of thousands of jobs. Batch computing is the execution of a series of programs (jobs) without manual intervention.
 
 - Jobs are defined as container images.
 - Batch launches the right amount of EC2, Spot or Fargate capacity, and it can run on ECS or EKS.
@@ -84,8 +84,8 @@ Beanstalk uses CloudFormation behind the scenes. It supports common platforms su
 | | Lambda | AWS Batch |
 | --- | --- | --- |
 | Time limit | 15 minutes | None |
-| Runtime | Limited runtimes or a container image | Any container |
-| Storage | Limited `/tmp` | EBS or instance store |
+| Runtime | Managed or custom runtimes, or a container image | Any Docker container |
+| Storage | Limited `/tmp` | Depends on the compute environment |
 | Compute | Serverless | Managed EC2, Spot or Fargate |
 
 ## Running AWS closer to users
@@ -112,7 +112,7 @@ Local Zones extend a VPC to a location near a large city. You enable the zone, a
 
 ### AWS Wavelength
 
-**Wavelength Zones** host compute and storage inside 5G networks, with telecom partners. You extend a VPC into a Wavelength Zone. A **carrier gateway** connects the VPC to devices on the 5G network. Traffic between apps and devices can stay in the telecom network, without crossing the internet.
+**Wavelength Zones** host compute and storage inside 5G networks, with telecom partners. You extend a VPC into a Wavelength Zone. A **carrier gateway** connects the VPC to devices on the 5G network. This gives low latency to mobile devices and end users.
 
 ### AWS Outposts
 
@@ -120,7 +120,7 @@ Local Zones extend a VPC to a location near a large city. You enable the zone, a
 
 ### VMware Cloud on AWS
 
-Companies that use VMware can extend data centre capacity to AWS and keep using their existing VMware software. It suits gradual migration and disaster recovery.
+Companies that use VMware can extend data centre capacity to AWS and keep using their existing VMware software. As of 30 April 2024 it is no longer resold by AWS, but it remains available through Broadcom.
 
 ### Edge processing
 
@@ -172,7 +172,7 @@ Edge processing moves compute close to where data is created. This reduces laten
 - D. Blue/green
 
 > [!success]- Answer
-> **C.** The extra batch maintains full capacity, at less cost than a full duplicate.
+> **C.** The extra batch maintains full capacity, without a full duplicate of the instances.
 
 **3.** A team wants the safest deployment, with the fastest rollback if health checks fail on new instances, inside the same environment. Which policy fits?
 

@@ -142,7 +142,7 @@ tags: [practice, scope/in]
 - E. An endpoint policy that limits which buckets can be reached through the endpoint
 
 > [!success]- Answer
-> **A and E.** The bucket policy restricts who can reach the bucket, and the endpoint policy restricts what can be reached from the VPC. Buckets are not in subnets, so NACLs and security groups do not apply. NAT would bypass the endpoint.
+> **A and E.** The bucket policy restricts who can reach the bucket, and the endpoint policy restricts what can be reached from the VPC. Buckets are not in subnets, so NACLs and security groups do not apply. A gateway endpoint removes the need for a NAT device.
 >
 > *Task 1.2.* Review: [[10 VPC Connectivity and Hybrid Networking#VPC endpoints|VPC endpoints]]
 
@@ -383,7 +383,7 @@ tags: [practice, scope/in]
 - D. Move to larger task sizes
 
 > [!success]- Answer
-> **C.** Fargate Spot is discounted for interruptible tasks. Dedicated Hosts cost more. EKS on Fargate does not support Fargate Spot.
+> **C.** Fargate Spot is discounted for interruptible tasks. Fargate runs containers without servers to manage, so Dedicated Hosts do not apply. EKS on Fargate does not support Fargate Spot.
 >
 > *Task 4.2.* Review: [[18 Containers#AWS Fargate|AWS Fargate]]
 
@@ -407,7 +407,7 @@ tags: [practice, scope/in]
 - D. Move to Dedicated Hosts
 
 > [!success]- Answer
-> **C.** Graviton gives better price-performance. Dedicated Hosts cost more. G instances are for graphics.
+> **C.** Graviton gives better price-performance. Moving to Dedicated Hosts does not change the instance family. G instances are for graphics.
 >
 > *Task 4.2.* Review: [[04 Amazon EC2#Instance types|Instance types]]
 
@@ -781,7 +781,7 @@ tags: [practice, scope/in]
 - D. VPC peering between tunnels
 
 > [!success]- Answer
-> **A.** ECMP on Transit Gateway spreads traffic across tunnels. A virtual private gateway does not support ECMP this way. Peering is unrelated.
+> **A.** ECMP on Transit Gateway spreads traffic across tunnels. ECMP is supported for VPN connections on a transit gateway. Peering is unrelated.
 >
 > *Task 3.4.* Review: [[10 VPC Connectivity and Hybrid Networking#AWS Transit Gateway|AWS Transit Gateway]]
 

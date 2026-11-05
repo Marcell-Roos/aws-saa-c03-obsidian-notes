@@ -95,7 +95,7 @@ tags: [practice, scope/in]
 - D. Write-through for all products, loaded at start-up
 
 > [!success]- Answer
-> **A.** Lazy loading caches only what is read, and the TTL limits staleness. Write-through caches everything, which wastes memory. Replicas still run a query for each read.
+> **A.** Lazy loading caches only what is read, and the TTL limits staleness. Write-through caches everything, which wastes memory.
 >
 > *Task 3.3.* Review: [[15 ElastiCache and Other Databases#Caching strategies|Caching strategies]]
 
@@ -107,7 +107,7 @@ tags: [practice, scope/in]
 - D. EBS volumes with Multi-Attach
 
 > [!success]- Answer
-> **A.** Scratch suits short-term, cheaper processing, and data is safe in S3. Persistent is for long-term use. EFS will not match this performance. Multi-Attach is limited to one AZ and 16 instances.
+> **A.** Scratch suits short-term, cheaper processing, and data is safe in S3. Persistent is for long-term use. Multi-Attach is limited to one AZ and 16 instances.
 >
 > *Task 3.1.* Review: [[08 Block and File Storage#FSx for Lustre|FSx for Lustre]]
 
@@ -215,7 +215,7 @@ tags: [practice, scope/in]
 - D. Fargate with no commitment
 
 > [!success]- Answer
-> **A.** Well-used EC2 with a commitment is generally cheaper for steady workloads. Fargate is priced for convenience. Lambda suits spiky traffic. Spot can be interrupted, and this is a steady service.
+> **A.** Well-used EC2 with a commitment is generally cheaper for steady workloads. Spot can be interrupted, and this is a steady service.
 >
 > *Task 4.2.* Review: [[29 Cost Optimisation#Compute costs|Compute costs]]
 
@@ -288,7 +288,7 @@ tags: [practice, scope/in]
 - D. Have each customer add a bucket policy that allows the vendor's service role
 
 > [!success]- Answer
-> **B.** A role gives temporary credentials, customers can revoke it, and a vendor-generated ExternalId stops the confused deputy problem. A bucket policy would work for access, but it gives no protection against a mismatched customer configuration. IAM users mean long-term keys. Replication does not give customers control, and it adds cost.
+> **B.** A role gives temporary credentials, customers can revoke it, and a vendor-generated ExternalId stops the confused deputy problem. A bucket policy would work for access, but it gives no protection against a mismatched customer configuration. IAM users mean long-term keys.
 >
 > *Task 1.1.* Review: [[02 IAM and Federation#Cross-account access|Cross-account access]]
 
@@ -300,7 +300,7 @@ tags: [practice, scope/in]
 - D. Store the secret in a Parameter Store standard parameter in both Regions by hand
 
 > [!success]- Answer
-> **B.** Replication keeps the secret current in the other Region. Manual copies drift, especially with rotation. A Multi-Region key helps with encryption, but it does not make the secret available in that Region.
+> **B.** Replication keeps the secret current in the other Region. A Multi-Region key helps with encryption, but it does not make the secret available in that Region.
 >
 > *Task 1.3.* Review: [[23 Encryption and Secrets#AWS Secrets Manager|AWS Secrets Manager]]
 
@@ -312,7 +312,7 @@ tags: [practice, scope/in]
 - D. Move to General Purpose SSD (gp3) storage, with IOPS set to meet the peaks
 
 > [!success]- Answer
-> **D.** gp3 can provide this level at a lower cost. More IOPS costs more. Magnetic storage is legacy, and it cannot meet the peaks. A replica adds an extra instance.
+> **D.** gp3 can provide this level at a lower cost. More IOPS costs more. Magnetic storage is legacy and no longer available. A replica adds an extra instance.
 >
 > *Task 4.3.* Review: [[13 RDS and Aurora#Instance and storage|Instance and storage]]
 
@@ -348,7 +348,7 @@ tags: [practice, scope/in]
 - D. Add more EBS IOPS
 
 > [!success]- Answer
-> **B.** The bottleneck is memory, so a memory-optimised family fits. A compute family has less memory per vCPU. More IOPS treats the symptom. T instances do not help here.
+> **B.** The bottleneck is memory, so a memory-optimised family fits. More IOPS treats the symptom. T instances do not help here.
 >
 > *Task 3.2.* Review: [[04 Amazon EC2#Instance types|Instance types]]
 
@@ -408,7 +408,7 @@ tags: [practice, scope/in]
 - D. Create more endpoints in each AZ
 
 > [!success]- Answer
-> **B.** Sharing endpoints reduces the number of hourly charges. Gateway endpoints exist only for S3 and DynamoDB. NAT is often more expensive at volume, and it may break a private access requirement.
+> **B.** Sharing endpoints reduces the number of hourly charges. Gateway endpoints exist only for S3 and DynamoDB. NAT gateways are charged per hour and per GB of data processed.
 >
 > *Task 4.4.* Review: [[10 VPC Connectivity and Hybrid Networking#VPC endpoints|VPC endpoints]]
 
@@ -529,7 +529,7 @@ tags: [practice, scope/in]
 - D. Create a new VPC, and rebuild the cluster
 
 > [!success]- Answer
-> **A.** A VPC can have secondary CIDR blocks. Subnets cannot be resized. A rebuild is unnecessary disruption. Public addresses are not the answer for pods.
+> **A.** A VPC can have secondary CIDR blocks. A rebuild is unnecessary disruption. Public addresses are not the answer for pods.
 >
 > *Task 3.4.* Review: [[09 VPC Fundamentals#IP addressing and CIDR|IP addressing and CIDR]]
 
@@ -749,7 +749,7 @@ tags: [practice, scope/in]
 - E. Buy a Compute Savings Plan
 
 > [!success]- Answer
-> **D and E.** Graviton gives better price-performance, and pure Python usually needs no change. Compute Savings Plans cover Lambda. More memory or provisioned concurrency adds cost, and a VPC adds no saving.
+> **D and E.** Graviton gives better price-performance, and pure Python usually needs no change. Compute Savings Plans cover Lambda. More memory or provisioned concurrency adds cost.
 >
 > *Task 4.2.* Review: [[16 Lambda and Serverless#Limits|Limits]]
 

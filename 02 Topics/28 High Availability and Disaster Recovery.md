@@ -96,7 +96,7 @@ The same applies to anything else a failover depends on: AMIs, KMS keys, Secrets
 | Load balancer health checks | Seconds | Targets in other AZs |
 | RDS Multi-AZ | About a minute or two | DNS flip |
 | Aurora replica promotion | Under 60 seconds, often under 30 | A replica existing |
-| Route 53 failover | Minutes, including the TTL | Health checks and client caching |
+| Route 53 failover | Health check detection plus the record TTL | Health checks and client caching |
 | Global Accelerator | Usually under a minute | Health checks, no DNS change |
 | Application Recovery Controller | Fast, and under your control | Routing controls set up in advance |
 

@@ -147,7 +147,7 @@ An **Automation runbook** defines actions on instances and other AWS resources. 
 | **Rolling** | Replace in batches | Minimal, with reduced capacity | Moderate | Apps that tolerate a mix of versions for a while |
 | **Blue/green** | Two identical environments, then switch traffic | None | **Instant**: switch back | Critical apps needing a quick, reliable rollback |
 | **Canary** | A small share of traffic goes to the new version first | None | Quick | Large user bases, early feedback |
-| **A/B testing** | Two versions at once, to compare results | None | Quick | UI and feature tests |
+| **A/B testing** | Two versions at once, to compare results | None | Quick | Comparing versions |
 | **Shadow** | The new version processes a copy of production traffic, serving no users | None | Not needed | Validating major updates |
 
 On AWS, traffic can be shifted with [[05 Load Balancing and Auto Scaling#Application Load Balancer|ALB weighted target groups]], [[11 Route 53#Weighted|Route 53 weighted routing]], [[17 API Gateway and Front-End Services#Monitoring and deployment|API Gateway canaries]], Lambda aliases and [[19 Other Compute Services#Deployment policies|Elastic Beanstalk policies]].
